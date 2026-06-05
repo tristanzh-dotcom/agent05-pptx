@@ -1,0 +1,46 @@
+{
+  "template_slug": "minimal-business-summary",
+  "selected_slides": [4],
+  "edits": [
+    {
+      "slide": 4,
+      "slot_id": "p4_breadcrumb_cn",
+      "new_text": "组织架构 "
+    },
+    {
+      "slide": 4,
+      "slot_id": "p4_breadcrumb_en",
+      "new_text": "Org Chart"
+    },
+    {
+      "slide": 4,
+      "slot_id": "p4_item1_title",
+      "new_text": "管理层"
+    },
+    {
+      "slide": 4,
+      "slot_id": "p4_item1_body",
+      "new_text": "负责公司整体战略规划与运营管理，统筹各部门资源协同，推动组织目标达成。"
+    },
+    {
+      "slide": 4,
+      "slot_id": "p4_item2_title",
+      "new_text": "技术总监"
+    },
+    {
+      "slide": 4,
+      "slot_id": "p4_item2_body",
+      "new_text": "负责技术战略与产品研发管理，推动技术创新，确保技术体系高效支撑业务发展。"
+    },
+    {
+      "slide": 4,
+      "slot_id": "p4_item3_title",
+      "new_text": "运营总监"
+    },
+    {
+      "slide": 4,
+      "slot_id": "p4_item3_body",
+      "new_text": "负责日常运营管理与流程优化，建设高效团队，提升组织运营效率与交付质量。"
+    }
+  ]
+}

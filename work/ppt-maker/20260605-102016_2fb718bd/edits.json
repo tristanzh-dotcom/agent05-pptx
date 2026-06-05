@@ -1,0 +1,43 @@
+{
+  "selected_slides": [1, 2, 5, 12, 16],
+  "edits": [
+    {"slide": 1, "slot_id": "cover_title_en", "new_text": "Smoke Test"},
+    {"slide": 1, "slot_id": "cover_title_cn", "new_text": "Agent05 冒烟测试"},
+
+    {"slide": 2, "slot_id": "agenda_title_cn", "new_text": "目录"},
+    {"slide": 2, "slot_id": "agenda_title_en", "new_text": "Contents"},
+    {"slide": 2, "slot_id": "agenda_ch1_cn", "new_text": "发布目标"},
+    {"slide": 2, "slot_id": "agenda_ch1_en", "new_text": "Release Goals"},
+    {"slide": 2, "slot_id": "agenda_ch2_cn", "new_text": "参考配色"},
+    {"slide": 2, "slot_id": "agenda_ch2_en", "new_text": "Ref Colors"},
+    {"slide": 2, "slot_id": "agenda_ch3_cn", "new_text": "验证结果"},
+    {"slide": 2, "slot_id": "agenda_ch3_en", "new_text": "Results"},
+    {"slide": 2, "slot_id": "agenda_ch4_cn", "new_text": "风险与下一步"},
+    {"slide": 2, "slot_id": "agenda_ch4_en", "new_text": "Risks & Next"},
+
+    {"slide": 5, "slot_id": "p5_breadcrumb_cn", "new_text": "发布目标 "},
+    {"slide": 5, "slot_id": "p5_breadcrumb_en", "new_text": "Release Goals"},
+    {"slide": 5, "slot_id": "p5_card1_title", "new_text": "目标一"},
+    {"slide": 5, "slot_id": "p5_card1_body", "new_text": "完成 Agent05 核心功能冒烟验证，确保全部 P0 用例通过。"},
+    {"slide": 5, "slot_id": "p5_card2_title", "new_text": "目标二"},
+    {"slide": 5, "slot_id": "p5_card2_body", "new_text": "参考配色方案精准映射，确保输出与参考文件视觉一致。"},
+    {"slide": 5, "slot_id": "p5_card3_title", "new_text": "配色方案"},
+    {"slide": 5, "slot_id": "p5_card3_body", "new_text": "主色调: #E44C3C #1C3C94 #E84468 #504468 #1C4498"},
+    {"slide": 5, "slot_id": "p5_card4_title", "new_text": "参考映射"},
+    {"slide": 5, "slot_id": "p5_card4_body", "new_text": "配色匹配模板: architecture-deck, report-savior, operations-deck。"},
+
+    {"slide": 12, "slot_id": "p12_breadcrumb_cn", "new_text": "验证结果 "},
+    {"slide": 12, "slot_id": "p12_breadcrumb_en", "new_text": "Results"},
+    {"slide": 12, "slot_id": "p12_key1", "new_text": "功能验证"},
+    {"slide": 12, "slot_id": "p12_body1", "new_text": "P0 用例 48/48 全部通过，核心功能稳定性达标。"},
+    {"slide": 12, "slot_id": "p12_key2", "new_text": "参考比对"},
+    {"slide": 12, "slot_id": "p12_body2", "new_text": "参考配色验证通过，视觉一致性评分 4.5/5。"},
+    {"slide": 12, "slot_id": "p12_key3", "new_text": "覆盖评估"},
+    {"slide": 12, "slot_id": "p12_body3", "new_text": "新增场景覆盖率 92%，回归测试无退化。"},
+    {"slide": 12, "slot_id": "p12_key4", "new_text": "风险与下一步"},
+    {"slide": 12, "slot_id": "p12_body4", "new_text": "6 项 P1 待修复，T+2 回归后进入发布评审。"},
+
+    {"slide": 16, "slot_id": "end_en", "new_text": "Thank You"},
+    {"slide": 16, "slot_id": "end_cn", "new_text": "感谢观看"}
+  ]
+}

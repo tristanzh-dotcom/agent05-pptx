@@ -1,0 +1,26 @@
+{
+  "schema": "ppt-maker-reference-analysis/v1",
+  "ref_id": "ref_920606609467",
+  "file_name": "agent05-ref-test.png",
+  "file_type": "image",
+  "page_count": null,
+  "text_chars": 0,
+  "extracted_text": "",
+  "dominant_colors": [
+    "#E44C3C",
+    "#1C3C94",
+    "#E84468",
+    "#504468",
+    "#1C4498"
+  ],
+  "color_style_hint": "红色+蓝色+红色主调",
+  "recommended_templates": [
+    "architecture-deck",
+    "report-savior",
+    "operations-deck"
+  ],
+  "screenshot_url": "/api/reference/ref_920606609467/screenshot.png",
+  "extraction_errors": [
+    "ocr_unavailable"
+  ]
+}

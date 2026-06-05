@@ -1,0 +1,24 @@
+{
+  "schema": "ppt-maker-reference-analysis/v1",
+  "ref_id": "ref_44744f8520a3",
+  "file_name": "agent05-ref-test.pdf",
+  "file_type": "pdf",
+  "page_count": 1,
+  "text_chars": 26,
+  "extracted_text": "Quarterly Report Reference",
+  "dominant_colors": [
+    "#0C0C0C",
+    "#C1C1C1",
+    "#848484",
+    "#747474",
+    "#7C7C7C"
+  ],
+  "color_style_hint": "黑色+红色+红色主调",
+  "recommended_templates": [
+    "red-patriot-youth",
+    "premium-corp",
+    "red-patriot-general"
+  ],
+  "screenshot_url": "/api/reference/ref_44744f8520a3/screenshot.png",
+  "extraction_errors": []
+}

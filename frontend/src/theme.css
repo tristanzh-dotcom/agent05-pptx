@@ -1,0 +1,21 @@
+:root {
+  color-scheme: var(--platform-color-scheme);
+  --color-background: var(--platform-color-background);
+  --color-surface: var(--platform-color-surface);
+  --color-elevated: var(--platform-color-elevated);
+  --color-foreground: var(--platform-color-foreground);
+  --color-muted: var(--platform-color-muted);
+  --color-subtle: var(--platform-color-subtle);
+  --color-border: var(--platform-color-border);
+  --color-primary: var(--platform-color-primary);
+  --color-primary-foreground: var(--platform-color-primary-foreground);
+  --color-danger: var(--platform-color-danger);
+  --color-danger-foreground: var(--platform-color-danger-foreground);
+  --color-success: var(--platform-color-success);
+  --color-warning: var(--platform-color-warning);
+  --radius-ui: var(--platform-radius-ui);
+  --radius-control: var(--platform-radius-control);
+  --shadow-panel: var(--platform-shadow-panel);
+  --shadow-focus: var(--platform-shadow-focus);
+  --font-sans: var(--platform-font-sans);
+}
