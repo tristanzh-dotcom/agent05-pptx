@@ -14,133 +14,137 @@
 - Mode A：用户输入 prompt，从 Gorden 模板生成新 PPTX。
 - Mode B：用户上传现有 `.pptx`，保留排版，仅按 prompt 编辑文字。
 - PDF/image 参考增强：用户上传 PDF 或图片后，不新增模式，只提取文本和配色注入 Mode A prompt。
+- 发布态 UI 的核心任务只有两个：输入生成意图；检查、下载、复用生成产物。
 
-本轮工作的核心原则：
+本轮工作遵循：
 
 - 不修改 `/Users/tristanzh/agent/.ai_skills/gorden-ppt-skill/`。
 - 不修改 opencode 权限策略。
 - 新需求严格按 SDD -> TDD -> 实现。
-- Web 前端要减少用户认知负担：输入区只保留 prompt、参考文件、页数三个真实决策。
+- 前端布局必须服从 Agent 平台整体风格，不在 Agent05 内部重复平台外壳信息。
 
 ## 今日完成事项
 
-### 后端
+### 发布冒烟与回归
 
-- 新增并接入 Reference Analyzer：
-  - `backend/app/services/reference_analyzer.py`
-  - `backend/app/routers/references.py`
-  - `backend/app/main.py`
-  - `requirements.txt`
-- 支持 PDF/image 参考分析：
-  - 文件类型检测：`.pptx` / `.pdf` / image / unknown。
-  - PDF 文本提取、页数读取、截图生成。
-  - 图片缩略图和配色提取。
-  - 参考配色推荐模板排序。
-  - 降级错误通过 `extraction_errors` 返回，不阻断生成。
-- Mode A prompt 注入参考分析：
-  - `backend/app/services/generation.py`
-  - `backend/app/routers/generation.py`
-  - 参考摘要写入 orchestration prompt。
-  - 模板候选优先按推荐 slug 排序。
-- Mode B 已完成：
-  - `.pptx` 上传后跳过模板选择。
-  - 使用 explicit address edits。
-  - `validate_edits(page_count=None)` 跳过页数校验。
-  - 源 PPTX 哈希不变。
-- 质量门已完成：
-  - `backend/app/services/validate_edits.py`
-  - page_count 约束、占位文案检测、schema 校验、重复 slot 检测。
-- 修复 QuickLook 预览误判：
-  - `backend/app/services/files.py`
-  - 之前只认 `<img>`，真实 PPTX 的 QuickLook 会生成 `div.slide` HTML。
-  - 现在 `has_visual_content()` 同时接受 `<img>`、`class="slide"`、`class='slide'`。
+- 确认前端 `127.0.0.1:3000` 可访问，后端 `127.0.0.1:8000` 可启动。
+- Mode A 浏览器生成通过：
+  - `work/ppt-maker/20260605-101117_dcac4efd/output.pptx`
+  - QuickLook visual-preview 返回 `mode: quicklook_html`。
+- Mode B 协议级生成通过：
+  - `work/ppt-maker/20260605-101534_ea030f6a/output.pptx`
+  - 源 PPTX 哈希保持不变，输出 PPTX 哈希变化。
+  - QuickLook visual-preview 通过。
+- PDF/image 分析接口通过：
+  - PDF 返回页数、字数、色板、推荐模板。
+  - 图片返回色板，`ocr_unavailable` 作为降级信息返回但不阻断。
+- 参考增强生成验证：
+  - 首选推荐 `architecture-deck` 时真实构建失败，暴露模板推荐排序风险。
+  - 手动选择 `minimal-business-summary` 后生成通过：
+    - `work/ppt-maker/20260605-102016_2fb718bd/output.pptx`
+    - Prompt 中确认注入参考分析摘要。
+    - QuickLook visual-preview 通过。
 
-### 前端
+### Workbench 布局 SDD/TDD/GREEN
 
-- 重构输入区为紧凑 Prompt Card：
+- 新增并更新布局 SDD：
+  - `docs/sdd/ppt-maker-web-workbench-layout.md`
+- SDD 约束：
+  - 桌面双栏：左侧生成控制台，右侧 PPT 结果工作区。
+  - 不依赖 raw `100dvh`，高度应基于平台内容区。
+  - `<960px` effective content width 进入 `生成 / 预览 / 历史` Tabs。
+  - Header 删除后端 URL / 前端挂载路径。
+  - Footer 免责声明只出现一次。
+  - 视觉预览失败时显示 `渲染预览不可用`。
+- TDD RED：
+  - 在 `frontend/src/App.test.tsx` 新增布局行为测试。
+  - 初始运行结果：`37 tests | 4 failed | 33 passed`。
+  - 失败点均为新布局缺失，无误报。
+- GREEN 实现：
   - `frontend/src/App.tsx`
-  - 删除“高级参数”折叠面板。
-  - 删除独立 ReferenceAnalysisCard。
-  - 上传区并入 Prompt 卡片。
-  - `.pptx -> 保留模板编辑内容`，`.pdf/.png -> 提取风格配色`。
-  - PDF/image 上传后内联显示文件名、页数、字数、前三个色板。
-  - Mode B 下页数控件改为静态提示：`页数保留源文件`。
-  - 修复 `.pptx` 上传后“源文件”重复 chip。
-- 模式标签三态：
-  - `从模板生成`
-  - `从模板生成（参考增强）`
-  - `保留模板编辑内容`
-- 生成完成后预览区新增参考增强摘要：
-  - `Prompt 已增强：参考 ... · 配色 ... · 推荐模板 ...`
-- 历史列表优化：
-  - 新生成记录用 frontend localStorage 保存 prompt 前缀和类型标签。
-  - 旧记录 fallback 为 `[模板生成] 生成记录`。
-  - 不再把 `output.pptx` 作为主标题。
-- 质量门错误结构化展示：
-  - `frontend/src/qualityGate.ts`
-  - `frontend/src/QualityGateError.tsx`
-  - JSON 质量门错误渲染成可读卡片，普通错误保持纯文本。
+  - 发布态 Header：`PPT生成 + 后端已连接`。
+  - 桌面双栏：`生成控制台` + `PPT 结果工作区`。
+  - 最近历史常驻显示最近 3 条。
+  - `更多历史` 展开完整列表。
+  - 窄屏 `生成 / 预览 / 历史` Tabs。
+  - 窄屏生成完成后自动切到 `预览`。
+  - 视觉预览失败保留下载，并显示 `渲染预览不可用`。
 
-### SDD 文档
+### 验证命令
 
-本轮新增/更新：
-
-- `docs/sdd/ppt-maker-web-edits-quality-gate.md`
-- `docs/sdd/ppt-maker-web-mode-b.md`
-- `docs/sdd/ppt-maker-web-reference-analyzer.md`
-- `docs/sdd/ppt-maker-web-input-area-redesign.md`
-- `docs/sdd/ppt-maker-web-visual-preview-template-cycling.md`
-- `docs/sdd/ppt-maker-web-generation-state-persistence.md`
-
-### 测试与验证
-
-收工前重新执行：
+已执行：
 
 ```bash
-python3 -m pytest backend/tests -q
-# 53 passed
-
 cd frontend && npm test -- --run
-# 34 passed
+# 37 passed
 
 cd frontend && npm run build
 # passed
 ```
 
-真实 QuickLook 预览验证：
+浏览器验证：
 
-- 对 `work/ppt-maker/20260604-190305_feedaf83/output.pptx` 请求 visual-preview。
-- 重启后端后返回 `preview_url` 和 `mode: quicklook_html`。
-- `index.html` 可访问，包含 `Preview.html`。
+- 1440px：
+  - `PPT生成`、`后端已连接` 存在。
+  - `生成控制台` 存在。
+  - `PPT 结果工作区` 存在。
+  - `最近历史` 存在。
+  - 后端 URL 和 `/agent05/index.html` 不显示。
+  - 免责声明出现 1 次。
+- 900px：
+  - 显示 `生成 / 预览 / 历史` Tabs。
+  - 默认选中 `生成`。
+
+### 之前已完成并仍需保留的功能
+
+- Reference Analyzer：
+  - `backend/app/services/reference_analyzer.py`
+  - `backend/app/routers/references.py`
+- Mode A 参考增强注入：
+  - `backend/app/services/generation.py`
+  - `backend/app/routers/generation.py`
+- Mode B template-preserving edit。
+- 质量门：
+  - `backend/app/services/validate_edits.py`
+- QuickLook 预览接受 `<img>` 和 `class="slide"` HTML。
+- 前端质量门结构化展示：
+  - `frontend/src/qualityGate.ts`
+  - `frontend/src/QualityGateError.tsx`
 
 ## 已作出的关键决策
 
 - PDF/image 不引入新 Mode，只作为 Mode A prompt 增强。
 - `.pptx` 上传保持 Mode B，即 `template_preserving_edit`。
-- 不改后端文件列表 API；历史 prompt 展示采用 frontend-only localStorage metadata。
-  - 局限：旧历史记录无法还原真实 prompt。
-  - 取舍：符合“不改后端 API”的约束。
-- 删除 `style` / `purpose` 独立输入。
-  - 原因：它们本质是 prompt 文本，不是结构化参数。
-  - 参考分析已自动提取风格，手填 style 可能冲突。
-- Mode B 下不显示 page_count 下拉。
-  - 原因：Mode B 保留源 PPTX 页数，`页面 10` 会误导用户。
-- QuickLook 预览接受 HTML slide DOM。
-  - 原因：macOS `qlmanage -p` 对 PPTX 可生成 `div.slide`，不一定生成 `<img>`。
-  - 放弃只检测 `<img>` 的过严策略。
-- “保留模板编辑内容”是状态标签，不是按钮。
-  - 该标签不应有点击行为。
+- 不改后端文件列表 API；历史 prompt 展示继续采用 frontend localStorage metadata。
+- 删除 `style` / `purpose` 独立输入；它们本质是 prompt 文本。
+- Mode B 下不显示 page_count 下拉，显示 `页数保留源文件`。
+- QuickLook 预览接受 HTML slide DOM，放弃只检测 `<img>` 的过严策略。
+- Workbench 双栏方向正确，但今天截图证明：最近历史不应继续塞在左栏下半段。
+- Agent05 内部不应复制平台 Header；应服从 Agent02/03/04 的统一外壳风格。
+- 底部应从免责声明改为 Agent04 风格模型配置栏，免责声明弱化或挪到设置/tooltip。
 
 ## 未解决的风险/报错
 
-- 当前收工时端口状态：
-  - `127.0.0.1:3000` 前端 Vite 正在监听。
-  - `127.0.0.1:8000` 后端收工检查时未监听；后续曾重启过后端用于 QuickLook 验证。明天接手时先重新确认端口。
-- Browser 可视化工具本轮未暴露为可调用工具，因此没有做 in-app Browser 截图验证；主要依赖测试、build、curl 以及真实 visual-preview 接口验证。
-- footer 在源码中只有一处，测试也锁定只渲染一次；如果浏览器仍看到两次，优先怀疑打开了后端静态旧 build + Vite 页面叠加、缓存或服务指向不一致。
-- 历史列表 prompt metadata 是 frontend localStorage，跨浏览器/清缓存不共享。
-- `soffice` 和 `pdftoppm` 当前命令不可用；QuickLook 是主预览路径。`render_slides.py` 的 LibreOffice fallback 暂未接入本轮修复。
-- 项目目录不是 git repo，不能用 `git diff` 总览；需要用文件时间和测试确认状态。
+- 最新截图暴露的新 UI 问题尚未实现修复：
+  - `最近生成` 在满屏状态下仍不能一屏完整显示。
+  - 左栏承担 Prompt、上传、页数、生成按钮、历史，垂直空间仍过载。
+  - Agent05 内部 Header 风格和 Agent02/03/04 不一致，且仍像平台 Header 的重复版本。
+  - 页面底部缺少 Agent04 同款模型配置栏。
+- 推荐模板排序风险：
+  - 图片参考增强把 `architecture-deck` 排在第一时，真实构建失败。
+  - 错误包含 `expected_text mismatch` 和多个文本溢出。
+  - 同一参考分析改选 `minimal-business-summary` 可通过。
+- 历史 metadata 仍是 frontend localStorage：
+  - 跨浏览器/清缓存不共享。
+  - 旧历史仍只能 fallback 为 `[模板生成] 生成记录`。
+- `soffice` 和 `pdftoppm` 当前不可用；QuickLook 是主预览路径。
+- Git 状态：
+  - Git root 是 `/Users/tristanzh/agent`。
+  - 当前 `PPT-maker` 路径下 `git diff -- PPT-maker` 为空，说明 PPT-maker 当前没有未提交 diff。
+  - 仓库中存在其他项目未提交改动：
+    - `Passenger-Vehicle-Intel/...`
+    - `Personal-Asset/...`
+  - 不应把这些无关改动纳入 Agent05 提交。
 
 ## 下一步行动
 
@@ -169,29 +173,35 @@ cd frontend && npm run dev
 http://127.0.0.1:3000/agent05/
 ```
 
-5. 优先做三个冒烟：
+5. 下一轮优先做新的 SDD/TDD：
 
-- Mode A：无文件输入 prompt 生成，确认模板选择、生成、下载、QuickLook 预览。
-- Mode B：上传 `.pptx`，确认只显示 `保留模板编辑内容` 和 `页数保留源文件`，不出现模板选择。
-- PDF/image：上传参考文件，确认内联页数/字数/色板，生成完成后显示 `Prompt 已增强`。
-
-6. 若预览仍失败，第一步看：
-
-```bash
-curl -sS http://127.0.0.1:8000/agent05/api/files/<task_dir>/output.pptx/visual-preview | python3 -m json.tool
-```
-
-然后检查：
-
-```bash
-backend/app/services/files.py
-backend/tests/test_api_skeleton.py::test_visual_preview_accepts_quicklook_slide_html_without_img
-```
-
-7. 回归命令：
+- 修改 `docs/sdd/ppt-maker-web-workbench-layout.md`：
+  - 最近历史从左栏移出，改成右侧/底部横向 compact history strip。
+  - Agent05 内部 Header 改为与 Agent02/03/04 统一的轻量工作台工具栏，删除平台字段重复。
+  - 底部栏改成模型配置：
+    - `DeepSeek 中文生成`
+    - `codex-base 英文报告`
+    - `bge-m3 本地语义检索`
+    - `QuickLook 预览`
+    - `Gorden PPTX 构建`
+- 写 RED 测试：
+  - 最近生成横条首屏可见且不在左栏内。
+  - Agent05 不再渲染 `项目名称 / 可视化编辑`。
+  - 底部显示模型配置栏。
+  - 免责声明不再占主底栏。
+- GREEN 实现后跑：
 
 ```bash
-python3 -m pytest backend/tests -q
 cd frontend && npm test -- --run
 cd frontend && npm run build
 ```
+
+6. 若要继续 `git push`：
+
+```bash
+git -C /Users/tristanzh/agent status --short -- PPT-maker
+git -C /Users/tristanzh/agent status --short
+git -C /Users/tristanzh/agent push origin HEAD
+```
+
+注意：如果根仓库仍只有其他项目脏改动，Agent05 不应创建包含无关项目的提交。
