@@ -170,8 +170,11 @@ describe('PPT maker frontend', () => {
 
     const fullHistory = await screen.findByLabelText('完整历史')
     expect(historyStrip).toHaveClass('relative')
+    expect(historyStrip).toHaveClass('z-40')
+    expect(historyStrip).toHaveClass('isolate')
     expect(fullHistory).toHaveClass('absolute')
     expect(fullHistory).toHaveClass('bottom-full')
+    expect(fullHistory).toHaveClass('z-50')
     expect(fullHistory).toHaveClass('max-h-80')
     expect(fullHistory).toHaveClass('overflow-auto')
   })

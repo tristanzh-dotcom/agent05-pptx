@@ -274,6 +274,7 @@ Desktop:
 - When multiple files are selected, the UI shows each file name and type without hiding the prompt textarea.
 - The desktop history strip is outside the generation console.
 - Opening `更多历史` on desktop uses an overlay/floating full-history list and must not resize the main preview row.
+- The desktop history strip owns a high stacking context; its full-history overlay must render above the recent-history strip and adjacent preview/generation layers.
 - The completed visual preview renders inside a standard 16:9 PPT stage and must not introduce vertical page scroll.
 - On a 1366px-class viewport with an outer platform sidebar, the PPT Maker console compresses before the preview becomes unusable.
 - Below an effective content width of 960px, the layout switches to `生成 / 预览 / 历史` tabs.

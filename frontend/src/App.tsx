@@ -794,7 +794,7 @@ function HistoryPanel({
     <section
       className={[
         'max-w-full rounded-ui border border-border bg-background',
-        isStrip ? 'relative grid overflow-visible shadow-panel md:grid-cols-[auto_minmax(0,1fr)_auto]' : 'overflow-hidden'
+        isStrip ? 'relative z-40 isolate grid overflow-visible shadow-panel md:grid-cols-[auto_minmax(0,1fr)_auto]' : 'overflow-hidden'
       ].join(' ')}
       aria-label={ariaLabel}
     >
@@ -820,7 +820,7 @@ function HistoryPanel({
       {open && (
         <div
           aria-label="完整历史"
-          className={isStrip ? 'absolute bottom-full left-0 right-0 z-30 mb-2 max-h-80 overflow-auto rounded-ui border border-border bg-background shadow-panel' : 'border-t border-border'}
+          className={isStrip ? 'absolute bottom-full left-0 right-0 z-50 mb-2 max-h-80 overflow-auto rounded-ui border border-border bg-background shadow-panel' : 'border-t border-border'}
         >
           {files.map((file) => (
             <HistoryRow key={file.file_id} file={file} meta={historyMeta[file.file_id]} onPreview={onPreview} onDelete={onDelete} />

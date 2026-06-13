@@ -53,8 +53,10 @@
 - `最近生成` 从左侧生成控制台移出，改为桌面底部横向 strip。
 - `更多历史` 改为 desktop 浮层：
   - `absolute bottom-full`
-  - `max-h-80 overflow-auto`
+  - parent strip uses `relative z-40 isolate`
+  - overlay uses `z-50 max-h-80 overflow-auto`
   - 不再进入主文档流，不再挤压预览区。
+  - 后续修复了浮层落在 `最近生成` layer 后方的问题；层级必须挂在整个 history strip 上，而不是只给浮层本身加 z-index。
 - `PPT 结果工作区` 改为 `overflow-hidden`，禁止外层引发页面级滚动。
 - 预览舞台改成真正的标准 PPT 16:9：
   - 新增 `.ppt-preview-stage-shell`
@@ -67,6 +69,7 @@
 - 发布态工作台不显示后端 URL、前端挂载路径、开发调试字段。
 - 最近历史作为桌面底部 strip，不在生成控制台内。
 - `更多历史` 展开为浮层，不改变预览主行高度。
+- `更多历史` 浮层在层级上高于最近生成 strip 和相邻预览/生成 layer。
 - 工作台 bounded to viewport。
 - 完成态预览存在 `data-testid="ppt-preview-stage"` 且保留 `aspect-video` 语义。
 - 多文件上传后显示每个文件名和类型。
@@ -150,7 +153,8 @@ Agent05 相关设计修改：
   - 预览舞台 `830 x 467`
   - 比例 `1.778`
 - 完成态点击 `更多历史` 后：
-  - `完整历史` class 为 `absolute bottom-full left-0 right-0 z-30 mb-2 max-h-80 overflow-auto ...`
+  - `最近生成` strip class 包含 `relative z-40 isolate`
+  - `完整历史` class 为 `absolute bottom-full left-0 right-0 z-50 mb-2 max-h-80 overflow-auto ...`
   - `PPT 成品预览` panel 仍保持约 `904 x 599`
   - 预览舞台仍为 `830 x 467`
   - 比例仍为 `1.778`
