@@ -137,22 +137,71 @@ describe('PPT maker frontend', () => {
   it('renders release workbench regions without development routing fields', async () => {
     render(<App />)
 
-    expect(await screen.findByRole('heading', { name: 'PPT生成' })).toBeInTheDocument()
-    expect(screen.getByText('后端已连接')).toBeInTheDocument()
+    expect(await screen.findByLabelText('生成控制台')).toBeInTheDocument()
     expect(screen.queryByText('http://127.0.0.1:8000')).not.toBeInTheDocument()
     expect(screen.queryByText('/agent05/index.html')).not.toBeInTheDocument()
-    expect(screen.getByLabelText('生成控制台')).toBeInTheDocument()
+    expect(screen.queryByRole('heading', { name: 'PPT生成工作台' })).not.toBeInTheDocument()
+    expect(screen.queryByText('生成意图在左，成品检查在右')).not.toBeInTheDocument()
+    expect(screen.queryByText('后端已连接')).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: '模板库' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: '设置' })).not.toBeInTheDocument()
     expect(screen.getByLabelText('PPT 结果工作区')).toBeInTheDocument()
+    expect(screen.queryByText('项目名称 / 可视化编辑')).not.toBeInTheDocument()
   })
 
-  it('shows latest history summary without expanding the history list', async () => {
+  it('renders latest history as a desktop bottom strip outside the generation console', async () => {
     render(<App />)
 
-    const historySummary = await screen.findByLabelText('最近历史')
-    expect(within(historySummary).getByText('最近生成')).toBeInTheDocument()
-    expect(within(historySummary).getByText('[模板生成] 生成记录')).toBeInTheDocument()
-    expect(within(historySummary).getByText(/2页/)).toBeInTheDocument()
+    const historyStrip = await screen.findByLabelText('最近生成')
+    const generationConsole = screen.getByLabelText('生成控制台')
+    expect(within(historyStrip).getByText('模板生成')).toBeInTheDocument()
+    expect(within(historyStrip).getByText('生成记录')).toBeInTheDocument()
+    expect(within(historyStrip).getByText(/2页/)).toBeInTheDocument()
+    expect(within(generationConsole).queryByText('最近生成')).not.toBeInTheDocument()
     expect(screen.queryByRole('button', { name: '历史生成 (1)' })).not.toBeInTheDocument()
+  })
+
+  it('opens desktop full history as an overlay that does not resize the preview row', async () => {
+    render(<App />)
+    const user = userEvent.setup()
+
+    const historyStrip = await screen.findByLabelText('最近生成')
+    await user.click(within(historyStrip).getByRole('button', { name: /更多历史/ }))
+
+    const fullHistory = await screen.findByLabelText('完整历史')
+    expect(historyStrip).toHaveClass('relative')
+    expect(fullHistory).toHaveClass('absolute')
+    expect(fullHistory).toHaveClass('bottom-full')
+    expect(fullHistory).toHaveClass('max-h-80')
+    expect(fullHistory).toHaveClass('overflow-auto')
+  })
+
+  it('renders model capability strip instead of primary disclaimer footer', async () => {
+    render(<App />)
+
+    const capabilityStrip = await screen.findByLabelText('模型配置')
+    expect(within(capabilityStrip).getByText('DeepSeek 中文生成')).toBeInTheDocument()
+    expect(within(capabilityStrip).getByText('codex-base 英文报告')).toBeInTheDocument()
+    expect(within(capabilityStrip).getByText('bge-m3 本地语义检索')).toBeInTheDocument()
+    expect(within(capabilityStrip).getByText('QuickLook 预览')).toBeInTheDocument()
+    expect(within(capabilityStrip).getByText('Gorden PPTX 构建')).toBeInTheDocument()
+    expect(screen.queryByText('内置模板仅供个人学习，企业商用请替换自定义模板')).not.toBeInTheDocument()
+  })
+
+  it('keeps compact-height desktop workbench bounded to the viewport', async () => {
+    const { container } = render(<App />)
+
+    const shell = container.querySelector('main > div')
+    expect(shell).toHaveClass('h-screen')
+
+    expect(await screen.findByLabelText('PPT 结果工作区')).toHaveClass('overflow-hidden')
+
+    const generationConsole = await screen.findByLabelText('生成控制台')
+    expect(generationConsole).toHaveClass('grid-rows-[auto_auto_minmax(12rem,1fr)_auto_auto]')
+
+    expect(await screen.findByLabelText('Prompt')).toHaveClass('min-h-48')
+    expect(screen.getByLabelText('Prompt')).not.toHaveClass('min-h-72')
+    expect(screen.getByLabelText('参考文件上传')).toHaveClass('py-2')
   })
 
   it('switches to narrow top-level tabs below 960px effective content width', async () => {
@@ -302,6 +351,7 @@ describe('PPT maker frontend', () => {
       'src',
       '/agent05/api/files/20260603-211700_abcd/output.pptx/visual-preview/index.html'
     )
+    expect(screen.getByTestId('ppt-preview-stage')).toHaveClass('aspect-video')
     expect(screen.getByRole('link', { name: '下载 .pptx' })).toHaveAttribute('href', '/agent05/api/files/20260603-211700_abcd/output.pptx/download')
   })
 
@@ -747,10 +797,34 @@ describe('PPT maker frontend', () => {
     expect(mockedAxios.post).not.toHaveBeenCalledWith('/agent05/api/reference/analyze', expect.any(FormData))
   })
 
-  it('renders footer notice only once', async () => {
+  it('does not render template disclaimer as the primary bottom bar', async () => {
     render(<App />)
 
-    expect(await screen.findAllByText('内置模板仅供个人学习，企业商用请替换自定义模板')).toHaveLength(1)
+    await screen.findByLabelText('模型配置')
+    expect(screen.queryByText('内置模板仅供个人学习，企业商用请替换自定义模板')).not.toBeInTheDocument()
+  })
+
+  it('accepts multiple selected files and shows each file name with type', async () => {
+    mockedAxios.post.mockImplementation((url: string) => {
+      if (url === '/agent05/api/reference/analyze') {
+        return Promise.resolve({ data: pdfReferencePayload })
+      }
+      return Promise.resolve({ data: { cancelled: true } })
+    })
+    render(<App />)
+    const user = userEvent.setup()
+    const pdfFile = new File(['pdf bytes'], '季度报告.pdf', { type: 'application/pdf' })
+    const imageFile = new File(['image bytes'], '参考图.png', { type: 'image/png' })
+
+    const uploadInput = await screen.findByLabelText('上传参考文件')
+    expect(uploadInput).toHaveAttribute('multiple')
+    await user.upload(uploadInput, [pdfFile, imageFile])
+
+    const selectedFiles = await screen.findByLabelText('已选择文件')
+    expect(within(selectedFiles).getByText('季度报告.pdf')).toBeInTheDocument()
+    expect(within(selectedFiles).getByText('PDF参考')).toBeInTheDocument()
+    expect(within(selectedFiles).getByText('参考图.png')).toBeInTheDocument()
+    expect(within(selectedFiles).getByText('图片参考')).toBeInTheDocument()
   })
 
   it('no upload shows prompt placeholder without enhancement text', async () => {

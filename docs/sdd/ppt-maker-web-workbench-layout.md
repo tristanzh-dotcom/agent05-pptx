@@ -53,9 +53,10 @@ Generation console | PPT result workspace
                    |
                    |  PPT preview header + download
                    |  16:9 visual preview
-                   |  Result tabs: Summary / Text / Quality
-                   |
-History summary    |
+                   |  Result tabs: Preview / Summary / Text / Quality
+---------------------------------------------------------
+Compact history strip
+Model capability strip
 ```
 
 The outer platform may already have a left navigation. This SDD does not change it. The PPT Maker two-column layout is an inner split inside the platform's main content region.
@@ -74,12 +75,14 @@ Content order:
    - `Prompt`
    - mode badge: `从模板生成`, `从模板生成（参考增强）`, or `保留模板编辑内容`
 2. Upload tool row:
-   - upload icon/button
-   - current file summary or route hint
+   - compact upload icon/button
+   - multi-file queue when files are selected
+   - each selected file shows visible file name and semantic file type, such as `PDF参考`, `图片参考`, or `PPTX源文件`
 3. Prompt textarea:
-   - default 3-4 rows
-   - resizable vertically
-   - max height bounded so it cannot consume the preview area
+   - dominant control in the left console
+   - height receives the remaining vertical space after compact controls
+   - min height large enough for multi-sentence deck briefs on desktop
+   - resizable behavior is optional, but the default state must not collapse into a small field
 4. Action row:
    - page count selector or `页数保留源文件`
    - `Generate PPT` / `Cancel`
@@ -87,11 +90,10 @@ Content order:
    - template candidates while selecting
    - progress steps while running
    - quality gate error entry point when present
-6. History summary:
-   - most recent 3 generated files
-   - "more" affordance for the full history list
 
 The console is the only place for generation controls. It must not contain nested cards inside cards.
+
+The upload tool is context input, not the primary authoring area. It must remain compact even when several files are selected. If the selected file list grows beyond the available inline space, it should scroll or wrap inside a bounded queue rather than reducing the prompt textarea below its minimum useful height.
 
 ### Right Column: PPT Result Workspace
 
@@ -107,12 +109,14 @@ Content order:
    - 16:9 iframe when `visualPreview.preview_url` exists
    - compact failure state when visual preview fails
    - empty state before generation
+   - the visible preview stage remains a bounded 16:9 PPT canvas inside the available result area
 3. Result tabs:
    - `摘要`
    - `文本提取`
    - `质量门`
 
 The visual preview is the dominant surface. Text extraction stays secondary and is not shown as the primary completed-state content.
+The result workspace must hide outer overflow; scrolling belongs inside secondary details only, not on the page or the preview column.
 
 ## Header Contract
 
@@ -125,10 +129,11 @@ The release header must not display:
 Release header content:
 
 ```text
-PPT生成    ● 后端已连接    设置/调试
+PPT生成
+输入生成意图，检查并下载 PPTX 成品
 ```
 
-The health status may be a small dot and label. Detailed endpoint information belongs in a settings or debug panel, not the first screen.
+The release header is owned by the platform shell. The embedded PPT Maker frontend must not render a second local title/status toolbar. Backend health, backend URLs, frontend mount paths, and debug status belong in service diagnostics, not the final-user first screen.
 
 ## Height Contract
 
@@ -149,7 +154,17 @@ The inner columns share the same available height:
 .result-workspace
 ```
 
-Each column may scroll internally if content exceeds its own height. The whole page should not require scrolling to access the primary prompt, preview, or latest history entry on desktop.
+Each column owns its internal overflow contract. The generation column may scroll secondary content if needed, but the result workspace must preserve a bounded 16:9 preview stage and must not create page-level scrolling. The whole page should not require scrolling to access the primary prompt, preview, or latest history entry on desktop.
+
+The release workbench shell must be bounded to the visible viewport height. It must not use a `min-height` plus vertical padding combination that increases total document height beyond the viewport on compact laptop screens.
+
+The generation console prompt row should use a flexible minimum:
+
+```text
+prompt row: minmax(12rem, 1fr)
+```
+
+This keeps Prompt larger than the compact upload row while still allowing the full workbench, history strip, and model capability strip to fit inside a 720px-tall browser viewport.
 
 ## Width and Breakpoint Contract
 
@@ -202,9 +217,10 @@ History must be reachable on the first screen.
 
 Desktop behavior:
 
-- Show the latest 3 generated records in the console.
+- Show the latest 3 generated records in a horizontal compact strip below the main two-column workbench.
 - Each row shows mode chip, prompt prefix or fallback title, page count when available, and preview/download affordance.
 - A "more history" control expands a drawer or full list.
+- The history strip must not live inside the generation console on desktop.
 
 Mobile/narrow behavior:
 
@@ -215,15 +231,15 @@ Backend file-list API remains unchanged. The existing frontend local history met
 
 ## Footer Contract
 
-The template disclaimer must appear once.
+The primary bottom bar should show the Agent05 model and capability configuration:
 
-Preferred release placement:
+- `DeepSeek 中文生成`
+- `codex-base 英文报告`
+- `bge-m3 本地语义检索`
+- `QuickLook 预览`
+- `Gorden PPTX 构建`
 
-```text
-Footer text inside the app shell bottom area, not fixed over the workbench.
-```
-
-If the app shell already provides a bottom disclaimer slot, Agent05 should use that slot. If not, render one low-emphasis line after the workbench, but do not duplicate it inside the preview card and page footer.
+The template disclaimer must not occupy the primary bottom bar. It may appear once as low-emphasis help text in settings, a tooltip, or a secondary note if required by the release wrapper.
 
 ## State Placement
 
@@ -237,7 +253,7 @@ If the app shell already provides a bottom disclaimer slot, Agent05 should use t
 | Visual preview failure | result workspace with download still visible | `预览` tab |
 | Quality gate error | console runtime area plus result tab | `生成` tab |
 | Visual preview unavailable | preview failure state plus `质量门` tab note `渲染预览不可用` | `预览` tab |
-| History | latest 3 in console, full drawer/list | `历史` tab |
+| History | bottom compact strip, full drawer/list | `历史` tab |
 
 ## Accessibility and Interaction
 
@@ -252,11 +268,17 @@ If the app shell already provides a bottom disclaimer slot, Agent05 should use t
 
 Desktop:
 
-- On a 1440px-wide effective content area, Prompt, Generate, PPT preview, and latest history entry are all visible without page scroll.
+- On a 1440px-wide effective content area, Prompt, Generate, PPT preview, and latest history strip are all visible without page scroll.
+- On a compact 1280x720 browser viewport, the workbench, history strip, and model configuration bar fit within the viewport height without document scroll.
+- The desktop generation console gives the prompt textarea more vertical space than the upload area.
+- When multiple files are selected, the UI shows each file name and type without hiding the prompt textarea.
+- The desktop history strip is outside the generation console.
+- Opening `更多历史` on desktop uses an overlay/floating full-history list and must not resize the main preview row.
+- The completed visual preview renders inside a standard 16:9 PPT stage and must not introduce vertical page scroll.
 - On a 1366px-class viewport with an outer platform sidebar, the PPT Maker console compresses before the preview becomes unusable.
 - Below an effective content width of 960px, the layout switches to `生成 / 预览 / 历史` tabs.
 - Header no longer shows backend URL or frontend mount path.
-- The template disclaimer appears exactly once.
+- The primary bottom bar shows model/capability configuration rather than the template disclaimer.
 - Completed generation keeps the download button and visual preview visible in the first screen.
 
 Narrow layout:

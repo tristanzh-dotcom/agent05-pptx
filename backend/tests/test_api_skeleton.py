@@ -121,6 +121,10 @@ def test_visual_preview_generates_quicklook_preview_url(client, sample_output, t
     asset_response = client.get("/api/files/20260603-211700_abcd/output.pptx/visual-preview/index.html")
     assert asset_response.status_code == 200
     assert "Preview.html" in asset_response.text
+    assert "fitQuickLookPreview" in asset_response.text
+    assert "querySelector('.slide')" in asset_response.text
+    assert "overflow: hidden" in asset_response.text
+    assert "height: 100vh" not in asset_response.text
 
 
 def test_visual_preview_accepts_quicklook_slide_html_without_img(client, sample_output, tmp_path, monkeypatch):

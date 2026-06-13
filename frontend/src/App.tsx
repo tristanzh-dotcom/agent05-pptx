@@ -47,6 +47,17 @@ interface ReferenceFileState {
   analysis: ReferenceAnalysisPayload
 }
 
+interface UploadQueueItem {
+  id: string
+  name: string
+  size: number
+  typeLabel: 'PPTX源文件' | 'PDF参考' | '图片参考'
+  pageCount?: number | null
+  textChars?: number | null
+  dominantColors?: string[]
+  extractionErrors?: string[]
+}
+
 const defaultGenerationForm: PersistedGenerationForm = {
   prompt: '',
   pageCount: 10
@@ -97,6 +108,7 @@ function App() {
   const [pageCountMode, setPageCountMode] = useState(PAGE_COUNT_OPTIONS.includes(formReady.pageCount as (typeof PAGE_COUNT_OPTIONS)[number]) ? String(formReady.pageCount) : 'custom')
   const [sourceFile, setSourceFile] = useState<SourceFileState | null>(null)
   const [referenceFile, setReferenceFile] = useState<ReferenceFileState | null>(null)
+  const [uploadQueue, setUploadQueue] = useState<UploadQueueItem[]>([])
   const [submittedReferenceAnalysis, setSubmittedReferenceAnalysis] = useState<ReferenceAnalysisPayload | null>(null)
   const [lastSubmittedMeta, setLastSubmittedMeta] = useState<HistoryPresentationMeta | null>(null)
   const [historyMeta, setHistoryMeta] = useState<HistoryMetaMap>(() => loadHistoryMeta())
@@ -163,20 +175,41 @@ function App() {
     }
   }, [generation.stage, isNarrowLayout])
 
-  async function handleSourceUpload(file?: File) {
-    if (!file) return
+  async function handleSourceUpload(files?: File | File[] | FileList) {
+    const selectedFiles = files instanceof File ? [files] : Array.from(files ?? [])
+    if (!selectedFiles.length) return
     setSourceUploadState('uploading')
     setSourceUploadError('')
     try {
-      if (isPptxFile(file)) {
-        const result = await uploadTemplate(file)
-        setSourceFile({ name: file.name, size: file.size, relativePath: result.relative_path })
-        setReferenceFile(null)
-      } else {
-        const analysis = await analyzeReference(file)
-        setReferenceFile({ name: file.name, size: file.size, analysis })
-        setSourceFile(null)
+      const uploadedItems: UploadQueueItem[] = []
+      for (const file of selectedFiles) {
+        if (isPptxFile(file)) {
+          const result = await uploadTemplate(file)
+          setSourceFile({ name: file.name, size: file.size, relativePath: result.relative_path })
+          setReferenceFile(null)
+          uploadedItems.push({
+            id: `${file.name}-${file.size}-${file.lastModified}`,
+            name: file.name,
+            size: file.size,
+            typeLabel: 'PPTX源文件'
+          })
+        } else {
+          const analysis = await analyzeReference(file)
+          setReferenceFile({ name: file.name, size: file.size, analysis })
+          setSourceFile(null)
+          uploadedItems.push({
+            id: `${file.name}-${file.size}-${file.lastModified}`,
+            name: file.name,
+            size: file.size,
+            typeLabel: inferReferenceTypeLabel(file),
+            pageCount: analysis.page_count,
+            textChars: analysis.text_chars,
+            dominantColors: analysis.dominant_colors,
+            extractionErrors: analysis.extraction_errors
+          })
+        }
       }
+      setUploadQueue(uploadedItems)
       setSourceUploadState('idle')
     } catch {
       setSourceUploadState('error')
@@ -187,6 +220,7 @@ function App() {
   function removeSourceFile() {
     setSourceFile(null)
     setReferenceFile(null)
+    setUploadQueue([])
     setSourceUploadState('idle')
     setSourceUploadError('')
   }
@@ -212,14 +246,15 @@ function App() {
   }
 
   const generationConsole = (
-    <section className="flex min-h-0 flex-col gap-3 overflow-auto rounded-ui border border-border bg-surface p-4 shadow-panel" aria-label="生成控制台">
+    <section className="grid min-h-0 grid-rows-[auto_auto_minmax(12rem,1fr)_auto_auto] gap-3 overflow-hidden rounded-ui border border-border bg-surface p-4 shadow-panel" aria-label="生成控制台">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <h2 className="text-base font-semibold text-foreground">Prompt</h2>
+        <h2 className="text-base font-semibold text-foreground">生成控制台</h2>
         <ModeBadge mode={isModeB ? 'template_preserving_edit' : isReferenceEnhanced ? 'reference_enhanced' : 'prompt_to_ppt'} />
       </div>
       <SourceFilePanel
         sourceFile={sourceFile}
         referenceFile={referenceFile}
+        uploadQueue={uploadQueue}
         uploadState={sourceUploadState}
         error={sourceUploadError}
         onUpload={(file) => void handleSourceUpload(file)}
@@ -234,8 +269,7 @@ function App() {
         aria-label="Prompt"
         value={prompt}
         onChange={(event) => setPrompt(event.target.value)}
-        rows={4}
-        className="box-border max-h-56 min-h-24 w-full max-w-full resize-y rounded-ui border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary focus:shadow-focus"
+        className="box-border h-full min-h-48 w-full max-w-full resize-none rounded-ui border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary focus:shadow-focus"
         placeholder="输入 Prompt，例如：为销售团队生成一份商务深蓝风的季度经营复盘，重点分析渠道增长和客户留存。"
       />
       <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -271,27 +305,11 @@ function App() {
         </section>
       ) : null}
 
-      <HistoryPanel
-        files={generation.files}
-        historyMeta={historyMeta}
-        open={historyOpen}
-        onToggle={() => setHistoryOpen((value) => !value)}
-        onPreview={async (file) => {
-          const preview = await getPreview(file.file_id)
-          const visualPreview = await getVisualPreview(file.file_id)
-          generation.setPreview(preview, { file_name: file.file_name, file_id: file.file_id, preview }, visualPreview)
-          if (isNarrowLayout) setActivePanel('preview')
-        }}
-        onDelete={async (file) => {
-          await deleteFile(file.file_id)
-          await generation.refreshFiles()
-        }}
-      />
     </section>
   )
 
   const previewWorkspace = (
-    <section className="min-h-0 overflow-auto" aria-label="PPT 结果工作区">
+    <section className="grid min-h-0 overflow-hidden" aria-label="PPT 结果工作区">
       <PreviewPanel preview={generation.preview} visualPreview={generation.visualPreview} resultFileId={generation.result?.file_id} referenceAnalysis={submittedReferenceAnalysis} />
     </section>
   )
@@ -317,18 +335,7 @@ function App() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
-      <div className="mx-4 flex max-w-full flex-col gap-3 pb-6 pt-4 xl:mx-auto xl:w-full xl:max-w-screen-xl">
-        <header className="flex flex-col gap-2 rounded-ui border border-border bg-surface px-4 py-3 shadow-panel sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-xs font-semibold text-muted">项目名称 / 可视化编辑</p>
-            <h1 className="text-2xl font-semibold text-foreground">PPT生成</h1>
-          </div>
-          <div className="inline-flex items-center gap-2 text-sm text-muted">
-            <span className="h-2 w-2 rounded-full bg-primary" aria-hidden />
-            后端已连接
-          </div>
-        </header>
-
+      <div className="mx-4 grid h-screen max-w-full grid-rows-[minmax(0,1fr)_auto_auto] gap-3 pb-4 pt-4 xl:mx-auto xl:w-full xl:max-w-screen-xl">
         {isNarrowLayout && (
           <div className="grid grid-cols-3 gap-2" role="tablist" aria-label="PPT Maker 工作区">
             <button type="button" role="tab" aria-selected={activePanel === 'generate'} onClick={() => setActivePanel('generate')} className="rounded-control border border-border px-3 py-2 text-sm">
@@ -350,21 +357,40 @@ function App() {
             {activePanel === 'history' && historyWorkspace}
           </div>
         ) : (
-          <div className="grid min-h-[calc(100vh-9rem)] grid-cols-[minmax(300px,380px)_minmax(0,1fr)] gap-4">
+          <div className="grid min-h-0 grid-cols-[minmax(320px,360px)_minmax(0,1fr)] gap-4">
             {generationConsole}
             {previewWorkspace}
           </div>
         )}
 
-        <p className="border-t border-border pt-2 text-center text-xs leading-snug text-muted">内置模板仅供个人学习，企业商用请替换自定义模板</p>
+        {!isNarrowLayout && (
+          <HistoryPanel
+            files={generation.files}
+            historyMeta={historyMeta}
+            open={historyOpen}
+            ariaLabel="最近生成"
+            variant="strip"
+            onToggle={() => setHistoryOpen((value) => !value)}
+            onPreview={async (file) => {
+              const preview = await getPreview(file.file_id)
+              const visualPreview = await getVisualPreview(file.file_id)
+              generation.setPreview(preview, { file_name: file.file_name, file_id: file.file_id, preview }, visualPreview)
+            }}
+            onDelete={async (file) => {
+              await deleteFile(file.file_id)
+              await generation.refreshFiles()
+            }}
+          />
+        )}
+
+        <ModelCapabilityStrip />
       </div>
     </main>
   )
 }
 
 function SourceFilePanel({
-  sourceFile,
-  referenceFile,
+  uploadQueue,
   uploadState,
   error,
   onUpload,
@@ -372,65 +398,70 @@ function SourceFilePanel({
 }: {
   sourceFile: SourceFileState | null
   referenceFile: ReferenceFileState | null
+  uploadQueue: UploadQueueItem[]
   uploadState: 'idle' | 'uploading' | 'error'
   error: string
-  onUpload: (file?: File) => void
+  onUpload: (files?: FileList | File[]) => void
   onRemove: () => void
 }) {
-  const uploadedFile = sourceFile ?? referenceFile
-  const uploadKind = sourceFile ? '源文件' : referenceFile?.analysis.file_type === 'pdf' ? 'PDF参考' : referenceFile ? '图片参考' : ''
-
   function handleDrop(event: DragEvent<HTMLLabelElement>) {
     event.preventDefault()
-    onUpload(event.dataTransfer.files?.[0])
+    onUpload(event.dataTransfer.files)
   }
 
   return (
     <section className="rounded-ui border border-border bg-background px-3 py-2" aria-label="参考文件上传">
-      {uploadedFile ? (
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex min-w-0 flex-wrap items-center gap-2">
-            <FileText size={16} aria-hidden className="shrink-0 text-muted" />
-            <span className="max-w-64 truncate text-sm font-semibold text-foreground">{uploadedFile.name}</span>
-            {referenceFile?.analysis.page_count ? <span className="text-xs text-muted">{referenceFile.analysis.page_count}页</span> : null}
-            {referenceFile?.analysis.text_chars ? <span className="text-xs text-muted">{referenceFile.analysis.text_chars}字</span> : null}
-            {referenceFile?.analysis.dominant_colors.length ? (
-              <span className="inline-flex gap-1" aria-label="参考配色">
-                {referenceFile.analysis.dominant_colors.slice(0, 3).map((color) => (
-                  <span key={color} data-testid="inline-reference-color-swatch" className="h-4 w-6 rounded-control border border-border" style={{ backgroundColor: color }} title={color} />
-                ))}
-              </span>
-            ) : null}
-            {referenceFile && !referenceFile.analysis.page_count && !referenceFile.analysis.text_chars && !referenceFile.analysis.dominant_colors.length && uploadKind ? (
-              <span className="rounded-control border border-border bg-elevated px-2 py-0.5 text-xs text-muted">{uploadKind}</span>
-            ) : null}
-            {referenceFile?.analysis.extraction_errors.length ? <span className="text-xs text-muted">{referenceFile.analysis.extraction_errors.join(' / ')}</span> : null}
-            <span className="text-xs text-muted">{formatBytes(uploadedFile.size)}</span>
-          </div>
-          <button type="button" aria-label="移除源文件" onClick={onRemove} className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-control border border-border text-muted transition hover:text-foreground">
-            <X size={16} aria-hidden />
-          </button>
-        </div>
-      ) : (
+      <div className="flex items-center justify-between gap-3">
         <label
           onDragOver={(event) => event.preventDefault()}
           onDrop={handleDrop}
-          className="flex cursor-pointer flex-col gap-1 text-sm text-muted transition hover:text-foreground sm:flex-row sm:items-center sm:gap-3"
+          className="flex min-w-0 flex-1 cursor-pointer flex-col gap-1 text-sm text-muted transition hover:text-foreground"
         >
           <span className="inline-flex items-center gap-2 font-semibold text-foreground">
             <Upload size={16} aria-hidden />
-            上传参考文件
+            参考文件
           </span>
-          <span className="text-xs text-muted">.pptx → 保留模板编辑内容 · .pdf .png → 提取风格配色</span>
+          <span className="truncate text-xs text-muted">支持多文件 · .pptx 编辑 · .pdf/.png 取风格</span>
           <input
             aria-label="上传参考文件"
             type="file"
             accept=".pptx,.pdf,.png,.jpg,.jpeg"
+            multiple
             className="sr-only"
             disabled={uploadState === 'uploading'}
-            onChange={(event) => onUpload(event.target.files?.[0])}
+            onChange={(event) => onUpload(event.target.files ?? undefined)}
           />
         </label>
+        {uploadQueue.length > 0 && (
+          <button type="button" aria-label="移除源文件" onClick={onRemove} className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-control border border-border text-muted transition hover:text-foreground">
+            <X size={16} aria-hidden />
+          </button>
+        )}
+      </div>
+      {uploadQueue.length > 0 && (
+        <div className="mt-2 grid max-h-28 grid-cols-1 gap-2 overflow-auto sm:grid-cols-2 xl:grid-cols-3" aria-label="已选择文件">
+          {uploadQueue.map((file) => (
+            <div key={file.id} className="min-w-0 rounded-control border border-border bg-elevated px-2 py-1">
+              <div className="flex min-w-0 items-center justify-between gap-2">
+                <span className="truncate text-xs font-semibold text-foreground">{file.name}</span>
+                <span className="shrink-0 rounded-control border border-border bg-background px-1.5 py-0.5 text-[11px] text-muted">{file.typeLabel}</span>
+              </div>
+              <div className="mt-1 flex min-w-0 flex-wrap items-center gap-1 text-[11px] text-muted">
+                {file.pageCount ? <span>{file.pageCount}页</span> : null}
+                {file.textChars ? <span>{file.textChars}字</span> : null}
+                {file.dominantColors?.length ? (
+                  <span className="inline-flex gap-1" aria-label="参考配色">
+                    {file.dominantColors.slice(0, 3).map((color) => (
+                      <span key={`${file.id}-${color}`} data-testid="inline-reference-color-swatch" className="h-3 w-5 rounded-control border border-border" style={{ backgroundColor: color }} title={color} />
+                    ))}
+                  </span>
+                ) : null}
+                {file.extractionErrors?.length ? <span className="truncate">{file.extractionErrors.join(' / ')}</span> : null}
+                <span>{formatBytes(file.size)}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
       {uploadState === 'error' && error && <p className="mt-2 text-xs text-danger">{error}</p>}
     </section>
@@ -512,6 +543,10 @@ function formatBytes(value: number): string {
 
 function isPptxFile(file: File): boolean {
   return file.name.toLowerCase().endsWith('.pptx')
+}
+
+function inferReferenceTypeLabel(file: File): 'PDF参考' | '图片参考' {
+  return file.name.toLowerCase().endsWith('.pdf') ? 'PDF参考' : '图片参考'
 }
 
 function TemplateBanner({ candidates, onSelect }: { candidates: TemplateCandidate[]; onSelect: (slug: string) => void }) {
@@ -637,8 +672,8 @@ function PreviewPanel({
   const slides = preview?.slides ?? []
   const enhancementSummary = buildEnhancementSummary(referenceAnalysis)
   return (
-    <section className="min-h-72 max-w-full overflow-hidden rounded-ui border border-border bg-surface p-4 shadow-panel" aria-label="PPT 成品预览">
-      <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+    <section className="grid h-full min-h-0 max-w-full grid-rows-[auto_minmax(0,1fr)] gap-3 overflow-hidden rounded-ui border border-border bg-surface p-4 shadow-panel" aria-label="PPT 成品预览">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 className="text-base font-semibold text-foreground">PPT 成品预览</h2>
           {resultFileId && enhancementSummary && <p className="mt-1 text-xs text-muted">{enhancementSummary}</p>}
@@ -651,23 +686,31 @@ function PreviewPanel({
         )}
       </div>
       {!resultFileId ? (
-        <div className="flex min-h-48 items-center justify-center rounded-ui border border-dashed border-border bg-background text-muted">
-          输入 Prompt 并点击 Generate
+        <div className="ppt-preview-stage-shell flex min-h-0 items-center justify-center overflow-hidden">
+          <div data-testid="ppt-preview-stage" className="ppt-preview-stage-frame flex aspect-video items-center justify-center rounded-ui border border-dashed border-border bg-background text-muted">
+            输入 Prompt 并点击 Generate
+          </div>
         </div>
       ) : (
-        <div className="flex flex-col gap-3">
+        <div className="grid min-h-0 grid-rows-[minmax(0,1fr)_auto] gap-3">
           {visualPreview?.preview_url ? (
-            <div className="aspect-video w-full overflow-hidden rounded-ui border border-border bg-background">
-              <iframe className="h-full w-full border-0" title="PPT 成品预览" src={agentAssetUrl(visualPreview.preview_url)} />
+            <div className="ppt-preview-stage-shell flex min-h-0 items-center justify-center overflow-hidden">
+              <div data-testid="ppt-preview-stage" className="ppt-preview-stage-frame aspect-video overflow-hidden rounded-ui border border-border bg-background">
+                <iframe className="h-full w-full border-0" title="PPT 成品预览" src={agentAssetUrl(visualPreview.preview_url)} />
+              </div>
             </div>
           ) : visualPreview?.error ? (
-            <div className="flex aspect-video w-full flex-col items-center justify-center gap-2 rounded-ui border border-dashed border-border bg-background px-4 text-center text-sm text-muted">
-              <span>{visualPreview.message || '预览生成失败，但 PPTX 可下载'}</span>
-              <span className="rounded-control border border-border bg-elevated px-2 py-1 text-xs text-muted">渲染预览不可用</span>
+            <div className="ppt-preview-stage-shell flex min-h-0 items-center justify-center overflow-hidden">
+              <div data-testid="ppt-preview-stage" className="ppt-preview-stage-frame flex aspect-video flex-col items-center justify-center gap-2 rounded-ui border border-dashed border-border bg-background px-4 text-center text-sm text-muted">
+                <span>{visualPreview.message || '预览生成失败，但 PPTX 可下载'}</span>
+                <span className="rounded-control border border-border bg-elevated px-2 py-1 text-xs text-muted">渲染预览不可用</span>
+              </div>
             </div>
           ) : (
-            <div className="flex aspect-video w-full items-center justify-center rounded-ui border border-dashed border-border bg-background text-sm text-muted">
-              正在生成预览...
+            <div className="ppt-preview-stage-shell flex min-h-0 items-center justify-center overflow-hidden">
+              <div data-testid="ppt-preview-stage" className="ppt-preview-stage-frame flex aspect-video items-center justify-center rounded-ui border border-dashed border-border bg-background text-sm text-muted">
+                正在生成预览...
+              </div>
             </div>
           )}
 
@@ -730,6 +773,8 @@ function HistoryPanel({
   files,
   historyMeta,
   open,
+  ariaLabel = '最近历史',
+  variant = 'panel',
   onToggle,
   onPreview,
   onDelete
@@ -737,37 +782,68 @@ function HistoryPanel({
   files: GeneratedFile[]
   historyMeta: HistoryMetaMap
   open: boolean
+  ariaLabel?: string
+  variant?: 'panel' | 'strip'
   onToggle: () => void
   onPreview: (file: GeneratedFile) => void
   onDelete: (file: GeneratedFile) => void
 }) {
   const latestFiles = files.slice(0, 3)
+  const isStrip = variant === 'strip'
   return (
-    <section className="max-w-full overflow-hidden rounded-ui border border-border bg-background" aria-label="最近历史">
-      <div className="flex items-center justify-between gap-3 px-3 py-2">
+    <section
+      className={[
+        'max-w-full rounded-ui border border-border bg-background',
+        isStrip ? 'relative grid overflow-visible shadow-panel md:grid-cols-[auto_minmax(0,1fr)_auto]' : 'overflow-hidden'
+      ].join(' ')}
+      aria-label={ariaLabel}
+    >
+      <div className={isStrip ? 'flex items-center border-b border-border px-3 py-2 md:border-b-0 md:border-r' : 'flex items-center justify-between gap-3 px-3 py-2'}>
         <div>
           <h2 className="text-sm font-semibold text-foreground">最近生成</h2>
           <p className="text-xs text-muted">历史生成 ({files.length})</p>
         </div>
-        <button type="button" onClick={onToggle} className="inline-flex items-center gap-1 rounded-control border border-border px-2 py-1 text-xs text-muted">
-          更多历史
-          {open ? <ChevronDown size={14} aria-hidden /> : <ChevronRight size={14} aria-hidden />}
-        </button>
       </div>
-      <div className="border-t border-border">
+      <div className={isStrip ? 'grid min-w-0 gap-0 md:grid-cols-3' : 'border-t border-border'} aria-label="最近历史">
         {latestFiles.length > 0 ? (
           latestFiles.map((file) => <HistorySummaryRow key={file.file_id} file={file} meta={historyMeta[file.file_id]} onPreview={onPreview} />)
         ) : (
           <p className="px-3 py-3 text-sm text-muted">暂无历史</p>
         )}
       </div>
+      <div className={isStrip ? 'flex items-center justify-end border-t border-border px-3 py-2 md:border-l md:border-t-0' : 'flex items-center justify-end border-t border-border px-3 py-2'}>
+        <button type="button" onClick={onToggle} className="inline-flex items-center gap-1 rounded-control border border-border px-2 py-1 text-xs text-muted">
+          更多历史
+          {open ? <ChevronDown size={14} aria-hidden /> : <ChevronRight size={14} aria-hidden />}
+        </button>
+      </div>
       {open && (
-        <div className="border-t border-border">
+        <div
+          aria-label="完整历史"
+          className={isStrip ? 'absolute bottom-full left-0 right-0 z-30 mb-2 max-h-80 overflow-auto rounded-ui border border-border bg-background shadow-panel' : 'border-t border-border'}
+        >
           {files.map((file) => (
             <HistoryRow key={file.file_id} file={file} meta={historyMeta[file.file_id]} onPreview={onPreview} onDelete={onDelete} />
           ))}
         </div>
       )}
+    </section>
+  )
+}
+
+function ModelCapabilityStrip() {
+  const capabilities = ['DeepSeek 中文生成', 'codex-base 英文报告', 'bge-m3 本地语义检索', 'QuickLook 预览', 'Gorden PPTX 构建']
+  return (
+    <section aria-label="模型配置" className="flex flex-wrap items-center justify-between gap-2 rounded-ui border border-border bg-surface px-3 py-2 text-xs text-muted shadow-panel">
+      <span className="font-semibold text-foreground">模型配置</span>
+      <div className="flex flex-wrap items-center gap-2">
+        {capabilities.map((capability) => (
+          <span key={capability} className="inline-flex items-center gap-1 rounded-control border border-border bg-background px-2 py-1">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
+            {capability}
+          </span>
+        ))}
+      </div>
     </section>
   )
 }
@@ -785,7 +861,10 @@ function HistorySummaryRow({
   const promptLabel = meta?.promptPrefix ?? '生成记录'
   return (
     <button type="button" onClick={() => onPreview(file)} className="grid w-full gap-1 border-b border-border px-3 py-2 text-left text-sm transition hover:bg-elevated">
-      <span className="truncate font-semibold text-foreground">[{label}] {promptLabel}</span>
+      <span className="flex min-w-0 items-center gap-2">
+        <span className="shrink-0 rounded-control border border-border bg-elevated px-2 py-0.5 text-xs text-muted">{label}</span>
+        <span className="truncate font-semibold text-foreground">{promptLabel}</span>
+      </span>
       <span className="text-xs text-muted">{`${file.generated_at || '未知时间'} · ${file.page_count ?? '-'}页`}</span>
     </button>
   )
