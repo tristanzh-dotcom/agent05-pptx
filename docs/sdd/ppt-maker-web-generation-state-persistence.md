@@ -41,15 +41,11 @@ This violates the expected agent shell behavior: navigation is a viewer lifecycl
 
 ```json
 {
-  "prompt": "string",
-  "pageCount": 10,
-  "style": "string",
-  "purpose": "string",
-  "customTemplatePath": "string"
+  "prompt": "string"
 }
 ```
 
-Invalid or missing storage values fall back to the current defaults.
+Invalid or missing storage values fall back to the current defaults. Legacy `pageCount`, `style`, `purpose`, and `customTemplatePath` fields may remain in old browser storage, but the current UI ignores them.
 
 ## Tests
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import re
 from datetime import datetime
 from uuid import uuid4
 
@@ -14,6 +15,24 @@ from backend.app.services.templates import parse_templates
 
 
 router = APIRouter()
+EXPLICIT_PAGE_COUNT_RE = re.compile(
+    r"(?<!\d)(?P<arabic>\d{1,2})\s*(?:页|頁|张|張)\s*(?:PPT|ppt|幻灯片|投影片|演示文稿)?"
+)
+CHINESE_PAGE_COUNT_RE = re.compile(
+    r"(?P<chinese>[一二两三四五六七八九十]{1,3})\s*(?:页|頁|张|張)\s*(?:PPT|ppt|幻灯片|投影片|演示文稿)?"
+)
+CHINESE_NUMERALS = {
+    "一": 1,
+    "二": 2,
+    "两": 2,
+    "三": 3,
+    "四": 4,
+    "五": 5,
+    "六": 6,
+    "七": 7,
+    "八": 8,
+    "九": 9,
+}
 
 
 @router.get("/api/generate/status")
@@ -228,10 +247,11 @@ def _trusted_reference_recommendations(reference_analysis: dict[str, object] | N
 
 def _mode_a_request(payload: dict[str, object], template_slug: str) -> GenerationRequest:
     reference_analysis = payload.get("reference_analysis") if isinstance(payload.get("reference_analysis"), dict) else None
+    prompt = str(payload.get("prompt") or "")
     return GenerationRequest(
         mode="prompt_to_ppt",
-        prompt=str(payload.get("prompt") or ""),
-        page_count=int(payload.get("page_count") or 10),
+        prompt=prompt,
+        page_count=resolve_mode_a_page_count(prompt, payload.get("page_count"), reference_analysis),
         style=str(payload.get("style") or ""),
         purpose=str(payload.get("purpose")) if payload.get("purpose") else None,
         custom_template_path=str(payload.get("custom_template_path")) if payload.get("custom_template_path") else None,
@@ -251,3 +271,79 @@ def _mode_b_request(payload: dict[str, object]) -> GenerationRequest:
         custom_template_path=None,
         template_slug=None,
     )
+
+
+def resolve_mode_a_page_count(prompt: str, payload_page_count: object, reference_analysis: dict[str, object] | None = None) -> int:
+    explicit = infer_explicit_page_count(prompt)
+    if explicit is not None:
+        return explicit
+    payload_count = _coerce_page_count(payload_page_count)
+    if payload_count is not None:
+        return payload_count
+    return infer_auto_page_count(prompt, reference_analysis)
+
+
+def infer_explicit_page_count(prompt: str) -> int | None:
+    normalized = prompt.strip()
+    if not normalized:
+        return None
+    arabic_match = EXPLICIT_PAGE_COUNT_RE.search(normalized)
+    if arabic_match:
+        return _bounded_page_count(int(arabic_match.group("arabic")))
+    chinese_match = CHINESE_PAGE_COUNT_RE.search(normalized)
+    if chinese_match:
+        parsed = _parse_chinese_count(chinese_match.group("chinese"))
+        return _bounded_page_count(parsed) if parsed is not None else None
+    return None
+
+
+def infer_auto_page_count(prompt: str, reference_analysis: dict[str, object] | None = None) -> int:
+    cleaned = prompt.strip()
+    text_chars = 0
+    if isinstance(reference_analysis, dict):
+        text_chars = _safe_int(reference_analysis.get("text_chars")) or len(str(reference_analysis.get("extracted_text") or ""))
+
+    separators = sum(cleaned.count(token) for token in ("、", "，", ",", "；", ";", "\n"))
+    topic_count = max(1, separators + 1) if cleaned else 1
+    combined_size = len(cleaned) + text_chars // 120
+
+    if topic_count >= 12 or combined_size >= 900:
+        return 15
+    if topic_count >= 8 or combined_size >= 520:
+        return 12
+    if topic_count >= 5 or combined_size >= 260:
+        return 8
+    return 5
+
+
+def _coerce_page_count(value: object) -> int | None:
+    parsed = _safe_int(value)
+    return _bounded_page_count(parsed) if parsed is not None and parsed > 0 else None
+
+
+def _safe_int(value: object) -> int | None:
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, int):
+        return value
+    if isinstance(value, str) and value.strip().isdigit():
+        return int(value.strip())
+    return None
+
+
+def _bounded_page_count(value: int) -> int:
+    return max(1, min(value, 60))
+
+
+def _parse_chinese_count(value: str) -> int | None:
+    if value == "十":
+        return 10
+    if value.startswith("十"):
+        tail = value[1:]
+        return 10 + CHINESE_NUMERALS.get(tail, 0) if not tail or tail in CHINESE_NUMERALS else None
+    if "十" in value:
+        head, tail = value.split("十", 1)
+        if head not in CHINESE_NUMERALS:
+            return None
+        return CHINESE_NUMERALS[head] * 10 + (CHINESE_NUMERALS.get(tail, 0) if tail else 0)
+    return CHINESE_NUMERALS.get(value)

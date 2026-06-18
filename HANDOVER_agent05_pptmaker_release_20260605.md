@@ -23,6 +23,78 @@
 - 新需求严格按 SDD -> TDD -> 实现。
 - 前端布局必须服从 Agent 平台整体风格，不在 Agent05 内部重复平台外壳信息。
 
+## 2026-06-16 当前状态更新
+
+本轮已按 SDD -> TDD -> 实现推进到可交给 TZ 浏览器测试的状态。
+
+新增/更新的关键交付物：
+
+- `docs/sdd/ppt-maker-web-workbench-layout.md`
+  - 增补 Runtime Reliability、Preview Quality、Reference Upload 合同。
+- `docs/superpowers/plans/2026-06-16-agent05-release-completion-plan.md`
+  - 8 个任务已全部勾选完成。
+- `docs/agent05-release-qa-20260616.md`
+  - 记录完整测试、浏览器验收、运行态和剩余风险。
+- `scripts/agent05_release_smoke.sh`
+  - 一条命令检查 3000 发布页、8000 后端、Agent05 iframe、生成状态和文件列表。
+
+当前运行态：
+
+- Web 发布服务：`http://127.0.0.1:3000/agent05`
+- PPT Maker 后端：`http://127.0.0.1:8000`
+- 后端通过 detached screen 保活：
+
+```bash
+screen -ls
+screen -S agent05-backend -X quit
+```
+
+已完成的关键修复：
+
+- 后端未启动时，Agent05 显示 `PPT Maker 后端未启动`，不再把 raw `ECONNREFUSED` JSON 暴露给最终用户。
+- 完成态默认恢复最新 PPTX 到预览/下载，而不是回到空白生成表单。
+- 运行态刷新后显示进度和 `Cancel`，不暗示用户重新点击 Generate。
+- 预览框固定标准 PPT 16:9，QuickLook iframe 使用 `scrolling="no"`，避免嵌套网页滚动条。
+- `更多历史` 变成有界完整历史层，不再把页面压乱。
+- 上传参考文件失败显示后端 typed detail，例如 `unsupported_reference_type`。
+- 后端 PNG/PDF 参考分析 API、前端多文件显示、真实 PNG 代理上传均已验证。
+- LLM 编排提示词已明确：用户要求某页只放标题/备用/空白时，不得为了填满模板槽位生成额外正文。
+
+已执行并通过：
+
+```bash
+python3 -m pytest backend/tests -q
+# 56 passed
+
+cd frontend && npm test -- --run
+# 46 passed
+
+cd frontend && npm run build
+# passed
+
+cd /Users/tristanzh/agent/web
+node --test tests/agent05-service.test.mjs tests/agent05-browser-layout.test.mjs
+# 10 passed
+
+cd /Users/tristanzh/agent/PPT-maker
+./scripts/agent05_release_smoke.sh
+# Agent05 release smoke passed.
+```
+
+浏览器验收：
+
+- URL：`http://127.0.0.1:3000/agent05`
+- 1280x874 视口下，外层 document 不滚动，页脚在视口内。
+- iframe 内生成控制台和预览区同屏存在。
+- 最新 PPTX 自动载入预览。
+- 预览 iframe `scrolling=no`，预览 stage `aspect-video`。
+- 展开 `更多历史` 后，外层 document 仍保持视口高度，完整历史层可见。
+
+仍需 TZ 手动确认：
+
+- 用真实业务 prompt 和参考图片再生成一次 PPTX，检查内容质量、备用页是否只保留标题、下载文件是否符合预期。
+- 如果要把后端端口从 `8000` 改为 `8005`，必须交给 agent00 端口治理 SDD/TDD，不在本工作流直接迁移。
+
 ## 今日完成事项
 
 ### 发布冒烟与回归
@@ -205,3 +277,61 @@ git -C /Users/tristanzh/agent push origin HEAD
 ```
 
 注意：如果根仓库仍只有其他项目脏改动，Agent05 不应创建包含无关项目的提交。
+
+## 2026-06-16 更新：发布页阶段聚焦与预览布局已修复
+
+本轮已按 SDD/TDD 完成 Agent05 PPT Maker 发布页主要 UI/预览问题修复。
+
+已完成：
+
+- 输入、生成中、结果检查、历史记录改为阶段聚焦模型：
+  - 无成品时默认 `PPT 生成输入`。
+  - 生成中默认 `PPT 生成进度`。
+  - 已有成品/生成完成后默认 `PPT 检查结果`。
+  - 历史记录不再作为常驻底部条挤占主页面，桌面改为抽屉，窄屏保留在 History tab。
+- `/agent05` web 发布壳已删除无效模型配置页脚：
+  - 不再显示 `模型配置`、`DeepSeek 中文生成`、`QuickLook 预览` 等实现细节。
+  - iframe 主区域拿回垂直空间。
+- PPT 成品预览修复为标准 16:9：
+  - React 预览容器高度链路已补齐，桌面和窄屏都不再塌缩。
+  - QuickLook wrapper 只显示单张 `.slide`，支持上一页/下一页，并将 unitless QuickLook CSS 长度规范化为 `px`。
+  - iframe 设置 `scrolling="no"`，避免内部网页滚动条破坏 PPT 画布。
+- 窄屏根 grid 修复为 `auto auto 1fr`：
+  - `生成 / 预览 / 历史` tablist 不再被拉伸成巨大空列。
+- 发布页真实服务已重启：
+  - `127.0.0.1:3000` 当前 PID：以 `server.mjs` 新版本运行。
+  - `127.0.0.1:8000` 后端仍在运行。
+
+最终验证：
+
+```bash
+cd /Users/tristanzh/agent/PPT-maker/frontend
+npm test -- --run src/App.test.tsx
+# 49 passed
+
+npm run build
+# passed, final asset includes /agent05/assets/index-CVkEan9n.js
+
+cd /Users/tristanzh/agent/PPT-maker
+python3 -m pytest backend/tests -q
+# 56 passed
+
+cd /Users/tristanzh/agent/web
+node --test tests/agent05-service.test.mjs tests/agent05-browser-layout.test.mjs
+# 10 passed
+```
+
+真实浏览器测量：
+
+- 1440x900：outer `scrollWidth === clientWidth`；preview stage `924.4 x 520`，ratio `1.778`。
+- 820x900：outer/inner 均无横向溢出；preview stage `584 x 328.5`，ratio `1.778`；tablist 高度 `38px`。
+- `hasModelCopy === false`，`hasPermanentHistoryStrip === false`。
+
+当前建议下一步：
+
+1. TZ 在浏览器打开 `http://127.0.0.1:3000/agent05` 做人工验收。
+2. 若继续产品化，下一阶段不再优先修布局，而应回到内容质量与模板选择：
+   - 真实生成 PPT 的版式质量门。
+   - 参考图片色彩/模板匹配稳定性。
+   - 历史记录 metadata 从 localStorage 迁到后端持久化。
+3. 端口 `8000 -> 8005` 仍交给 agent00 端口治理工作流，不在本次 Agent05 修复内迁移。

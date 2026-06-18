@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-import { cancelGeneration, getFiles, getPreview, getStatus, getVisualPreview } from './api'
+import { cancelGeneration, getAgent05PublicationStatus, getFiles, getPreview, getStatus, getVisualPreview } from './api'
 import { tryParseQualityGate } from './qualityGate'
 import type { QualityGateErrorPayload } from './qualityGate'
 import type { CompleteResult, GeneratedFile, GeneratePayload, PreviewPayload, SourceAnalysisSlide, Stage, TemplateCandidate, VisualPreviewPayload } from './types'
@@ -18,6 +18,9 @@ interface GenerationState {
   qualityGateError: QualityGateErrorPayload | null
   mode: GeneratePayload['mode']
   sourceAnalysis: SourceAnalysisSlide[]
+  backendAvailable: boolean | null
+  backendBaseUrl: string
+  backendError: string
 }
 
 const initialState: GenerationState = {
@@ -32,7 +35,10 @@ const initialState: GenerationState = {
   error: '',
   qualityGateError: null,
   mode: 'prompt_to_ppt',
-  sourceAnalysis: []
+  sourceAnalysis: [],
+  backendAvailable: null,
+  backendBaseUrl: '',
+  backendError: ''
 }
 
 const RESTORED_STATUS_POLL_MS = 2000
@@ -45,6 +51,7 @@ function wsUrl(): string {
 export function usePptGeneration() {
   const [state, setState] = useState<GenerationState>(initialState)
   const socketRef = useRef<WebSocket | null>(null)
+  const activeRunBaselineFileIdRef = useRef<string | null>(null)
 
   const refreshFiles = useCallback(async () => {
     const files = await getFiles()
@@ -60,17 +67,65 @@ export function usePptGeneration() {
   useEffect(() => {
     let active = true
     async function loadInitialState() {
+      const publicationStatus = await getAgent05PublicationStatus()
+      const backend = publicationStatus.backend
+      if (backend?.available === false) {
+        if (!active) return
+        setState((current) => ({
+          ...current,
+          backendAvailable: false,
+          backendBaseUrl: backend.baseUrl ?? '',
+          backendError: backend.error ?? '',
+          files: [],
+          isRunning: false,
+          stage: 'error',
+          message: 'PPT Maker 后端未启动',
+          error: 'PPT Maker 后端未启动',
+          qualityGateError: null
+        }))
+        return
+      }
+
       const [status, files] = await Promise.all([getStatus(), getFiles()])
+      if (!active) return
+      const latest = !status.in_progress ? files[0] : null
+      const preview = latest?.has_preview ? await getPreview(latest.file_id) : null
+      const visualPreview = latest ? await getVisualPreview(latest.file_id) : null
       if (!active) return
       setState((current) => ({
         ...current,
         files,
+        backendAvailable: true,
+        backendBaseUrl: backend?.baseUrl ?? current.backendBaseUrl,
+        backendError: '',
         isRunning: status.in_progress,
-        stage: status.in_progress ? status.stage ?? 'generating_outline' : current.stage,
-        message: status.message ?? current.message
+        stage: status.in_progress ? status.stage ?? 'generating_outline' : preview && latest ? 'complete' : current.stage,
+        message: status.in_progress ? status.message ?? current.message : preview && latest ? '最近生成已加载' : current.message,
+        preview: preview ?? current.preview,
+        visualPreview: visualPreview ?? current.visualPreview,
+        result:
+          preview && latest
+            ? {
+                file_name: latest.file_name,
+                file_id: latest.file_id,
+                preview
+              }
+            : current.result
       }))
     }
-    void loadInitialState()
+    void loadInitialState().catch((error) => {
+      if (!active) return
+      setState((current) => ({
+        ...current,
+        backendAvailable: false,
+        backendError: error instanceof Error ? error.message : String(error),
+        isRunning: false,
+        stage: 'error',
+        message: 'PPT Maker 后端未启动',
+        error: 'PPT Maker 后端未启动',
+        qualityGateError: null
+      }))
+    })
     return () => {
       active = false
       socketRef.current?.close()
@@ -78,7 +133,7 @@ export function usePptGeneration() {
   }, [])
 
   useEffect(() => {
-    if (!state.isRunning || socketRef.current) return
+    if (!state.isRunning) return
     let active = true
 
     async function pollRestoredStatus() {
@@ -97,9 +152,29 @@ export function usePptGeneration() {
       const files = await getFiles()
       if (!active) return
       const latest = files[0]
+      const baselineFileId = activeRunBaselineFileIdRef.current
+      if (socketRef.current && (!latest || latest.file_id === baselineFileId)) {
+        socketRef.current.close()
+        socketRef.current = null
+        activeRunBaselineFileIdRef.current = null
+        setState((current) => ({
+          ...current,
+          files,
+          isRunning: false,
+          stage: 'error',
+          message: '生成任务已结束但未生成新文件',
+          error: '生成任务已结束但未生成新文件',
+          candidates: [],
+          visualPreview: null
+        }))
+        return
+      }
       const preview = latest?.has_preview ? await getPreview(latest.file_id) : null
       const visualPreview = latest ? await getVisualPreview(latest.file_id) : null
       if (!active) return
+      socketRef.current?.close()
+      socketRef.current = null
+      activeRunBaselineFileIdRef.current = null
       setState((current) => ({
         ...current,
         files,
@@ -132,6 +207,7 @@ export function usePptGeneration() {
   const generate = useCallback((payload: GeneratePayload) => {
     const socket = new WebSocket(wsUrl())
     socketRef.current = socket
+    activeRunBaselineFileIdRef.current = state.files[0]?.file_id ?? null
     const mode = payload.mode ?? 'prompt_to_ppt'
     setState((current) => ({
       ...current,
@@ -183,6 +259,7 @@ export function usePptGeneration() {
       if (message.type === 'complete') {
         const result = message.result as CompleteResult
         socketRef.current = null
+        activeRunBaselineFileIdRef.current = null
         setState((current) => ({
           ...current,
           stage: 'complete',
@@ -200,6 +277,7 @@ export function usePptGeneration() {
       if (message.type === 'error') {
         const rawError = String(message.message ?? '')
         socketRef.current = null
+        activeRunBaselineFileIdRef.current = null
         setState((current) => ({
           ...current,
           stage: 'error',
@@ -214,6 +292,7 @@ export function usePptGeneration() {
       }
       if (message.type === 'cancelled') {
         socketRef.current = null
+        activeRunBaselineFileIdRef.current = null
         setState((current) => ({
           ...current,
           stage: 'cancelled',
@@ -228,6 +307,7 @@ export function usePptGeneration() {
 
     socket.onerror = () => {
       socketRef.current = null
+      activeRunBaselineFileIdRef.current = null
       setState((current) => ({
         ...current,
         stage: 'error',
@@ -240,7 +320,7 @@ export function usePptGeneration() {
         sourceAnalysis: []
       }))
     }
-  }, [loadVisualPreview, refreshFiles])
+  }, [loadVisualPreview, refreshFiles, state.files])
 
   const selectTemplate = useCallback((slug: string) => {
     socketRef.current?.send(JSON.stringify({ type: 'select_template', template_slug: slug }))
@@ -250,6 +330,7 @@ export function usePptGeneration() {
   const cancel = useCallback(async () => {
     socketRef.current?.send(JSON.stringify({ type: 'cancel' }))
     await cancelGeneration()
+    activeRunBaselineFileIdRef.current = null
     setState((current) => ({
       ...current,
       stage: 'cancelled',

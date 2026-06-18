@@ -1,8 +1,13 @@
 import axios from 'axios'
 
-import type { GeneratedFile, GenerationStatus, PreviewPayload, ReferenceAnalysisPayload, VisualPreviewPayload } from './types'
+import type { Agent05PublicationStatus, GeneratedFile, GenerationStatus, PreviewPayload, ReferenceAnalysisPayload, VisualPreviewPayload } from './types'
 
 const BASE = '/agent05'
+
+export async function getAgent05PublicationStatus(): Promise<Agent05PublicationStatus> {
+  const response = await axios.get('/api/agent05/status')
+  return response.data
+}
 
 export async function getStatus(): Promise<GenerationStatus> {
   const response = await axios.get(`${BASE}/api/generate/status`)

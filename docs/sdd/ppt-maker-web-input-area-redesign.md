@@ -138,25 +138,22 @@ The textarea placeholder is:
 
 Do not include "已上传参考文件..." in the placeholder when no reference is uploaded. When a reference file is uploaded, the UI already shows the inline row; the prompt does not need a dynamic placeholder suffix.
 
-### Page Count Selector
+### Page Count Resolution
 
 Remove `advancedOpen`, `style`, `purpose`, and the advanced panel.
 
-Move `page_count` next to Generate as a compact selector:
+Do not render `page_count` as a primary compose control.
 
-```text
-页面: [10 v]
-```
+First-principles contract:
 
-Options:
+- Page count is part of the user's generation intent, not a mandatory UI setting.
+- If the Prompt explicitly specifies a slide/page count, backend generation must honor that count.
+- If the Prompt does not specify a count, the backend must infer an internal count from prompt complexity and available reference metadata.
+- The frontend sends `page_count: null` for Mode A unless a future explicit advanced override is deliberately introduced.
+- The main compose page must not show a page-count dropdown or numeric input.
+- Mode B preserves the source PPTX page count unless the Prompt explicitly asks for page addition/removal in the edit flow.
 
-```text
-5, 8, 10, 12, 15, 20, 自定义
-```
-
-`自定义` reveals a small numeric input next to the selector. The numeric input keeps the existing constraints: min `1`, max `60`.
-
-Mode B ignores `page_count`; the control may remain visible but disabled in Mode B, because the original slide count is preserved.
+The UI may later show a read-only resolved count after backend inference in progress or diagnostics, but it must not ask the user to configure page count before generation.
 
 ## Mode Label Contract
 
@@ -321,8 +318,9 @@ Update `frontend/src/App.test.tsx`.
    - Expect placeholder contains the business deep-blue example.
    - Expect placeholder does not contain `已上传参考文件`.
 
-6. `page_count renders as dropdown with fixed options`
-   - Expect selector options `5/8/10/12/15/20/自定义`.
+6. `page_count is not rendered as a primary compose control`
+   - Expect no `页面` combobox and no custom page-count input.
+   - Generate payload for Mode A carries `page_count: null`.
 
 7. `preview shows enhancement summary after generation with reference`
    - Upload PDF.

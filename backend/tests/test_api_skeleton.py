@@ -103,8 +103,25 @@ def write_fake_qlmanage(bin_dir: Path, preview_html: str) -> None:
     script.chmod(0o755)
 
 
+def write_fake_sips(bin_dir: Path) -> None:
+    script = bin_dir / "sips"
+    script.write_text(
+        "\n".join(
+            [
+                "#!/usr/bin/env python3",
+                "import pathlib, sys",
+                "out = pathlib.Path(sys.argv[sys.argv.index('--out') + 1])",
+                "out.write_bytes(b'\\x89PNG\\r\\n\\x1a\\n')",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    script.chmod(0o755)
+
+
 def test_visual_preview_generates_quicklook_preview_url(client, sample_output, tmp_path, monkeypatch):
-    write_fake_qlmanage(tmp_path, '<html><body><img src="Attachment1.pdf"></body></html>')
+    write_fake_qlmanage(tmp_path, '<html><body><div class="slide"><img src="Attachment1.pdf"></div></body></html>')
+    write_fake_sips(tmp_path)
     monkeypatch.setenv("PATH", f"{tmp_path}{os.pathsep}{os.environ.get('PATH', '')}")
 
     response = client.get("/api/files/20260603-211700_abcd/output.pptx/visual-preview")
@@ -122,9 +139,24 @@ def test_visual_preview_generates_quicklook_preview_url(client, sample_output, t
     assert asset_response.status_code == 200
     assert "Preview.html" in asset_response.text
     assert "fitQuickLookPreview" in asset_response.text
-    assert "querySelector('.slide')" in asset_response.text
+    assert "normalizeQuickLookUnits" in asset_response.text
+    assert "showSlide" in asset_response.text
+    assert "data-ql-slide-index" in asset_response.text
+    assert "上一页" in asset_response.text
+    assert "下一页" in asset_response.text
+    assert "querySelectorAll('.slide')" in asset_response.text
+    assert 'name="ppt-maker-visual-preview-wrapper"' in asset_response.text
+    assert "slide.setAttribute('aria-hidden'" in asset_response.text
     assert "overflow: hidden" in asset_response.text
+    assert "padding: 28px 28px 62px" not in asset_response.text
+    assert "flex: 0 0 auto" in asset_response.text
+    assert "max-width: none" in asset_response.text
+    assert "max-height: none" in asset_response.text
     assert "height: 100vh" not in asset_response.text
+    preview_html = (sample_output["task_dir"] / "visual_preview" / "Preview.html").read_text(encoding="utf-8")
+    assert 'src="Attachment1.png"' in preview_html
+    assert 'src="Attachment1.pdf"' not in preview_html
+    assert (sample_output["task_dir"] / "visual_preview" / "Attachment1.png").exists()
 
 
 def test_visual_preview_accepts_quicklook_slide_html_without_img(client, sample_output, tmp_path, monkeypatch):
@@ -138,6 +170,55 @@ def test_visual_preview_accepts_quicklook_slide_html_without_img(client, sample_
     assert payload["schema"] == "ppt-maker-visual-preview/v1"
     assert payload["preview_url"] == "/api/files/20260603-211700_abcd/output.pptx/visual-preview/index.html"
     assert payload["mode"] == "quicklook_html"
+
+
+def test_visual_preview_direct_index_request_rebuilds_stale_wrapper(client, sample_output):
+    preview_dir = sample_output["task_dir"] / "visual_preview"
+    preview_dir.mkdir()
+    (preview_dir / "Preview.html").write_text('<html><body><div class="slide">Rendered slide</div></body></html>', encoding="utf-8")
+    index = preview_dir / "index.html"
+    index.write_text("<html><body>stale wrapper</body></html>", encoding="utf-8")
+
+    response = client.get("/api/files/20260603-211700_abcd/output.pptx/visual-preview/index.html")
+
+    assert response.status_code == 200
+    assert "stale wrapper" not in response.text
+    assert 'name="ppt-maker-visual-preview-wrapper"' in response.text
+    assert "slide.setAttribute('aria-hidden'" in response.text
+    assert "stale wrapper" not in index.read_text(encoding="utf-8")
+
+
+def test_visual_preview_rejects_quicklook_html_with_missing_local_image(client, sample_output, tmp_path, monkeypatch):
+    write_fake_qlmanage(tmp_path, '<html><body><img src="missing.png"></body></html>')
+    monkeypatch.setenv("PATH", f"{tmp_path}{os.pathsep}{os.environ.get('PATH', '')}")
+
+    response = client.get("/api/files/20260603-211700_abcd/output.pptx/visual-preview")
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["schema"] == "ppt-maker-visual-preview/v1"
+    assert payload["error"] == "visual_preview_failed"
+    assert payload["message"] == "预览生成失败，但 PPTX 可下载"
+    assert not (sample_output["task_dir"] / "visual_preview").exists()
+
+
+def test_visual_preview_regenerates_cached_preview_with_missing_local_image(client, sample_output, tmp_path, monkeypatch):
+    preview_dir = sample_output["task_dir"] / "visual_preview"
+    preview_dir.mkdir()
+    (preview_dir / "Preview.html").write_text('<html><body><img src="missing.png"></body></html>', encoding="utf-8")
+    (preview_dir / "index.html").write_text("<html><body>stale wrapper</body></html>", encoding="utf-8")
+    write_fake_qlmanage(tmp_path, '<html><body><div class="slide"><img src="Attachment1.pdf"></div></body></html>')
+    write_fake_sips(tmp_path)
+    monkeypatch.setenv("PATH", f"{tmp_path}{os.pathsep}{os.environ.get('PATH', '')}")
+
+    response = client.get("/api/files/20260603-211700_abcd/output.pptx/visual-preview")
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["schema"] == "ppt-maker-visual-preview/v1"
+    assert payload["preview_url"] == "/api/files/20260603-211700_abcd/output.pptx/visual-preview/index.html"
+    assert "missing.png" not in (preview_dir / "Preview.html").read_text(encoding="utf-8")
+    assert "Attachment1.png" in (preview_dir / "Preview.html").read_text(encoding="utf-8")
 
 
 def test_visual_preview_rejects_empty_quicklook_html(client, sample_output, tmp_path, monkeypatch):

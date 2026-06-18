@@ -163,3 +163,31 @@ def test_reference_analyze_api_accepts_pdf(client, tmp_path: Path):
     assert payload["text_chars"] > 0
     assert "Reference Report 2026" in payload["extracted_text"]
     assert isinstance(payload["dominant_colors"], list)
+
+
+def test_reference_analyze_api_accepts_png(client, tmp_path: Path):
+    path = tmp_path / "palette.png"
+    write_palette_image(path)
+
+    with path.open("rb") as file:
+        response = client.post("/api/reference/analyze", files={"file": ("palette.png", file, "image/png")})
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["schema"] == "ppt-maker-reference-analysis/v1"
+    assert payload["file_type"] == "image"
+    assert payload["file_name"] == "palette.png"
+    assert payload["text_chars"] == 0
+    assert isinstance(payload["dominant_colors"], list)
+    assert len(payload["dominant_colors"]) > 0
+
+
+def test_reference_analyze_api_rejects_unsupported_file(client, tmp_path: Path):
+    path = tmp_path / "notes.txt"
+    path.write_text("plain text is not a supported reference file", encoding="utf-8")
+
+    with path.open("rb") as file:
+        response = client.post("/api/reference/analyze", files={"file": ("notes.txt", file, "text/plain")})
+
+    assert response.status_code == 400
+    assert response.json()["detail"] == "unsupported_reference_type"

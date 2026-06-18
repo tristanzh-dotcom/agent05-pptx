@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import json
 import os
+import re
 import shutil
 import sys
 from dataclasses import dataclass
@@ -16,6 +17,8 @@ from backend.app.services.validate_edits import validate_edits
 
 
 ProgressCallback = Callable[[str, str], Awaitable[None]]
+MODE_A_SLOT_SLIDE_RE = re.compile(r"^s(\d+)_")
+MODE_A_OVERFLOW_RE = re.compile(r"OVERFLOW slide (\d+) ([^:]+):.*?容量 (\d+).*?-> '([^']*)'")
 
 
 class GenerationError(RuntimeError):
@@ -101,29 +104,30 @@ class SubprocessGenerationRunner:
         edits = context.work_dir / "edits.json"
         if not edits.exists():
             raise GenerationError("opencode did not produce edits.json")
-
-        await progress("building_pptx", "正在构建 PPTX...")
-        template_dir = self.settings.gorden_root / "templates" / request.template_slug
-        output = context.work_dir / "output.pptx"
-        await self._run_command(
-            [
-                *self._command_prefix(self.settings.build_script),
-                str(template_dir / "template.pptx"),
-                str(edits),
-                str(output),
-                "--detail",
-                str(template_dir / "detail.json"),
-                "--strict",
-            ],
-            context=context,
-            cwd=context.work_dir,
-            label="build_pptx.py",
-        )
-
+        self._normalize_mode_a_selected_slide_indexes(edits)
         edits_content = json.loads(edits.read_text(encoding="utf-8"))
         quality_check = validate_edits(edits_content, request.page_count)
         if not quality_check["valid"]:
             raise GenerationError(json.dumps(quality_check, ensure_ascii=False))
+
+        await progress("building_pptx", "正在构建 PPTX...")
+        template_dir = self.settings.gorden_root / "templates" / request.template_slug
+        output = context.work_dir / "output.pptx"
+        build_command = [
+            *self._command_prefix(self.settings.build_script),
+            str(template_dir / "template.pptx"),
+            str(edits),
+            str(output),
+            "--detail",
+            str(template_dir / "detail.json"),
+            "--strict",
+        ]
+        await self._run_mode_a_build_with_overflow_repair(
+            build_command,
+            edits_path=edits,
+            context=context,
+            cwd=context.work_dir,
+        )
 
         preview_path = context.work_dir / "machine_extracted.json"
         await self._run_command(
@@ -160,6 +164,142 @@ class SubprocessGenerationRunner:
             "preview": preview,
             "task_dir": context.work_dir.name,
         }
+
+    def _normalize_mode_a_selected_slide_indexes(self, edits_path: Path) -> None:
+        try:
+            edits_content = json.loads(edits_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            raise GenerationError(f"invalid edits.json: {exc}") from exc
+
+        changed = False
+        if isinstance(edits_content, list):
+            edits_content = {"edits": edits_content}
+            changed = True
+        if not isinstance(edits_content, dict):
+            return
+
+        selected_slides = edits_content.get("selected_slides")
+        edits = edits_content.get("edits")
+        if not isinstance(edits, list):
+            return
+
+        if not isinstance(selected_slides, list) or not selected_slides:
+            derived_slides = self._derive_selected_slides_from_slot_ids(edits)
+            if derived_slides:
+                edits_content["selected_slides"] = derived_slides
+                selected_slides = derived_slides
+                changed = True
+            else:
+                return
+
+        for edit in edits:
+            if not isinstance(edit, dict):
+                continue
+            slide = edit.get("slide")
+            slot_id = edit.get("slot_id")
+            if not isinstance(slide, int) or isinstance(slide, bool) or not isinstance(slot_id, str):
+                continue
+            match = MODE_A_SLOT_SLIDE_RE.match(slot_id)
+            if not match:
+                continue
+            slot_slide = int(match.group(1))
+            normalized_slide = self._resolve_selected_slide_index(slide, selected_slides, slot_slide)
+            if normalized_slide is None or normalized_slide == slide:
+                continue
+            edit["slide"] = normalized_slide
+            changed = True
+
+        if changed:
+            edits_path.write_text(json.dumps(edits_content, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    async def _run_mode_a_build_with_overflow_repair(
+        self,
+        command: list[str],
+        *,
+        edits_path: Path,
+        context: GenerationContext,
+        cwd: Path,
+    ) -> None:
+        try:
+            await self._run_command(command, context=context, cwd=cwd, label="build_pptx.py")
+            return
+        except GenerationError as exc:
+            error_text = str(exc)
+            if not self._repair_mode_a_overflow_edits(edits_path, error_text):
+                raise
+        await self._run_command(command, context=context, cwd=cwd, label="build_pptx.py")
+
+    def _repair_mode_a_overflow_edits(self, edits_path: Path, error_text: str) -> bool:
+        repairs = MODE_A_OVERFLOW_RE.findall(error_text)
+        if not repairs:
+            return False
+        try:
+            edits_content = json.loads(edits_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            return False
+        edits = edits_content.get("edits") if isinstance(edits_content, dict) else None
+        if not isinstance(edits, list):
+            return False
+
+        changed = False
+        for slide_text, slot_id, capacity_text, overflow_text in repairs:
+            slide = int(slide_text)
+            capacity = int(capacity_text)
+            replacement = self._shorten_overflow_text(overflow_text, capacity)
+            for edit in edits:
+                if not isinstance(edit, dict):
+                    continue
+                if edit.get("slide") == slide and edit.get("slot_id") == slot_id and edit.get("new_text") == overflow_text:
+                    edit["new_text"] = replacement
+                    changed = True
+        if changed:
+            edits_path.write_text(json.dumps(edits_content, ensure_ascii=False, indent=2), encoding="utf-8")
+        return changed
+
+    def _shorten_overflow_text(self, text: str, capacity: int) -> str:
+        replacements = {
+            "Optimization": "Opt",
+            "Savings": "Save",
+            "International": "Intl.",
+            "Governance": "Gov",
+            "Restructure": "Restruct",
+            "Distribution": "Dist.",
+            "Engineering": "Eng.",
+            "Operations": "Ops",
+        }
+        shortened = text
+        for source, target in replacements.items():
+            shortened = shortened.replace(source, target)
+        shortened = " ".join(shortened.split())
+        if len(shortened) <= capacity:
+            return shortened
+        return shortened[:capacity].rstrip()
+
+    def _derive_selected_slides_from_slot_ids(self, edits: list[object]) -> list[int]:
+        selected: list[int] = []
+        seen: set[int] = set()
+        for edit in edits:
+            if not isinstance(edit, dict):
+                continue
+            slot_id = edit.get("slot_id")
+            if not isinstance(slot_id, str):
+                continue
+            match = MODE_A_SLOT_SLIDE_RE.match(slot_id)
+            if not match:
+                continue
+            slide = int(match.group(1))
+            if slide in seen:
+                continue
+            selected.append(slide)
+            seen.add(slide)
+        return selected
+
+    def _resolve_selected_slide_index(self, slide: int, selected_slides: list[object], slot_slide: int) -> int | None:
+        if 0 <= slide < len(selected_slides) and selected_slides[slide] == slot_slide:
+            return slot_slide
+        if 1 <= slide <= len(selected_slides) and selected_slides[slide - 1] == slot_slide:
+            return slot_slide
+        return None
 
     async def _run_template_preserving_edit(
         self,
@@ -318,7 +458,10 @@ class SubprocessGenerationRunner:
             f"1. selected_slides 长度不得超过 {request.page_count + 1}。如果你选了过多页面，优先去掉内容最弱的页。\n"
             "2. 不得输出以下占位文案：Question 1, Question 2, Vivamus, Lorem ipsum, 项目名称, "
             "请输入标题, 请输入内容, Your Title Here, 项目概述\n"
-            "3. 每个幻灯片的每一个可编辑 text slot 都必须用真实内容填充，不得保留模板原文字。\n"
+            "3. 默认情况下，每个幻灯片的每一个可编辑 text slot 都必须用真实内容填充，不得保留模板原文字。\n"
+            "   但用户明确要求某页只保留标题、抬头、备用或空白时，用户约束优先于填满槽位规则：\n"
+            "   只把标题/抬头槽位写成用户指定文本；非标题正文槽位写为空字符串或单个空格，"
+            "不得为了填满模板槽位新增趋势、指标、结论或解释性内容。\n"
             "4. edits 数组的每个元素必须包含 slide (整数), slot_id (字符串), new_text (字符串)。\n\n"
             "你必须把最终 JSON 写入 output_edits_json 指定的路径 ./edits.json。\n"
             "不得写入工作目录之外的任何路径；只有当前任务工作目录下的 ./edits.json 会被后端读取。\n\n"

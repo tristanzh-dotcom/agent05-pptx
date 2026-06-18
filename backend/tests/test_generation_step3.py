@@ -10,6 +10,7 @@ from fastapi import WebSocketDisconnect
 from fastapi.testclient import TestClient
 import pytest
 
+from backend.app.routers.generation import _mode_a_request
 from backend.tests.conftest import GORDEN_ROOT, PPT_MAKER_ROOT
 
 
@@ -181,6 +182,36 @@ def test_reference_recommendations_order_template_candidates(tmp_path: Path):
     assert cancelled["type"] == "cancelled"
 
 
+def test_mode_a_request_uses_explicit_prompt_page_count():
+    request = _mode_a_request(
+        {
+            "mode": "prompt_to_ppt",
+            "prompt": "请生成一个5页的PPT，主题是JLR org status today。",
+            "page_count": None,
+            "style": "",
+        },
+        "minimal-business-summary",
+    )
+
+    assert request.page_count == 5
+
+
+def test_mode_a_request_infers_page_count_when_prompt_has_no_count():
+    request = _mode_a_request(
+        {
+            "mode": "prompt_to_ppt",
+            "prompt": "生成一份季度经营复盘，重点分析渠道增长、客户留存、组织调整、下一步行动和风险。",
+            "page_count": None,
+            "style": "",
+        },
+        "minimal-business-summary",
+    )
+
+    assert request.page_count is not None
+    assert request.page_count >= 5
+    assert request.page_count != 10
+
+
 def test_mode_b_skips_template_selection(tmp_path: Path):
     runner = SuccessfulFakeRunner()
     client = make_client(tmp_path, runner)
@@ -327,6 +358,33 @@ def test_subprocess_runner_executes_generation_chain(tmp_path: Path):
     assert [event[0] for event in events] == ["generating_outline", "building_pptx", "quality_check"]
 
 
+def test_mode_a_orchestration_prompt_prioritizes_user_requested_backup_slides(tmp_path: Path):
+    from backend.app.config import AppSettings
+    from backend.app.services.generation import GenerationRequest, SubprocessGenerationRunner
+
+    runner = SubprocessGenerationRunner(AppSettings(project_root=tmp_path))
+    work_dir = tmp_path / "work"
+    template_context_dir = work_dir / "template_context"
+    template_context_dir.mkdir(parents=True)
+
+    path = runner._write_orchestration_prompt(
+        GenerationRequest(
+            prompt="生成5页报告。第4页和第5页现在只放一个抬头“备用”。",
+            page_count=5,
+            style="",
+            template_slug="minimal-business-summary",
+        ),
+        work_dir,
+        template_context_dir,
+    )
+
+    prompt = path.read_text(encoding="utf-8")
+    assert "只放一个抬头" in prompt
+    assert "用户明确要求某页只保留标题、抬头、备用或空白时" in prompt
+    assert "不得为了填满模板槽位新增趋势、指标、结论或解释性内容" in prompt
+    assert "非标题正文槽位写为空字符串或单个空格" in prompt
+
+
 def test_mode_a_payload_includes_reference_analysis_in_prompt(tmp_path: Path):
     from backend.app.config import AppSettings
     from backend.app.services.generation import GenerationContext, GenerationRequest, SubprocessGenerationRunner
@@ -399,6 +457,312 @@ def test_mode_a_payload_includes_reference_analysis_in_prompt(tmp_path: Path):
     assert "#1F3A93, #FFFFFF, #E74C3C" in prompt
     assert "深蓝+白色主调，红色点缀" in prompt
     assert "architecture-deck, report-savior" in prompt
+
+
+def test_mode_a_normalizes_selected_slide_index_when_slot_id_uses_template_slide(tmp_path: Path):
+    from backend.app.config import AppSettings
+    from backend.app.services.generation import GenerationContext, GenerationRequest, SubprocessGenerationRunner
+
+    ppt_root = tmp_path / "ppt-maker"
+    gorden_root = tmp_path / "gorden"
+    template_dir = gorden_root / "templates" / "report-massive-models"
+    template_dir.mkdir(parents=True)
+    (template_dir / "template.pptx").write_bytes(b"template")
+    (template_dir / "detail.json").write_text("{}", encoding="utf-8")
+    (template_dir / "intro.md").write_text("Report template intro", encoding="utf-8")
+    normalized_edits = tmp_path / "normalized-edits.json"
+
+    write_script(
+        ppt_root / "scripts" / "validate_ppt_request.py",
+        "import json\nprint(json.dumps({'schema':'ppt-maker-validation/v1','status':'ok'}))\n",
+    )
+    write_script(
+        ppt_root / "scripts" / "pptx_analyzer.py",
+        "import json, pathlib, sys\npathlib.Path(sys.argv[sys.argv.index('--output') + 1]).write_text(json.dumps({'slide_count': 1, 'slides': []}), encoding='utf-8')\n",
+    )
+    write_script(
+        gorden_root / "scripts" / "build_pptx.py",
+        (
+            "import pathlib, shutil, sys\n"
+            f"shutil.copyfile(sys.argv[2], {str(normalized_edits)!r})\n"
+            "pathlib.Path(sys.argv[3]).write_bytes(b'pptx')\n"
+        ),
+    )
+    write_script(
+        tmp_path / "opencode",
+        (
+            "import json, pathlib\n"
+            "pathlib.Path('edits.json').write_text(json.dumps({"
+            "'selected_slides':[5],"
+            "'edits':[{'slide':0,'slot_id':'s5_sh53_p0r0','new_text':'JLR org status today'}]"
+            "}), encoding='utf-8')\n"
+        ),
+    )
+
+    settings = AppSettings(
+        project_root=tmp_path,
+        ppt_maker_root=ppt_root,
+        gorden_root=gorden_root,
+        opencode_bin=tmp_path / "opencode",
+        task_timeout_seconds=2,
+    )
+    work_dir = tmp_path / "work" / "ppt-maker" / "20260617-normalize"
+    work_dir.mkdir(parents=True)
+
+    async def progress(stage: str, message: str) -> None:
+        pass
+
+    async def execute():
+        return await SubprocessGenerationRunner(settings).run(
+            GenerationRequest(
+                mode="prompt_to_ppt",
+                prompt="生成5页组织架构报告",
+                page_count=5,
+                style="",
+                template_slug="report-massive-models",
+            ),
+            GenerationContext(task_id="normalize", work_dir=work_dir, cancel_event=asyncio.Event()),
+            progress,
+        )
+
+    result = asyncio.run(execute())
+
+    assert result["file_name"] == "output.pptx"
+    edits = json.loads(normalized_edits.read_text(encoding="utf-8"))
+    assert edits["edits"][0]["slide"] == 5
+
+
+def test_mode_a_derives_selected_slides_from_slot_ids_when_missing(tmp_path: Path):
+    from backend.app.config import AppSettings
+    from backend.app.services.generation import GenerationContext, GenerationRequest, SubprocessGenerationRunner
+
+    ppt_root = tmp_path / "ppt-maker"
+    gorden_root = tmp_path / "gorden"
+    template_dir = gorden_root / "templates" / "report-massive-models"
+    template_dir.mkdir(parents=True)
+    (template_dir / "template.pptx").write_bytes(b"template")
+    (template_dir / "detail.json").write_text("{}", encoding="utf-8")
+    (template_dir / "intro.md").write_text("Report template intro", encoding="utf-8")
+    normalized_edits = tmp_path / "normalized-edits.json"
+
+    write_script(
+        ppt_root / "scripts" / "validate_ppt_request.py",
+        "import json\nprint(json.dumps({'schema':'ppt-maker-validation/v1','status':'ok'}))\n",
+    )
+    write_script(
+        ppt_root / "scripts" / "pptx_analyzer.py",
+        "import json, pathlib, sys\npathlib.Path(sys.argv[sys.argv.index('--output') + 1]).write_text(json.dumps({'slide_count': 2, 'slides': []}), encoding='utf-8')\n",
+    )
+    write_script(
+        gorden_root / "scripts" / "build_pptx.py",
+        (
+            "import pathlib, shutil, sys\n"
+            f"shutil.copyfile(sys.argv[2], {str(normalized_edits)!r})\n"
+            "pathlib.Path(sys.argv[3]).write_bytes(b'pptx')\n"
+        ),
+    )
+    write_script(
+        tmp_path / "opencode",
+        (
+            "import json, pathlib\n"
+            "pathlib.Path('edits.json').write_text(json.dumps({"
+            "'edits':["
+            "{'slide':1,'slot_id':'s7_sh2_p0r0','new_text':'JLR org status today'},"
+            "{'slide':2,'slot_id':'s9_sh4_p0r0','new_text':'org proposal'}"
+            "]"
+            "}), encoding='utf-8')\n"
+        ),
+    )
+
+    settings = AppSettings(
+        project_root=tmp_path,
+        ppt_maker_root=ppt_root,
+        gorden_root=gorden_root,
+        opencode_bin=tmp_path / "opencode",
+        task_timeout_seconds=2,
+    )
+    work_dir = tmp_path / "work" / "ppt-maker" / "20260617-derive"
+    work_dir.mkdir(parents=True)
+
+    async def progress(stage: str, message: str) -> None:
+        pass
+
+    async def execute():
+        return await SubprocessGenerationRunner(settings).run(
+            GenerationRequest(
+                mode="prompt_to_ppt",
+                prompt="生成5页组织架构报告",
+                page_count=5,
+                style="",
+                template_slug="report-massive-models",
+            ),
+            GenerationContext(task_id="derive", work_dir=work_dir, cancel_event=asyncio.Event()),
+            progress,
+        )
+
+    result = asyncio.run(execute())
+
+    assert result["file_name"] == "output.pptx"
+    edits = json.loads(normalized_edits.read_text(encoding="utf-8"))
+    assert edits["selected_slides"] == [7, 9]
+    assert [edit["slide"] for edit in edits["edits"]] == [7, 9]
+
+
+def test_mode_a_wraps_top_level_edits_array(tmp_path: Path):
+    from backend.app.config import AppSettings
+    from backend.app.services.generation import GenerationContext, GenerationRequest, SubprocessGenerationRunner
+
+    ppt_root = tmp_path / "ppt-maker"
+    gorden_root = tmp_path / "gorden"
+    template_dir = gorden_root / "templates" / "report-massive-models"
+    template_dir.mkdir(parents=True)
+    (template_dir / "template.pptx").write_bytes(b"template")
+    (template_dir / "detail.json").write_text("{}", encoding="utf-8")
+    (template_dir / "intro.md").write_text("Report template intro", encoding="utf-8")
+    normalized_edits = tmp_path / "normalized-edits.json"
+
+    write_script(
+        ppt_root / "scripts" / "validate_ppt_request.py",
+        "import json\nprint(json.dumps({'schema':'ppt-maker-validation/v1','status':'ok'}))\n",
+    )
+    write_script(
+        ppt_root / "scripts" / "pptx_analyzer.py",
+        "import json, pathlib, sys\npathlib.Path(sys.argv[sys.argv.index('--output') + 1]).write_text(json.dumps({'slide_count': 2, 'slides': []}), encoding='utf-8')\n",
+    )
+    write_script(
+        gorden_root / "scripts" / "build_pptx.py",
+        (
+            "import pathlib, shutil, sys\n"
+            f"shutil.copyfile(sys.argv[2], {str(normalized_edits)!r})\n"
+            "pathlib.Path(sys.argv[3]).write_bytes(b'pptx')\n"
+        ),
+    )
+    write_script(
+        tmp_path / "opencode",
+        (
+            "import json, pathlib\n"
+            "pathlib.Path('edits.json').write_text(json.dumps(["
+            "{'slide':9,'slot_id':'s9_sh4_p0r0','new_text':'JLR org status today'},"
+            "{'slide':12,'slot_id':'s12_sh58_p0r0','new_text':'org proposal'}"
+            "]), encoding='utf-8')\n"
+        ),
+    )
+
+    settings = AppSettings(
+        project_root=tmp_path,
+        ppt_maker_root=ppt_root,
+        gorden_root=gorden_root,
+        opencode_bin=tmp_path / "opencode",
+        task_timeout_seconds=2,
+    )
+    work_dir = tmp_path / "work" / "ppt-maker" / "20260617-wrap"
+    work_dir.mkdir(parents=True)
+
+    async def progress(stage: str, message: str) -> None:
+        pass
+
+    async def execute():
+        return await SubprocessGenerationRunner(settings).run(
+            GenerationRequest(
+                mode="prompt_to_ppt",
+                prompt="生成5页组织架构报告",
+                page_count=5,
+                style="",
+                template_slug="report-massive-models",
+            ),
+            GenerationContext(task_id="wrap", work_dir=work_dir, cancel_event=asyncio.Event()),
+            progress,
+        )
+
+    result = asyncio.run(execute())
+
+    assert result["file_name"] == "output.pptx"
+    edits = json.loads(normalized_edits.read_text(encoding="utf-8"))
+    assert edits["selected_slides"] == [9, 12]
+    assert isinstance(edits["edits"], list)
+
+
+def test_mode_a_repairs_single_overflow_and_retries_build(tmp_path: Path):
+    from backend.app.config import AppSettings
+    from backend.app.services.generation import GenerationContext, GenerationRequest, SubprocessGenerationRunner
+
+    ppt_root = tmp_path / "ppt-maker"
+    gorden_root = tmp_path / "gorden"
+    template_dir = gorden_root / "templates" / "report-massive-models"
+    template_dir.mkdir(parents=True)
+    (template_dir / "template.pptx").write_bytes(b"template")
+    (template_dir / "detail.json").write_text("{}", encoding="utf-8")
+    (template_dir / "intro.md").write_text("Report template intro", encoding="utf-8")
+    repaired_edits = tmp_path / "repaired-edits.json"
+    build_calls = tmp_path / "build-calls"
+
+    write_script(
+        ppt_root / "scripts" / "validate_ppt_request.py",
+        "import json\nprint(json.dumps({'schema':'ppt-maker-validation/v1','status':'ok'}))\n",
+    )
+    write_script(
+        ppt_root / "scripts" / "pptx_analyzer.py",
+        "import json, pathlib, sys\npathlib.Path(sys.argv[sys.argv.index('--output') + 1]).write_text(json.dumps({'slide_count': 1, 'slides': []}), encoding='utf-8')\n",
+    )
+    write_script(
+        gorden_root / "scripts" / "build_pptx.py",
+        (
+            "import json, pathlib, shutil, sys\n"
+            f"calls = pathlib.Path({str(build_calls)!r})\n"
+            "count = int(calls.read_text() or '0') if calls.exists() else 0\n"
+            "calls.write_text(str(count + 1), encoding='utf-8')\n"
+            "edits = json.loads(pathlib.Path(sys.argv[2]).read_text(encoding='utf-8'))\n"
+            "text = edits['edits'][0]['new_text']\n"
+            "if count == 0 and text == 'Optimization & Savings':\n"
+            "    sys.stderr.write(\"OVERFLOW slide 5 s5_sh8219_p0r0: 文字过长 视觉宽度 11 > 容量 10 (约需 2 行 / 可容 1 行, 18.0pt, 每行≈9字) -> 'Optimization & Savings'\\n\")\n"
+            "    sys.exit(5)\n"
+            f"shutil.copyfile(sys.argv[2], {str(repaired_edits)!r})\n"
+            "pathlib.Path(sys.argv[3]).write_bytes(b'pptx')\n"
+        ),
+    )
+    write_script(
+        tmp_path / "opencode",
+        (
+            "import json, pathlib\n"
+            "pathlib.Path('edits.json').write_text(json.dumps({"
+            "'selected_slides':[5],"
+            "'edits':[{'slide':5,'slot_id':'s5_sh8219_p0r0','new_text':'Optimization & Savings'}]"
+            "}), encoding='utf-8')\n"
+        ),
+    )
+
+    settings = AppSettings(
+        project_root=tmp_path,
+        ppt_maker_root=ppt_root,
+        gorden_root=gorden_root,
+        opencode_bin=tmp_path / "opencode",
+        task_timeout_seconds=2,
+    )
+    work_dir = tmp_path / "work" / "ppt-maker" / "20260617-overflow"
+    work_dir.mkdir(parents=True)
+
+    async def progress(stage: str, message: str) -> None:
+        pass
+
+    async def execute():
+        return await SubprocessGenerationRunner(settings).run(
+            GenerationRequest(
+                mode="prompt_to_ppt",
+                prompt="生成5页组织架构报告",
+                page_count=5,
+                style="",
+                template_slug="report-massive-models",
+            ),
+            GenerationContext(task_id="overflow", work_dir=work_dir, cancel_event=asyncio.Event()),
+            progress,
+        )
+
+    result = asyncio.run(execute())
+
+    assert result["file_name"] == "output.pptx"
+    assert build_calls.read_text(encoding="utf-8") == "2"
+    edits = json.loads(repaired_edits.read_text(encoding="utf-8"))
+    assert edits["edits"][0]["new_text"] == "Opt & Save"
 
 
 def sha256(path: Path) -> str:

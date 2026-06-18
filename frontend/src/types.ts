@@ -20,6 +20,15 @@ export interface GenerationStatus {
   work_dir?: string
 }
 
+export interface Agent05PublicationStatus {
+  backend?: {
+    available?: boolean
+    baseUrl?: string
+    identity?: string
+    error?: string
+  }
+}
+
 export interface GeneratedFile {
   file_id: string
   file_name: string

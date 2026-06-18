@@ -27,7 +27,7 @@ The page also shows development-only routing information in the header and repea
 - Keep history reachable without scrolling past the preview.
 - Compress the prompt area into an operational control console.
 - Remove development-only header fields from the release UI.
-- Render only one template disclaimer.
+- Do not render the template commercial-use disclaimer in the release UI.
 - Preserve the existing Mode A, Mode B, reference-enhanced Mode A, template selection, progress, visual preview, quality gate, and history behaviors.
 - Define layout sizing from the platform content container, not the browser viewport alone.
 
@@ -84,8 +84,8 @@ Content order:
    - min height large enough for multi-sentence deck briefs on desktop
    - resizable behavior is optional, but the default state must not collapse into a small field
 4. Action row:
-   - page count selector or `页数保留源文件`
    - `Generate PPT` / `Cancel`
+   - no page-count selector; Mode A page count is resolved by backend from Prompt or automatic inference, and Mode B preserves the source deck count internally
 5. Runtime area:
    - template candidates while selecting
    - progress steps while running
@@ -195,10 +195,10 @@ The console must become denser before the preview is sacrificed. Compress upload
 When the effective platform content width cannot support both columns with a usable preview, switch to tabs. The initial breakpoint is:
 
 ```text
-effective platform content width < 960px
+effective platform content width < 860px
 ```
 
-This value is an implementation starting point, not a product invariant. It may be tuned after browser verification, but tests should lock the initial behavior so future changes are deliberate.
+This value is based on the Agent05 iframe after the platform sidebar is present. A 1280px-wide laptop viewport leaves roughly 900px of Agent05 iframe width; that is still enough for a compact generation console plus a usable PPT preview. The breakpoint must therefore be lower than the old 960px threshold, otherwise standard laptop users see only the Generate tab and lose the primary output-inspection task.
 
 ```text
 生成 | 预览 | 历史
@@ -210,6 +210,118 @@ Rules:
 - After generation completes, switch to `预览`.
 - History remains one tap away and does not live below a long vertical stack.
 - Existing generation state restoration still works after remount.
+
+## 2026-06-16 Layout Reset Contract
+
+Browser inspection showed three layout failures that invalidate the earlier implementation assumptions:
+
+1. The outer Agent05 shell forced `minmax(720px, 1fr)` for the iframe region and allowed page-level overflow. On a 1280x874 laptop viewport, the document height exceeded the viewport even though the workbench is fixed-position in practice.
+2. The embedded app used `window.innerWidth < 960` as the tab breakpoint. Inside the platform shell, a standard 1280px viewport produced only about 917px of iframe width, so the release page hid preview/history behind tabs.
+3. The history tab and "more history" control could show the latest-three list and the full list simultaneously, creating duplicate history surfaces and vertical blowout.
+
+The corrected release contract is:
+
+- Agent05 outer shell is a bounded route-specific viewport. It may allocate internal scroll to the iframe app, but the platform document itself must not need vertical scrolling to access header, workbench, or model configuration on desktop.
+- At iframe width `>= 860px`, render the two-column desktop workbench. The prompt console may shrink before the preview disappears.
+- At iframe width `< 860px`, render tabs. The history tab starts as a compact recent list; selecting "more history" replaces the compact list with a bounded full list instead of duplicating both.
+- When generated files already exist and no generation is running, the workbench should load the latest file into the preview workspace by default. A completed test state should return users to "inspect/download the latest deck", not an empty prompt-only state.
+
+## Runtime Reliability Contract
+
+Agent05 currently keeps the PPT Maker backend on `127.0.0.1:8000` because the existing FastAPI app, proxy routes, and generated file URLs are already wired to that service. The agent00 port-governance target is to migrate Agent05 to `8005`, but that migration must be handled as a separate SDD/TDD change because it touches launch scripts, proxy config, browser URLs, and handoff docs together.
+
+Until that migration is executed, the release UI must treat `8000` as the active Agent05 backend port and must fail gracefully when it is down:
+
+- `/api/agent05/status` is the preflight source of truth for backend availability.
+- The embedded React workbench must check `/api/agent05/status` before loading generation status or file history.
+- If `backend.available === false`, the workbench must show a user-facing “PPT Maker 后端未启动” state and must not call generation/file APIs.
+- HTML iframe requests proxied through `/agent05/api/...`, especially QuickLook visual preview URLs, must return an HTML unavailable state when the backend is unreachable. They must not display raw JSON such as `{"error":"connect ECONNREFUSED"}` inside the browser UI.
+
+## Preview Quality Contract
+
+The output preview is an inspection surface, not a document browser. It must therefore behave like a scaled PPT slide:
+
+- The visible preview frame must use standard PowerPoint 16:9 geometry.
+- The outer workbench must not require horizontal scrolling to inspect a generated slide.
+- The QuickLook iframe must be clipped by the 16:9 frame and set `scrolling="no"` so the generated slide does not show browser scrollbars inside the slide viewport.
+- If HTML rendering fails, the UI must keep the `.pptx` download action visible and display a “preview unavailable, PPTX downloadable” state.
+- QuickLook HTML must pass a visual health gate before Agent05 reports preview success.
+- The first automated health gate must reject missing same-directory image/object/embed resources referenced by `Preview.html`, because those produce visible broken placeholders in the preview.
+- The health gate must treat `img src="*.pdf"` as browser-unrenderable until the backend converts that PDF asset to a browser-safe raster image and rewrites `Preview.html` to point at the converted asset.
+- The health gate must reject structurally blank QuickLook HTML that has neither slide nodes nor image-backed content.
+- If an existing cached `visual_preview` fails the health gate, Agent05 must invalidate and regenerate it once instead of serving the stale broken preview as success.
+- If regenerated output still fails the health gate, Agent05 must return the existing preview failure payload while keeping `.pptx` download available in the frontend.
+- Cropping and fit regressions that require real rendered pixels remain covered by release browser QA until a deterministic renderer-level pixel gate is introduced.
+
+## 2026-06-16 Phase Focus Contract
+
+The previous desktop split still mixed three different task stages at the same visual priority:
+
+1. Before generation: prompt and style/reference input.
+2. During/after generation: generated PPT inspection and extracted text.
+3. Later reuse: generated-history browsing.
+
+The corrected workbench must be stage-focused. It should not show the full input console, result preview, and history list as three equal first-screen surfaces.
+
+The stage model is:
+
+```text
+compose -> generating -> result -> history drawer -> result or compose
+```
+
+Rules:
+
+- `compose` is the primary state when there is no loaded result. It shows the prompt/reference/page controls as the main surface and only exposes history through a compact action.
+- `generating` keeps the input/progress as the main surface. It may show template candidates and progress, but it must not show stale result preview or history as competing content.
+- `result` is the primary state when a completed deck is loaded or restored. It shows the PPT preview and download as the main surface. Input controls move behind a clear `新建 PPT` / `修改输入` action instead of staying open beside the result.
+- `history` is an overlay/drawer state. It is entered from a compact history action and exits by selecting a file or closing the drawer. History must not be a permanent bottom strip in the main workbench.
+- The stage itself must be announced through region labels so tests and assistive technology can distinguish `PPT 生成输入`, `PPT 生成进度`, `PPT 检查结果`, and `历史记录`.
+
+## 2026-06-17 Narrow Stage State Contract
+
+The workbench has one product stage, even though desktop and narrow layouts present that stage differently. `workspaceFocus` and the narrow top-level tab must not become independent sources of truth.
+
+Rules:
+
+- In narrow layout, clicking the top `历史记录` action must show the `历史` tab as the visible surface.
+- In narrow layout, clicking `新建 PPT` must move the visible surface to the `生成` tab.
+- In narrow layout, clicking `查看结果` must move the visible surface to the `预览` tab.
+- Selecting a history record must load that deck, close history, and show the `预览` tab in narrow layout.
+- When generation starts, narrow layout must show the `生成` tab so progress is visible.
+- When generation completes, narrow layout must show the `预览` tab.
+- Desktop remains overlay-based: `历史记录` opens a drawer, and `新建 PPT` / `查看结果` switch between compose and result focus without changing an invisible tab state.
+
+History drawer controls:
+
+- Desktop full-history drawer must expose an explicit `关闭` button in the drawer header.
+- The compact history expansion control may be labeled `更多历史` only when it expands from a compact summary into a fuller list.
+- When a panel is already showing complete history, the control must not still read `更多历史`; it must either be omitted or use a closing label.
+
+## Single Slide Preview Contract
+
+QuickLook's `Preview.html` is a multi-page HTML document containing multiple `div.slide` nodes. It also contains CSS declarations such as `top:28`, `left:-20`, `width:960`, and `height:540` without `px` units. Modern browser layout treats those unitless values as invalid in normal CSS contexts, which can collapse absolute layout into ordinary text flow and visually mix slide contents.
+
+The Agent05 visual preview wrapper must therefore:
+
+- Normalize unitless QuickLook positional and size declarations to `px` before displaying slides.
+- Treat `.slide` as the page unit, not the entire `Preview.html` document.
+- Display exactly one slide at a time inside the 16:9 preview stage.
+- Mark every non-current slide `aria-hidden="true"` and the current slide `aria-hidden="false"` so the accessible DOM follows the single-slide visual model.
+- Provide compact previous/next/page-count controls when multiple slides exist.
+- Keep the displayed slide clipped to a 16:9 viewport. The preview frame must never scale the full multi-slide document as one giant page.
+- Keep the QuickLook iframe's layout viewport at the measured slide width/height before applying transform scaling. The wrapper must not use internal stage padding or flex shrink behavior that narrows the iframe viewport first, because that clips the right side of the slide while leaving outer whitespace.
+- Keep the `.pptx` download link visible even when preview rendering falls back.
+- Stamp the generated wrapper with a `ppt-maker-visual-preview-wrapper` version marker.
+- Rebuild stale or missing wrapper `index.html` files when either the `/visual-preview` API or the direct `/visual-preview/index.html` asset route is requested and a valid `Preview.html` already exists. Old history links must inherit wrapper fixes without requiring a new PPT generation.
+
+## Reference Upload Contract
+
+Reference upload is a compact input surface, while the prompt box remains the primary creative control.
+
+- The upload control accepts multiple `.pptx`, `.pdf`, `.png`, `.jpg`, and `.jpeg` files.
+- Selected files must show filename, semantic type, size, and available metadata such as pages, text character count, extracted palette, and extraction warnings.
+- Backend API coverage must include PDF and image references and reject unsupported files with typed error details.
+- Frontend upload failures must surface backend `detail` values, for example `unsupported_reference_type`, instead of only showing a generic failure message.
 
 ## History Contract
 
@@ -255,6 +367,76 @@ The template disclaimer must not occupy the primary bottom bar. It may appear on
 | Visual preview unavailable | preview failure state plus `质量门` tab note `渲染预览不可用` | `预览` tab |
 | History | bottom compact strip, full drawer/list | `历史` tab |
 
+## 2026-06-17 Text Extraction Disclosure Contract
+
+Text extraction is a diagnostic aid, not the primary completed result. The primary completed result remains the visual PPT preview and download action.
+
+Rules:
+
+- The text extraction panel is collapsed by default.
+- The text extraction entry point appears only when at least one slide has a meaningful extracted text fragment.
+- If the machine extraction payload has slides but no meaningful text fragments, show a compact non-actionable status such as `未提取到可读文本` instead of an expandable empty panel.
+- Opening text extraction must first show a bounded summary: slide count, slide number, title or first meaningful text, role when available, and extracted-fragment count.
+- Full per-slide extracted text must stay behind a second explicit action such as `查看完整文本`.
+- Long OCR/text fragments must not appear in the first expanded text panel state.
+- The full text view may use its own scroll area, but it must not change the 16:9 preview frame size or create page-level overflow.
+
+## 2026-06-17 Result Density Contract
+
+The completed-result stage is an inspection surface. It must allocate available height to the 16:9 PPT canvas before secondary diagnostics.
+
+Rules:
+
+- The completed-result panel uses compact padding and gaps.
+- The preview frame remains the dominant row and should receive all height not needed by the header and meaningful diagnostics.
+- Empty diagnostics do not reserve a row.
+- The download action remains visible in the header without forcing the preview canvas smaller than necessary.
+
+## 2026-06-18 Max Preview Result Contract
+
+The completed result page must be canvas-first. The generated PPT is the deliverable, so the result state must allocate the largest possible visible area to the 16:9 slide preview before showing secondary inspection details.
+
+Rules:
+
+- The result stage exposes `PPT 成品最大预览` as the primary region.
+- The result preview must not be wrapped by a decorative card with extra padding, border, or panel shadow.
+- Result actions belong in the compact top action rail: `新建 PPT`, `历史记录`, and `下载 .pptx`.
+- The main preview row uses `minmax(0, 1fr)` and centers the 16:9 stage at the largest size that fits both available width and height.
+- Text extraction, constraint verification, and reference-enhancement metadata are diagnostics. They render in a compact bottom rail and stay collapsed until the user opens the relevant item.
+- Empty text extraction shows only a compact status and must not create a large empty panel.
+- The QuickLook iframe still uses `scrolling="no"` and remains clipped by the 16:9 frame.
+
+## 2026-06-17 Deterministic Constraint Verification Contract
+
+Agent05 must not rely on an LLM statement to decide whether generated content obeyed user hard constraints. When the frontend has both the submitted prompt and machine-extracted slide text, it may run deterministic checks and show the result beside the completed preview.
+
+Initial scope:
+
+- Detect explicit page-level backup-only constraints such as `第 4/5 页只放备用`, `第4、5页只放"备用"`, or equivalent punctuation variants.
+- For each constrained slide, pass only when the extracted title/bullets/text fragments are non-empty and every meaningful fragment equals `备用`.
+- Fail when the constrained slide is missing or contains any non-`备用` text.
+- Show a compact `约束核验` panel only when at least one deterministic constraint was detected.
+- Mark undetected or ambiguous constraints as outside the deterministic checker rather than guessing.
+
+Non-goals for this iteration:
+
+- Do not ask an LLM to grade generated PPT quality.
+- Do not implement broad semantic matching for arbitrary instructions.
+- Do not block PPT download when constraints fail; the panel should make the issue visible and actionable.
+
+## 2026-06-17 Compose Primary Action Visibility Contract
+
+The compose state must always expose the primary generation action in the visible first-screen control area. Users must not have to scroll, resize, or collapse reference inputs to find the start button after entering a prompt and uploading reference files.
+
+Rules:
+
+- `Generate PPT` / `Cancel` and the page-count control must sit above the prompt textarea in the generation console.
+- The prompt textarea may consume remaining height, but it must not push the primary action below a clipped `overflow-hidden` boundary.
+- Reference upload metadata may grow inside its bounded queue, but it must not hide the primary action.
+- The header action group may wrap on narrow widths, but the start button must remain before the prompt in DOM and visual order.
+- Runtime decision surfaces such as template candidates, progress, quality errors, and backend-unavailable notices must sit above the prompt textarea. The prompt may be edited while waiting, but it must not hide the next required user action.
+- During `selecting_template`, the visible workbench must show `模板选择` and selectable template cards without requiring scroll.
+
 ## Accessibility and Interaction
 
 - Column split must not trap keyboard focus.
@@ -274,6 +456,14 @@ Desktop:
 - When multiple files are selected, the UI shows each file name and type without hiding the prompt textarea.
 - The desktop history strip is outside the generation console.
 - Opening `更多历史` on desktop uses an overlay/floating full-history list and must not resize the main preview row.
+
+### Publishing Shell Contract
+
+- The `/agent05` web publishing shell owns navigation, a compact product header, the embedded PPT Maker iframe, and the bottom model/capability configuration bar.
+- The bottom bar must render `模型配置` and the configured Agent05 model/capability items.
+- The bottom bar must not render the template commercial-use disclaimer.
+- The shell must not expose backend URLs, frontend mount paths, or routing debug text.
+- Shell changes must stay scoped to Agent05 and must not change other agent routes or shared framework layout.
 - The desktop history strip owns a high stacking context; its full-history overlay must render above the recent-history strip and adjacent preview/generation layers.
 - The completed visual preview renders inside a standard 16:9 PPT stage and must not introduce vertical page scroll.
 - On a 1366px-class viewport with an outer platform sidebar, the PPT Maker console compresses before the preview becomes unusable.
@@ -304,7 +494,7 @@ Regression:
 - Does not render backend URL or frontend mount path in release header.
 - Renders exactly one template disclaimer.
 - Shows latest history records in a first-screen history summary.
-- Mode B still shows `页数保留源文件`.
+- Mode B does not show a page-count selector; source deck count remains an internal edit-flow constraint.
 - Reference-enhanced completion still renders the compact enhancement summary.
 - Visual preview success renders the iframe and download link.
 - Visual preview failure keeps the download link visible.

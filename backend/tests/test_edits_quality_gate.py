@@ -129,7 +129,7 @@ def write_script(path: Path, body: str) -> None:
     path.write_text(body, encoding="utf-8")
 
 
-def test_subprocess_runner_rejects_invalid_edits_after_build_succeeds(tmp_path: Path):
+def test_subprocess_runner_rejects_invalid_edits_before_build(tmp_path: Path):
     from backend.app.config import AppSettings
     from backend.app.services.generation import GenerationContext, GenerationError, GenerationRequest, SubprocessGenerationRunner
 
@@ -140,6 +140,7 @@ def test_subprocess_runner_rejects_invalid_edits_after_build_succeeds(tmp_path: 
     (template_dir / "template.pptx").write_bytes(b"template")
     (template_dir / "detail.json").write_text('{"name":"Minimal Business"}', encoding="utf-8")
     (template_dir / "intro.md").write_text("Minimal business template intro", encoding="utf-8")
+    build_marker = tmp_path / "build-called"
     analyzer_marker = tmp_path / "analyzer-called"
 
     write_script(
@@ -152,7 +153,7 @@ def test_subprocess_runner_rejects_invalid_edits_after_build_succeeds(tmp_path: 
     )
     write_script(
         gorden_root / "scripts" / "build_pptx.py",
-        "import pathlib, sys\npathlib.Path(sys.argv[3]).write_bytes(b'pptx')\n",
+        f"import pathlib, sys\npathlib.Path({str(build_marker)!r}).write_text('called', encoding='utf-8')\npathlib.Path(sys.argv[3]).write_bytes(b'pptx')\n",
     )
     write_script(
         tmp_path / "opencode",
@@ -189,4 +190,5 @@ def test_subprocess_runner_rejects_invalid_edits_after_build_succeeds(tmp_path: 
         asyncio.run(execute())
 
     assert "new_text matches placeholder pattern: 项目名称" in str(exc_info.value)
+    assert not build_marker.exists()
     assert not analyzer_marker.exists()
