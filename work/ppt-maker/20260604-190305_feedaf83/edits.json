@@ -1,0 +1,75 @@
+{
+  "selected_slides": [1, 2, 3],
+  "edits": [
+    {
+      "slide": 1,
+      "address": { "shape_id": 3, "paragraph": 0, "run": 0 },
+      "new_text": "公司组织架构图"
+    },
+    {
+      "slide": 1,
+      "address": { "shape_id": 3, "paragraph": 1, "run": 0 },
+      "new_text": "商务风格 · 层级清晰 · 高效管理"
+    },
+    {
+      "slide": 1,
+      "address": { "shape_id": 3, "paragraph": 2, "run": 0 },
+      "new_text": "2026年度组织规划"
+    },
+    {
+      "slide": 2,
+      "address": { "shape_id": 3, "paragraph": 0, "run": 0 },
+      "new_text": "管理架构"
+    },
+    {
+      "slide": 2,
+      "address": { "shape_id": 3, "paragraph": 0, "run": 1 },
+      "new_text": "核心管理层 · 职责体系"
+    },
+    {
+      "slide": 3,
+      "address": { "shape_id": 3, "paragraph": 0, "run": 0 },
+      "new_text": "核心管理团队"
+    },
+    {
+      "slide": 3,
+      "address": { "shape_id": 5, "paragraph": 0, "run": 0 },
+      "new_text": "总经理"
+    },
+    {
+      "slide": 3,
+      "address": { "shape_id": 6, "paragraph": 1, "run": 0 },
+      "new_text": "• 全面负责公司整体战略规划与经营目标制定"
+    },
+    {
+      "slide": 3,
+      "address": { "shape_id": 6, "paragraph": 2, "run": 0 },
+      "new_text": "• 统筹协调各部门资源与跨部门协作机制"
+    },
+    {
+      "slide": 3,
+      "address": { "shape_id": 6, "paragraph": 3, "run": 0 },
+      "new_text": "• 主导核心业务决策与重大项目管理"
+    },
+    {
+      "slide": 3,
+      "address": { "shape_id": 8, "paragraph": 0, "run": 0 },
+      "new_text": "下属部门"
+    },
+    {
+      "slide": 3,
+      "address": { "shape_id": 9, "paragraph": 1, "run": 0 },
+      "new_text": "• 市场部 — 品牌推广、市场调研与商务拓展"
+    },
+    {
+      "slide": 3,
+      "address": { "shape_id": 9, "paragraph": 2, "run": 0 },
+      "new_text": "• 技术部 — 产品研发、技术支持与创新驱动"
+    },
+    {
+      "slide": 3,
+      "address": { "shape_id": 9, "paragraph": 3, "run": 0 },
+      "new_text": "• 运营部 — 流程优化、团队建设与绩效管理"
+    }
+  ]
+}

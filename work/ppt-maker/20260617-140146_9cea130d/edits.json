@@ -1,0 +1,646 @@
+{
+  "edits": [
+    {
+      "slide": 5,
+      "slot_id": "s5_sh53_p0r0",
+      "new_text": "组织现状"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh53_p0r2",
+      "new_text": "JLR 架构概览"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh56_p0r0",
+      "new_text": "BU 架构"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh57_p0r0",
+      "new_text": "三大BU：整车研发420人、智能驾驶180人、数字座舱230人，管理层级4层，管理幅度1:7"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8192_p0r0",
+      "new_text": "岗位分布"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8193_p0r0",
+      "new_text": "研发岗62%，产品12%，设计8%，测试10%，运营5%，管理3%；硕博学历55%"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8197_p0r0",
+      "new_text": "区域布局"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8198_p0r0",
+      "new_text": "上海总部820人，北京210人，深圳智驾150人，慕尼黑前沿实验室45人，合计千余人"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8201_p0r0",
+      "new_text": "层级结构"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8202_p0r0",
+      "new_text": "VP以上12人、总监35人、经理82人、骨干245人、初级180人、外包171人"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8205_p0r0",
+      "new_text": "汇报关系"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8206_p0r0",
+      "new_text": "CEO→CTO→3位BUHead→12位总监→82位经理，审批≤4级，扁平度行业前25%"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8209_p0r0",
+      "new_text": "协作效率"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8210_p0r0",
+      "new_text": "跨部门项目68%，周会3.2次/人，异步工具采用率42%，信息传递效率评分7.3"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8217_p0r0",
+      "new_text": "规模架构"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8218_p0r0",
+      "new_text": "人才分布"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8219_p0r0",
+      "new_text": "协作效率"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2094_p0r0",
+      "new_text": "组织方案"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2094_p0r2",
+      "new_text": "架构升级建议"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2109_p0r0",
+      "new_text": "01.融合式架构"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2110_p0r0",
+      "new_text": "打破传统职能墙，组建8个端到端产品战队，决策权下沉至战队负责人，端到端交付周期预计缩短40%"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2113_p0r0",
+      "new_text": "02.扁平化升级"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2114_p0r0",
+      "new_text": "管理层级从4层压缩至3层，移除副总监层级，VP管理幅度提升至1:9，决策效率提升30%"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2117_p0r0",
+      "new_text": "03.人才梯队"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2118_p0r0",
+      "new_text": "铺设"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2118_p0r2",
+      "new_text": "双轨晋升通道："
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2118_p0r4",
+      "new_text": "管理线M1-M6与技术线T1-T8并行；"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2118_p0r5",
+      "new_text": "资深专家薪酬可达副总监级，"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2118_p0r6",
+      "new_text": "保留率"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2118_p0r7",
+      "new_text": "提升"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2118_p0r9",
+      "new_text": "至92%"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2227_p0r0",
+      "new_text": "06.技术中台"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2228_p0r0",
+      "new_text": "构建统一技术中台，整合数据平台与AI能力及DevOps工具链，减少重复造轮50%以上，交付周期从4周缩至1周"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2229_p0r0",
+      "new_text": "05.区域协同"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2230_p0r0",
+      "new_text": "建立“三中心”协作模型，"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2230_p0r1",
+      "new_text": "上"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2230_p0r3",
+      "new_text": "海/北京/慕尼黑三地每日站会同步，"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2230_p0r5",
+      "new_text": "核心文档统一知识库共享，"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2230_p0r7",
+      "new_text": "异步协作工具覆盖率目标提升至85%"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2231_p0r0",
+      "new_text": "04.文化重塑"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2232_p0r0",
+      "new_text": "推行工程师文化三年计划：代码Review全覆盖、技术创新日双月一次、跨部门轮岗，目标NPS从45提升至70"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2245_p0r0",
+      "new_text": "架构"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2246_p0r0",
+      "new_text": "梯队"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2247_p0r0",
+      "new_text": "中台"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2248_p0r0",
+      "new_text": "协同"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2249_p0r0",
+      "new_text": "文化"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2250_p0r0",
+      "new_text": "赋能"
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh6_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh6_p0r2",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh28_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh30_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh31_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh32_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh34_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh50_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh51_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh52_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh52_p1r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh53_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh54_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh55_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh56_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh57_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh58_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh59_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh60_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh61_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh62_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh63_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 6,
+      "slot_id": "s6_sh6144_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh4_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh4_p0r2",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh59_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh60_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh61_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh62_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh63_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1024_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1025_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1027_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1028_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1029_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1030_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1031_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1032_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1033_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1034_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1035_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1066_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh42_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh43_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh43_p1r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh45_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh46_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh32_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh35_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh35_p1r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh36_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh37_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh38_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh63_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh64_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh64_p1r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh48_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh49_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh49_p1r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh65_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh66_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh67_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh50_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh51_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh52_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh94_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh95_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh96_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh53_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh53_p1r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh54_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh54_p1r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh55_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh55_p1r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh56_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh56_p1r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh57_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh57_p1r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh16_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 1,
+      "slot_id": "s1_sh16_p0r2",
+      "new_text": ""
+    }
+  ],
+  "selected_slides": [
+    5,
+    10,
+    6,
+    9,
+    1
+  ]
+}

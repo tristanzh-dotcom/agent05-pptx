@@ -1,0 +1,496 @@
+{
+  "schema": "ppt-maker-machine-extracted/v1",
+  "source_pptx": "/Users/tristanzh/agent/PPT-maker/work/ppt-maker/20260617-110143_9e64ce62/output.pptx",
+  "slide_count": 5,
+  "slides": [
+    {
+      "slide_number": 1,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 46,
+          "paragraph": 0,
+          "run": 0,
+          "text": "JLR org status today",
+          "left": 4090433,
+          "top": 2803160,
+          "width": 4722185,
+          "height": 1754326,
+          "font_size_pt": 54.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 46,
+          "paragraph": 1,
+          "run": 0,
+          "text": "JLR 组织现状",
+          "left": 4090433,
+          "top": 2803160,
+          "width": 4722185,
+          "height": 1754326,
+          "font_size_pt": 54.0,
+          "bold": false,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    },
+    {
+      "slide_number": 2,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 12,
+          "paragraph": 0,
+          "run": 0,
+          "text": "01",
+          "left": 1762773,
+          "top": 2969450,
+          "width": 726481,
+          "height": 646331,
+          "font_size_pt": 36.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 16,
+          "paragraph": 0,
+          "run": 0,
+          "text": "02",
+          "left": 1754227,
+          "top": 4783072,
+          "width": 726481,
+          "height": 646331,
+          "font_size_pt": 36.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 20,
+          "paragraph": 0,
+          "run": 0,
+          "text": "03",
+          "left": 6686999,
+          "top": 2969450,
+          "width": 726481,
+          "height": 646331,
+          "font_size_pt": 36.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 22,
+          "paragraph": 0,
+          "run": 0,
+          "text": "04",
+          "left": 6694933,
+          "top": 4783072,
+          "width": 726481,
+          "height": 646331,
+          "font_size_pt": 36.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 23,
+          "paragraph": 0,
+          "run": 0,
+          "text": "组织架构",
+          "left": 2628011,
+          "top": 2815562,
+          "width": 2646878,
+          "height": 954107,
+          "font_size_pt": 32.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 23,
+          "paragraph": 1,
+          "run": 0,
+          "text": "Structure",
+          "left": 2628011,
+          "top": 2815562,
+          "width": 2646878,
+          "height": 954107,
+          "font_size_pt": 24.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 24,
+          "paragraph": 0,
+          "run": 0,
+          "text": "当前状态",
+          "left": 2628011,
+          "top": 4675350,
+          "width": 3141437,
+          "height": 861774,
+          "font_size_pt": 32.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 24,
+          "paragraph": 1,
+          "run": 0,
+          "text": "Status",
+          "left": 2628011,
+          "top": 4675350,
+          "width": 3141437,
+          "height": 861774,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 25,
+          "paragraph": 0,
+          "run": 0,
+          "text": "关键变化",
+          "left": 7614625,
+          "top": 2815562,
+          "width": 2959465,
+          "height": 954107,
+          "font_size_pt": 32.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 25,
+          "paragraph": 1,
+          "run": 0,
+          "text": "Changes",
+          "left": 7614625,
+          "top": 2815562,
+          "width": 2959465,
+          "height": 954107,
+          "font_size_pt": 24.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 26,
+          "paragraph": 0,
+          "run": 0,
+          "text": "未来规划",
+          "left": 7614625,
+          "top": 4629184,
+          "width": 2646878,
+          "height": 954107,
+          "font_size_pt": 32.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 26,
+          "paragraph": 1,
+          "run": 0,
+          "text": "Planning",
+          "left": 7614625,
+          "top": 4629184,
+          "width": 2646878,
+          "height": 954107,
+          "font_size_pt": 24.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 27,
+          "paragraph": 0,
+          "run": 0,
+          "text": "组织提案",
+          "left": 967481,
+          "top": 771826,
+          "width": 4118862,
+          "height": 1015663,
+          "font_size_pt": 60.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 27,
+          "paragraph": 0,
+          "run": 1,
+          "text": "Org Proposal",
+          "left": 967481,
+          "top": 771826,
+          "width": 4118862,
+          "height": 1015663,
+          "font_size_pt": 36.0,
+          "bold": false,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    },
+    {
+      "slide_number": 3,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 52,
+          "paragraph": 0,
+          "run": 0,
+          "text": "01.",
+          "left": 820118,
+          "top": 696993,
+          "width": 5253554,
+          "height": 584775,
+          "font_size_pt": 32.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 52,
+          "paragraph": 0,
+          "run": 1,
+          "text": "JLR组织现状 ",
+          "left": 820118,
+          "top": 696993,
+          "width": 5253554,
+          "height": 584775,
+          "font_size_pt": 32.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 52,
+          "paragraph": 0,
+          "run": 2,
+          "text": "Structure",
+          "left": 820118,
+          "top": 696993,
+          "width": 5253554,
+          "height": 584775,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    },
+    {
+      "slide_number": 4,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 24,
+          "paragraph": 0,
+          "run": 0,
+          "text": "02.",
+          "left": 809608,
+          "top": 716508,
+          "width": 5786649,
+          "height": 584775,
+          "font_size_pt": 32.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 24,
+          "paragraph": 0,
+          "run": 1,
+          "text": "当前状态 ",
+          "left": 809608,
+          "top": 716508,
+          "width": 5786649,
+          "height": 584775,
+          "font_size_pt": 32.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 24,
+          "paragraph": 0,
+          "run": 2,
+          "text": "Status",
+          "left": 809608,
+          "top": 716508,
+          "width": 5786649,
+          "height": 584775,
+          "font_size_pt": 16.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 4,
+          "paragraph": 0,
+          "run": 0,
+          "text": "02",
+          "left": 6623249,
+          "top": 2411041,
+          "width": 1059149,
+          "height": 1053464,
+          "font_size_pt": 28.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 5,
+          "paragraph": 0,
+          "run": 0,
+          "text": "04",
+          "left": 6623249,
+          "top": 4608916,
+          "width": 1059149,
+          "height": 1057253,
+          "font_size_pt": 28.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 6,
+          "paragraph": 0,
+          "run": 0,
+          "text": "03",
+          "left": 4423481,
+          "top": 4608916,
+          "width": 1055359,
+          "height": 1057253,
+          "font_size_pt": 28.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 7,
+          "paragraph": 0,
+          "run": 0,
+          "text": "01",
+          "left": 4423481,
+          "top": 2411041,
+          "width": 1055359,
+          "height": 1053464,
+          "font_size_pt": 28.0,
+          "bold": false,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    },
+    {
+      "slide_number": 5,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 3,
+          "paragraph": 0,
+          "run": 0,
+          "text": "03.",
+          "left": 809608,
+          "top": 716508,
+          "width": 5426487,
+          "height": 584775,
+          "font_size_pt": 32.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 3,
+          "paragraph": 0,
+          "run": 1,
+          "text": "关键变化 ",
+          "left": 809608,
+          "top": 716508,
+          "width": 5426487,
+          "height": 584775,
+          "font_size_pt": 32.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 3,
+          "paragraph": 0,
+          "run": 2,
+          "text": "Changes",
+          "left": 809608,
+          "top": 716508,
+          "width": 5426487,
+          "height": 584775,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 8,
+          "paragraph": 0,
+          "run": 0,
+          "text": "1",
+          "left": 1704200,
+          "top": 2582158,
+          "width": 577377,
+          "height": 535430,
+          "font_size_pt": 35.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 9,
+          "paragraph": 0,
+          "run": 0,
+          "text": "2",
+          "left": 7000091,
+          "top": 2582158,
+          "width": 577377,
+          "height": 535430,
+          "font_size_pt": 35.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 10,
+          "paragraph": 0,
+          "run": 0,
+          "text": "3",
+          "left": 1704200,
+          "top": 5040686,
+          "width": 577377,
+          "height": 535430,
+          "font_size_pt": 35.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 11,
+          "paragraph": 0,
+          "run": 0,
+          "text": "4",
+          "left": 7000091,
+          "top": 5040686,
+          "width": 577377,
+          "height": 535430,
+          "font_size_pt": 35.0,
+          "bold": false,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    }
+  ]
+}

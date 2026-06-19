@@ -1,0 +1,170 @@
+{
+  "selected_slides": [2, 8, 11, 19, 29],
+  "edits": [
+    {
+      "slide": 2,
+      "slot_id": "s2_sh4_p0r0",
+      "new_text": "自主新势力品牌 2026年YTD销量分析"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s2_sh36_p0r0",
+      "new_text": "理想"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s2_sh42_p0r0",
+      "new_text": "2026年1-5月理想累计交付22.8万辆，L9/L8/L7持续热销，纯电MEGA稳步爬坡，月销站稳5万台量级。"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s2_sh47_p0r0",
+      "new_text": "蔚来"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s2_sh48_p0r0",
+      "new_text": "2026年1-5月蔚来累计交付8.6万辆，ET9旗舰上市拉动品牌向上，换电站突破2800座，乐道贡献增量。"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s2_sh53_p0r0",
+      "new_text": "小鹏"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s2_sh54_p0r0",
+      "new_text": "2026年1-5月小鹏累计交付7.2万辆，XNGP城区智驾覆盖超300城，MONA品牌开启第二增长曲线。"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s2_sh59_p0r0",
+      "new_text": "小米"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s2_sh60_p0r0",
+      "new_text": "小米SU7 2026年1-5月交付突破10万辆，SU7 Ultra版订单占比超30%，全年冲刺30万辆交付目标。"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s2_sh65_p0r0",
+      "new_text": "问界"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s2_sh66_p0r0",
+      "new_text": "2026年1-5月问界全系交付15.2万辆，M9/M7领跑高端SUV市场，智驾渗透率超80%领跑行业。"
+    },
+    {
+      "slide": 8,
+      "slot_id": "s8_sh2_p0r0",
+      "new_text": "合资品牌 2026年销量分析"
+    },
+    {
+      "slide": 8,
+      "slot_id": "s8_sh7_p0r0",
+      "new_text": "大众"
+    },
+    {
+      "slide": 8,
+      "slot_id": "s8_sh8_p0r0",
+      "new_text": "2026年1-5月一汽大众+上汽大众合计约78万辆，ID.纯电占比升至12%，燃油车基盘承压持续扩大。"
+    },
+    {
+      "slide": 8,
+      "slot_id": "s8_sh9_p0r0",
+      "new_text": "丰田"
+    },
+    {
+      "slide": 8,
+      "slot_id": "s8_sh10_p0r0",
+      "new_text": "2026年1-5月广丰+一丰合计约62万辆，双擎混动占比过半，bZ系列纯电表现尚不及市场预期。"
+    },
+    {
+      "slide": 8,
+      "slot_id": "s8_sh11_p0r0",
+      "new_text": "本田"
+    },
+    {
+      "slide": 8,
+      "slot_id": "s8_sh12_p0r0",
+      "new_text": "2026年1-5月东本+广本合计约42万辆，雅阁/CR-V仍是支柱，电动化转型速度显著落后自主品牌。"
+    },
+    {
+      "slide": 8,
+      "slot_id": "s8_sh13_p0r0",
+      "new_text": "通用"
+    },
+    {
+      "slide": 8,
+      "slot_id": "s8_sh14_p0r0",
+      "new_text": "2026年1-5月上汽通用合计约32万辆，GL8/君威主力下滑，奥特能平台电动车尚未形成规模。"
+    },
+    {
+      "slide": 11,
+      "slot_id": "s11_sh2_p0r0",
+      "new_text": "Tesla 全球表现：股价·技术·交付"
+    },
+    {
+      "slide": 11,
+      "slot_id": "s11_sh19_p0r0",
+      "new_text": "2026年Tesla股价约340美元，市值1.1万亿美元，受FSD进展与全球EV需求波动双重影响，Q2以来反弹超20%。"
+    },
+    {
+      "slide": 11,
+      "slot_id": "s11_sh20_p0r0",
+      "new_text": "股价表现"
+    },
+    {
+      "slide": 11,
+      "slot_id": "s11_sh21_p0r0",
+      "new_text": "FSD V13端到端架构已推送至全球，干预里程提升至200+英里，中国版合作百度加速合规化进程。"
+    },
+    {
+      "slide": 11,
+      "slot_id": "s11_sh22_p0r0",
+      "new_text": "FSD自动驾驶"
+    },
+    {
+      "slide": 11,
+      "slot_id": "s11_sh23_p0r0",
+      "new_text": "4680电池年产能突破20GWh，Cybertruck搭载结构电池包，电芯成本较2170降低约25%，引领下一代标准化。"
+    },
+    {
+      "slide": 11,
+      "slot_id": "s11_sh24_p0r0",
+      "new_text": "4680电池技术"
+    },
+    {
+      "slide": 11,
+      "slot_id": "s11_sh26_p0r0",
+      "new_text": "上海工厂年化产能超100万辆，柏林/德州工厂持续爬坡，Cybertruck全球订单超200万，Q1交付约42万辆。"
+    },
+    {
+      "slide": 11,
+      "slot_id": "s11_sh27_p0r0",
+      "new_text": "全球交付表现"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh3_p0r0",
+      "new_text": "备用"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh4_p0r0",
+      "new_text": "BACKUP"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh3_p0r0",
+      "new_text": "备用"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh4_p0r0",
+      "new_text": "BACKUP"
+    }
+  ]
+}

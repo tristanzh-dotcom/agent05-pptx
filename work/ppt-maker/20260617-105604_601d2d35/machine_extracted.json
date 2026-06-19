@@ -1,0 +1,353 @@
+{
+  "schema": "ppt-maker-machine-extracted/v1",
+  "source_pptx": "/Users/tristanzh/agent/PPT-maker/work/ppt-maker/20260617-105604_601d2d35/output.pptx",
+  "slide_count": 5,
+  "slides": [
+    {
+      "slide_number": 1,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 3,
+          "paragraph": 0,
+          "run": 0,
+          "text": "01",
+          "left": 3592830,
+          "top": 2397125,
+          "width": 1446530,
+          "height": 895985,
+          "font_size_pt": 60.0,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 4,
+          "paragraph": 0,
+          "run": 0,
+          "text": "JLR Status",
+          "left": 4915535,
+          "top": 2484120,
+          "width": 4041140,
+          "height": 617220,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 5,
+          "paragraph": 0,
+          "run": 0,
+          "text": "JLR ORG STATUS TODAY",
+          "left": 4904105,
+          "top": 3237230,
+          "width": 4999990,
+          "height": 368300,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    },
+    {
+      "slide_number": 2,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 3,
+          "paragraph": 0,
+          "run": 0,
+          "text": "02",
+          "left": 3592830,
+          "top": 2397125,
+          "width": 1446530,
+          "height": 895985,
+          "font_size_pt": 60.0,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 4,
+          "paragraph": 0,
+          "run": 0,
+          "text": "Proposal",
+          "left": 4915535,
+          "top": 2484120,
+          "width": 4041140,
+          "height": 617220,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 5,
+          "paragraph": 0,
+          "run": 0,
+          "text": "ORG PROPOSAL",
+          "left": 4904105,
+          "top": 3237230,
+          "width": 4999990,
+          "height": 368300,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    },
+    {
+      "slide_number": 3,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 3,
+          "paragraph": 0,
+          "run": 0,
+          "text": "03",
+          "left": 3592830,
+          "top": 2397125,
+          "width": 1446530,
+          "height": 895985,
+          "font_size_pt": 60.0,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 4,
+          "paragraph": 0,
+          "run": 0,
+          "text": " ",
+          "left": 4915535,
+          "top": 2484120,
+          "width": 4041140,
+          "height": 617220,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 5,
+          "paragraph": 0,
+          "run": 0,
+          "text": " ",
+          "left": 4904105,
+          "top": 3237230,
+          "width": 4999990,
+          "height": 368300,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    },
+    {
+      "slide_number": 4,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 3,
+          "paragraph": 0,
+          "run": 0,
+          "text": "04",
+          "left": 3592830,
+          "top": 2397125,
+          "width": 1446530,
+          "height": 895985,
+          "font_size_pt": 60.0,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 4,
+          "paragraph": 0,
+          "run": 0,
+          "text": " ",
+          "left": 4915535,
+          "top": 2484120,
+          "width": 4041140,
+          "height": 617220,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 5,
+          "paragraph": 0,
+          "run": 0,
+          "text": " ",
+          "left": 4904105,
+          "top": 3237230,
+          "width": 4999990,
+          "height": 368300,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    },
+    {
+      "slide_number": 5,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 6,
+          "paragraph": 0,
+          "run": 0,
+          "text": " ",
+          "left": 711835,
+          "top": 584200,
+          "width": 8640445,
+          "height": 547370,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 33,
+          "paragraph": 0,
+          "run": 0,
+          "text": " ",
+          "left": 8392533,
+          "top": 2894953,
+          "width": 1285240,
+          "height": 368300,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 48,
+          "paragraph": 0,
+          "run": 0,
+          "text": " ",
+          "left": 9851763,
+          "top": 5032363,
+          "width": 1285240,
+          "height": 368300,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 57,
+          "paragraph": 0,
+          "run": 0,
+          "text": " ",
+          "left": 6899013,
+          "top": 5023473,
+          "width": 1285240,
+          "height": 368300,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 68,
+          "paragraph": 0,
+          "run": 0,
+          "text": " ",
+          "left": 1057910,
+          "top": 1668780,
+          "width": 4350385,
+          "height": 409575,
+          "font_size_pt": 16.9,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 69,
+          "paragraph": 0,
+          "run": 0,
+          "text": " ",
+          "left": 1058170,
+          "top": 2129969,
+          "width": 4828324,
+          "height": 519430,
+          "font_size_pt": 11.3,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 78,
+          "paragraph": 0,
+          "run": 0,
+          "text": " ",
+          "left": 1057910,
+          "top": 3321685,
+          "width": 4147185,
+          "height": 409575,
+          "font_size_pt": 16.9,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 79,
+          "paragraph": 0,
+          "run": 0,
+          "text": " ",
+          "left": 1058170,
+          "top": 3782785,
+          "width": 4828324,
+          "height": 519430,
+          "font_size_pt": 11.3,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 81,
+          "paragraph": 0,
+          "run": 0,
+          "text": " ",
+          "left": 1057910,
+          "top": 4996180,
+          "width": 4351020,
+          "height": 409575,
+          "font_size_pt": 16.9,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 82,
+          "paragraph": 0,
+          "run": 0,
+          "text": " ",
+          "left": 1058170,
+          "top": 5457686,
+          "width": 4828324,
+          "height": 519430,
+          "font_size_pt": 11.3,
+          "bold": false,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    }
+  ]
+}

@@ -1,0 +1,436 @@
+{
+  "selected_slides": [
+    5,
+    12,
+    29,
+    19,
+    18
+  ],
+  "edits": [
+    {
+      "slide": 5,
+      "slot_id": "s5_sh53_p0r0",
+      "new_text": "JLR Org Status"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh53_p0r2",
+      "new_text": "Today"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh56_p0r0",
+      "new_text": "Developer"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8192_p0r0",
+      "new_text": "Product"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8197_p0r0",
+      "new_text": "Design"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8201_p0r0",
+      "new_text": "Marketing"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8205_p0r0",
+      "new_text": "Sales"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8209_p0r0",
+      "new_text": "Operation"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh57_p0r0",
+      "new_text": "Core platform complete, 12 services live. Team at 85% capacity. Q3 migration on track."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8193_p0r0",
+      "new_text": "Orbit v2.3 shipping on schedule. User adoption 62% across regions. Q3 roadmap approved."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8198_p0r0",
+      "new_text": "Design system v1.7 released. NPS +12pts since last quarter. 4 new families added."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8202_p0r0",
+      "new_text": "Brand awareness up 18% YoY. Campaign ROI 4.3x avg. 3 major events planned Q3."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8206_p0r0",
+      "new_text": "Q2 pipeline $24M, up 31% vs plan. 7 enterprise deals in negotiation. Ratio rising."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8210_p0r0",
+      "new_text": "All regions above plan. Support SLA 97%. 3 new hubs opening next month."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8217_p0r0",
+      "new_text": "Developer"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8218_p0r0",
+      "new_text": "PM+Design"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8219_p0r0",
+      "new_text": "Ops & GTM"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh58_p0r0",
+      "new_text": "Org Proposal"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh58_p0r2",
+      "new_text": "Target State"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh23_p0r0",
+      "new_text": "Goal"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh61_p0r0",
+      "new_text": "Unified model reduces handoff friction, speeds delivery."
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh25_p0r0",
+      "new_text": "Unified P&D"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh24_p0r0",
+      "new_text": "PMs in squads share OKRs and release cadence for end-to-end ownership."
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh27_p0r0",
+      "new_text": "Enablement"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh26_p0r0",
+      "new_text": "Platform handles CI/CD, observability, security; squads focus on features."
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh29_p0r0",
+      "new_text": "Ownership"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh28_p0r0",
+      "new_text": "Each squad owns a domain with clear APIs, SLAs, and reduced ambiguity."
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh37_p0r0",
+      "new_text": "Growth"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh36_p0r0",
+      "new_text": "IC and mgmt tracks with promotion criteria defined at each level."
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh39_p0r0",
+      "new_text": "Cross-team Sync"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh38_p0r0",
+      "new_text": "Weekly reviews and monthly demos keep squads aligned without heavy overhead."
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh41_p0r0",
+      "new_text": "Measurement"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh40_p0r0",
+      "new_text": "Squads track 3 leading indicators plus one business outcome each quarter."
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh43_p0r0",
+      "new_text": "Design Q3 26"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh4_p0r0",
+      "new_text": "Reserved"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh4_p0r2",
+      "new_text": "Coming Soon"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh13_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh14_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh15_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh22_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh23_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh24_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh27_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh28_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh29_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh33_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh34_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh56_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh65_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh23_p0r0",
+      "new_text": "Reserved"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh23_p0r2",
+      "new_text": "Coming Soon"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh11_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh13_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh15_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh25_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh26_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh26_p1r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh29_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh32_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh35_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh36_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh37_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh38_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh39_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh40_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh41_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh4_p0r0",
+      "new_text": "Reserved"
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh4_p0r2",
+      "new_text": "Coming Soon"
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh15_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh16_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh20_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh22_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh23_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh27_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh29_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh30_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh34_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh36_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh37_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh41_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh43_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh48_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh49_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh50_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh51_p0r0",
+      "new_text": ""
+    }
+  ]
+}

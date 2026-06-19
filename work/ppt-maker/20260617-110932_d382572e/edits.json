@@ -1,0 +1,447 @@
+{
+  "template_slug": "report-massive-models",
+  "selected_slides": [
+    5,
+    21,
+    12,
+    24,
+    29
+  ],
+  "edits": [
+    {
+      "slide": 5,
+      "slot_id": "s5_sh53_p0r0",
+      "new_text": "JLR Status"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh53_p0r2",
+      "new_text": "Org Overview"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh56_p0r0",
+      "new_text": "Engineer"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh57_p0r0",
+      "new_text": "1,240 FTEs across 3 global R&D centers; 12 active vehicle programs in parallel development"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8192_p0r0",
+      "new_text": "Manufac"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8193_p0r0",
+      "new_text": "3 plants at 76% avg OEE; Q2 output 48K units, ahead of plan by 4%"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8197_p0r0",
+      "new_text": "Sales"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8198_p0r0",
+      "new_text": "Global sales 92K units YTD; China region up 14% YoY; BEV mix now at 28%"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8201_p0r0",
+      "new_text": "Products"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8202_p0r0",
+      "new_text": "Next-gen MLA platform on track; 3 new BEV models in prototype phase"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8205_p0r0",
+      "new_text": "Digital"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8206_p0r0",
+      "new_text": "Cloud migration 60% complete; SAP S/4HANA rollout live in 8 markets"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8209_p0r0",
+      "new_text": "Fin / HR"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8210_p0r0",
+      "new_text": "Headcount 8,247 at 92% fill rate; cost reduction program on track for GBP 150M"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8217_p0r0",
+      "new_text": "8,247 FTE"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8218_p0r0",
+      "new_text": "92% Filled"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8219_p0r0",
+      "new_text": "GBP 150M"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh37_p0r0",
+      "new_text": "Org Proposal"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh37_p0r2",
+      "new_text": "Transf Plan"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh24_p0r0",
+      "new_text": "01.Struct"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh27_p0r0",
+      "new_text": "02.RClar"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh30_p0r0",
+      "new_text": "03.CapBd"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh39_p0r0",
+      "new_text": "04.GovUp"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh40_p0r0",
+      "new_text": "Flatten from 7 to 4 tiers; consolidate 12 divisions to 8; eliminate duplicate regional reporting lines"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh41_p0r0",
+      "new_text": "Deploy RACI matrix for all 240+ leadership roles; define decision rights with clear escalation paths"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh42_p0r0",
+      "new_text": "Launch leadership dev program for 120 high-potential managers; hire 8 key digital transformation roles"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh43_p0r0",
+      "new_text": "Establish monthly Org Review Board; OKR alignment from exec to team level; biennial engagement survey"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh48_p0r0",
+      "new_text": "Target: GBP 80M annual savings, 30% faster decisions, 85% engagement"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh50_p0r0",
+      "new_text": "GBP 80M Save"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh52_p0r0",
+      "new_text": "30% Faster"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh54_p0r0",
+      "new_text": "85% Engagemt"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh56_p0r0",
+      "new_text": "Q1 2027 Tgt"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh34_p0r0",
+      "new_text": "Org"
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh34_p1r0",
+      "new_text": "Proposal"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh23_p0r0",
+      "new_text": "Pg.3"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh24_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh25_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh26_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh27_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh28_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh29_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh36_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh37_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh38_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh39_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh40_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh41_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh43_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh58_p0r0",
+      "new_text": "Reserved Pg3"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh58_p0r2",
+      "new_text": "Page 3"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh61_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh4_p0r0",
+      "new_text": "Reserved Pg 4"
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh4_p0r2",
+      "new_text": "Page 4"
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh18_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh19_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh20_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh22_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh23_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh25_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh26_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh28_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh29_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh31_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh32_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh34_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh35_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh37_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh38_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh44_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh45_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh46_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 24,
+      "slot_id": "s24_sh47_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh4_p0r0",
+      "new_text": "Reserved Pg 5"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh4_p0r2",
+      "new_text": "Page 5"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh13_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh14_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh15_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh22_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh23_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh24_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh27_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh28_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh29_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh33_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh34_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh56_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh65_p0r0",
+      "new_text": ""
+    }
+  ]
+}

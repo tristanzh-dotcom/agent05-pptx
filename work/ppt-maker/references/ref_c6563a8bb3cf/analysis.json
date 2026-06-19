@@ -1,0 +1,24 @@
+{
+  "schema": "ppt-maker-reference-analysis/v1",
+  "ref_id": "ref_c6563a8bb3cf",
+  "file_name": "agent05-reference-test.pdf",
+  "file_type": "pdf",
+  "page_count": 1,
+  "text_chars": 16,
+  "extracted_text": "Agent05 PDF Test",
+  "dominant_colors": [
+    "#C5C5C5",
+    "#0A0A0A",
+    "#5A5A5A",
+    "#747474",
+    "#7C7C7C"
+  ],
+  "color_style_hint": "红色+黑色+红色主调",
+  "recommended_templates": [
+    "red-patriot-general",
+    "red-patriot-youth",
+    "premium-corp"
+  ],
+  "screenshot_url": "/api/reference/ref_c6563a8bb3cf/screenshot.png",
+  "extraction_errors": []
+}

@@ -1,0 +1,23 @@
+{
+  "selected_slides": [1, 11, 21, 31, 2],
+  "edits": [
+    {"slide": 1, "slot_id": "s1_sh4_p0r0", "new_text": "JLR Status"},
+    {"slide": 1, "slot_id": "s1_sh5_p0r0", "new_text": "JLR ORG STATUS TODAY"},
+    {"slide": 11, "slot_id": "s11_sh4_p0r0", "new_text": "Proposal"},
+    {"slide": 11, "slot_id": "s11_sh5_p0r0", "new_text": "ORG PROPOSAL"},
+    {"slide": 21, "slot_id": "s21_sh4_p0r0", "new_text": " "},
+    {"slide": 21, "slot_id": "s21_sh5_p0r0", "new_text": " "},
+    {"slide": 31, "slot_id": "s31_sh4_p0r0", "new_text": " "},
+    {"slide": 31, "slot_id": "s31_sh5_p0r0", "new_text": " "},
+    {"slide": 2, "slot_id": "s2_sh6_p0r0", "new_text": " "},
+    {"slide": 2, "slot_id": "s2_sh33_p0r0", "new_text": " "},
+    {"slide": 2, "slot_id": "s2_sh48_p0r0", "new_text": " "},
+    {"slide": 2, "slot_id": "s2_sh57_p0r0", "new_text": " "},
+    {"slide": 2, "slot_id": "s2_sh68_p0r0", "new_text": " "},
+    {"slide": 2, "slot_id": "s2_sh69_p0r0", "new_text": " "},
+    {"slide": 2, "slot_id": "s2_sh78_p0r0", "new_text": " "},
+    {"slide": 2, "slot_id": "s2_sh79_p0r0", "new_text": " "},
+    {"slide": 2, "slot_id": "s2_sh81_p0r0", "new_text": " "},
+    {"slide": 2, "slot_id": "s2_sh82_p0r0", "new_text": " "}
+  ]
+}

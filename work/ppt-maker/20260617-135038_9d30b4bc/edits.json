@@ -1,0 +1,437 @@
+[
+  {
+    "slide": 9,
+    "slot_id": "s9_sh4_p0r0",
+    "new_text": "JLR"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh4_p0r2",
+    "new_text": "Status Today"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh59_p0r0",
+    "new_text": "Current"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh60_p0r0",
+    "new_text": "Matrix org: Engineering, Sales, Ops, Finance report to CEO"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh61_p0r0",
+    "new_text": "Reports"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh62_p0r0",
+    "new_text": "8 direct reports to CEO. Avg span of control: 5.2"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh63_p0r0",
+    "new_text": "Depts"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh1024_p0r0",
+    "new_text": "Eng 120, Sales 85, Ops 64, Finance 28. Total headcount: 297 FTE"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh1025_p0r0",
+    "new_text": "FTE"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh1027_p0r0",
+    "new_text": "12 open reqs across divisions. Avg time-to-fill: 38 days"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh1028_p0r0",
+    "new_text": "Engineer"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh1029_p0r0",
+    "new_text": "3 teams: Product Eng 52, Platform 38, QA 30. 2 lead vacancies"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh1030_p0r0",
+    "new_text": "Sales"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh1031_p0r0",
+    "new_text": "NA 32, EMEA 28, APAC 25. Targeting 15% H2 growth"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh1032_p0r0",
+    "new_text": "Ops"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh1033_p0r0",
+    "new_text": "Supply chain 22, Mfg 28, Logistics 14. New plant adding 8 roles Q3"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh1034_p0r0",
+    "new_text": "Finance"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh1035_p0r0",
+    "new_text": "Controllership 12, FP&A 8, Treasury 5, Tax 3. All filled"
+  },
+  {
+    "slide": 9,
+    "slot_id": "s9_sh1066_p0r0",
+    "new_text": "4 layers avg depth, 87% satisfaction, 92% mgr coverage"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh58_p0r0",
+    "new_text": "Org Chart"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh58_p0r2",
+    "new_text": "Org Proposal"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh23_p0r0",
+    "new_text": "Prop"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh43_p0r0",
+    "new_text": "Org Proposal"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh24_p0r0",
+    "new_text": "Move from matrix to functional structure to cut dual-reporting"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh25_p0r0",
+    "new_text": "01. Function"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh26_p0r0",
+    "new_text": "5 P&L units: Product, Sales, Services, Platforms, Corporate each led by GM"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh27_p0r0",
+    "new_text": "02. New Chain"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh28_p0r0",
+    "new_text": "GMs to CEO; HR/Finance/Legal report to GMs + dotted to corporate"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh29_p0r0",
+    "new_text": "03.SpanCtrl"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh36_p0r0",
+    "new_text": "Target 6-8 per mgr. Reduce depth from 4 to 3 layers across org"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh37_p0r0",
+    "new_text": "04. Shared"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh38_p0r0",
+    "new_text": "Centralize HR ops, IT, procurement into shared services ~15% savings"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh39_p0r0",
+    "new_text": "05. Talent"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh40_p0r0",
+    "new_text": "9-box grid for all mgrs. 80% internal fill for critical roles"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh41_p0r0",
+    "new_text": "06. Timeline"
+  },
+  {
+    "slide": 12,
+    "slot_id": "s12_sh61_p0r0",
+    "new_text": "Q1 design, Q2 role mapping, Q3 transition + change mgmt"
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh4_p0r0",
+    "new_text": "Org Chart"
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh4_p0r2",
+    "new_text": " "
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh13_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh14_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh15_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh22_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh23_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh24_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh27_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh28_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh29_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh33_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh34_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh56_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 29,
+    "slot_id": "s29_sh65_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh4_p0r0",
+    "new_text": "Org Chart"
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh4_p0r2",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh15_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh16_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh20_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh22_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh23_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh27_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh29_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh30_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh34_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh36_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh37_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh41_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh43_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh48_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh49_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh50_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 18,
+    "slot_id": "s18_sh51_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh11_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh13_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh15_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh23_p0r0",
+    "new_text": "Org Chart"
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh23_p0r2",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh25_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh26_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh26_p1r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh29_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh32_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh35_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh36_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh37_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh38_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh39_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh40_p0r0",
+    "new_text": " "
+  },
+  {
+    "slide": 19,
+    "slot_id": "s19_sh41_p0r0",
+    "new_text": " "
+  }
+]

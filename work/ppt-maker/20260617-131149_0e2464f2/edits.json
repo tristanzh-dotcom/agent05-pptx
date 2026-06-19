@@ -1,0 +1,501 @@
+{
+  "selected_slides": [
+    5,
+    10,
+    29,
+    12,
+    22
+  ],
+  "edits": [
+    {
+      "slide": 5,
+      "slot_id": "s5_sh53_p0r0",
+      "new_text": "工程现状"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh53_p0r2",
+      "new_text": "JLR Org Status"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh56_p0r0",
+      "new_text": "PT"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh57_p0r0",
+      "new_text": "ICE 6-cyl & V8 on track. 120 staff, 4 teams. Next-gen hybrid dev started. Line output up 12% vs plan."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8192_p0r0",
+      "new_text": "Chassis"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8193_p0r0",
+      "new_text": "New MLA platform in production. 85 staff, 3 sites. Supplier quality 98.7%. Cost reduction 8% on track."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8197_p0r0",
+      "new_text": "Electrics"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8198_p0r0",
+      "new_text": "E/E arch V2.0 in validation. 95 engineers, 5 squads. Zonal controller done. FUSA compliance confirmed."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8201_p0r0",
+      "new_text": "Body/Trim"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8202_p0r0",
+      "new_text": "Solihull plant at 92% util. 200 staff, 2 shifts. New door line installed. Cycle time reduced 14% in Q1."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8205_p0r0",
+      "new_text": "Sourcing"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8206_p0r0",
+      "new_text": "Supply chain stabilised post-COVID. 78 buyers, 12 teams. Lead time 6.2 weeks. Risk score green."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8209_p0r0",
+      "new_text": "Quality"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8210_p0r0",
+      "new_text": "J.D. Power 3rd in segment. PPM down 32% vs LY. 0 stop-ship in Q2. GP12 launch readiness confirmed green."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8217_p0r0",
+      "new_text": "ICE + BEV"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8218_p0r0",
+      "new_text": "SW + HW"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8219_p0r0",
+      "new_text": "Quality"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2094_p0r0",
+      "new_text": "Org Proposal"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2094_p0r2",
+      "new_text": "JLR Plan 26"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2109_p0r0",
+      "new_text": "01.Structure"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2113_p0r0",
+      "new_text": "02.Reporting"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2117_p0r0",
+      "new_text": "03.Headcount"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2227_p0r0",
+      "new_text": "06.KPIs"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2229_p0r0",
+      "new_text": "05.Budget"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2231_p0r0",
+      "new_text": "04.Timeline"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2110_p0r0",
+      "new_text": "Flat structure with 5 VPs to CEO. 2 management layers removed. Span of control avg 8."
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2114_p0r0",
+      "new_text": "Clear lines: team leads report to VPs. Quarterly exec reviews with board."
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2228_p0r0",
+      "new_text": "Phase 1 done Mar 26. Phase 2 Jun 26. Full transition Dec 26. All on schedule."
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2232_p0r0",
+      "new_text": "OEE +15%, Cost -12%, Delivery -20%. NPS target 65. Exec dashboard tracking."
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2118_p0r0",
+      "new_text": "Mentored "
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2118_p0r2",
+      "new_text": " teams to complete "
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2118_p0r4",
+      "new_text": " major milestones on time. "
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2118_p0r5",
+      "new_text": "Cross-functional rotation launched"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2118_p0r6",
+      "new_text": "eNPS"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2118_p0r7",
+      "new_text": "+28 target "
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2118_p0r9",
+      "new_text": "pts FY26"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2230_p0r0",
+      "new_text": "Reorg model adopted,"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2230_p0r1",
+      "new_text": " eliminates "
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2230_p0r3",
+      "new_text": " exec roles. Budget "
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2230_p0r5",
+      "new_text": "M approved. Total "
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2230_p0r7",
+      "new_text": " new director roles. "
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2245_p0r0",
+      "new_text": "架构"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2246_p0r0",
+      "new_text": "层级"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2247_p0r0",
+      "new_text": "汇报"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2248_p0r0",
+      "new_text": "编制"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2249_p0r0",
+      "new_text": "预算"
+    },
+    {
+      "slide": 10,
+      "slot_id": "s10_sh2250_p0r0",
+      "new_text": "考核"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh4_p0r0",
+      "new_text": "待定事项一"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh4_p0r2",
+      "new_text": "Page 3"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh13_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh14_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh15_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh22_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh23_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh24_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh27_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh28_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh29_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh33_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh34_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh56_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh65_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh58_p0r0",
+      "new_text": "待定事项二"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh58_p0r2",
+      "new_text": "Page 4"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh23_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh24_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh25_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh26_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh27_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh28_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh29_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh36_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh37_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh38_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh39_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh40_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh41_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh43_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh61_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh4_p0r0",
+      "new_text": "待定事项三"
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh4_p0r2",
+      "new_text": "Page 5"
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh48_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh49_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1025_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1027_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1031_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1032_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1035_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1036_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1039_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1040_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1043_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1044_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1059_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1061_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1064_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1065_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 22,
+      "slot_id": "s22_sh1066_p0r0",
+      "new_text": " "
+    }
+  ]
+}

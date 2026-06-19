@@ -1,0 +1,26 @@
+{
+  "schema": "ppt-maker-reference-analysis/v1",
+  "ref_id": "ref_7b22574e2016",
+  "file_name": "codex-clipboard-ab844972-6fdf-41b5-973c-b9a0560f501b.png",
+  "file_type": "image",
+  "page_count": null,
+  "text_chars": 0,
+  "extracted_text": "",
+  "dominant_colors": [
+    "#F0F6F8",
+    "#6C707A",
+    "#965B58",
+    "#A4B3BB",
+    "#8F9CA5"
+  ],
+  "color_style_hint": "白色+蓝色+红色主调",
+  "recommended_templates": [
+    "premium-corp",
+    "red-patriot-youth",
+    "minimal-business-summary"
+  ],
+  "screenshot_url": "/api/reference/ref_7b22574e2016/screenshot.png",
+  "extraction_errors": [
+    "ocr_unavailable"
+  ]
+}

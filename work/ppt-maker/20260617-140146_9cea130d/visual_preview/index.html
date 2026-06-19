@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="ppt-maker-visual-preview-wrapper" content="2026-06-18.1">
+  <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #f4f6f8;
+    }
+    .preview-stage {
+      position: fixed;
+      inset: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #f4f6f8;
+    }
+    .preview-frame {
+      display: block;
+      flex: 0 0 auto;
+      width: 960px;
+      height: 540px;
+      max-width: none;
+      max-height: none;
+      border: 0;
+      background: white;
+      transform-origin: center center;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08);
+    }
+    .preview-controls {
+      position: fixed;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      color: #334155;
+      font: 13px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+    }
+    .preview-controls button {
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      border-radius: 6px;
+      background: #ffffff;
+      color: #0f172a;
+      padding: 5px 9px;
+      font: inherit;
+      cursor: pointer;
+    }
+    .preview-controls button:disabled {
+      cursor: not-allowed;
+      opacity: 0.45;
+    }
+  </style>
+</head>
+<body>
+  <main class="preview-stage" aria-label="QuickLook PPT preview">
+    <iframe class="preview-frame" title="QuickLook PPT preview" src="./Preview.html"></iframe>
+  </main>
+  <nav class="preview-controls" aria-label="PPT 预览翻页">
+    <button type="button" data-ql-prev>上一页</button>
+    <span data-ql-page-status>1 / 1</span>
+    <button type="button" data-ql-next>下一页</button>
+  </nav>
+  <script>
+    const LENGTH_PROPS = [
+      'top', 'left', 'right', 'bottom', 'width', 'height',
+      'margin-top', 'margin-right', 'margin-bottom', 'margin-left',
+      'padding-top', 'padding-right', 'padding-bottom', 'padding-left',
+      'font-size', 'line-height'
+    ];
+    const lengthDeclarationPattern = new RegExp(`(^|[;\\s])(${LENGTH_PROPS.join('|')}):\\s*(-?\\d+(?:\\.\\d+)?)(?=;|$)`, 'gi');
+    let currentSlideIndex = 0;
+
+    function addPxToUnitlessLengths(styleText) {
+      return String(styleText || '').replace(lengthDeclarationPattern, (_match, prefix, property, value) => `${prefix}${property}: ${value}px`);
+    }
+
+    function normalizeQuickLookUnits(doc) {
+      doc.querySelectorAll('style').forEach((styleNode) => {
+        styleNode.textContent = addPxToUnitlessLengths(styleNode.textContent);
+      });
+      doc.querySelectorAll('[style]').forEach((node) => {
+        node.setAttribute('style', addPxToUnitlessLengths(node.getAttribute('style')));
+      });
+      const body = doc.body;
+      const root = doc.documentElement;
+      if (body) {
+        body.style.margin = '0';
+        body.style.overflow = 'hidden';
+        body.style.background = '#ffffff';
+      }
+      if (root) {
+        root.style.overflow = 'hidden';
+      }
+    }
+
+    function slidesFor(doc) {
+      return Array.from(doc.querySelectorAll('.slide'));
+    }
+
+    function showSlide(index) {
+      const frame = document.querySelector('.preview-frame');
+      const doc = frame && frame.contentDocument;
+      if (!doc) return;
+      const slides = slidesFor(doc);
+      if (!slides.length) return;
+      currentSlideIndex = Math.max(0, Math.min(index, slides.length - 1));
+      slides.forEach((slide, slideIndex) => {
+        slide.dataset.qlSlideIndex = String(slideIndex);
+        slide.setAttribute('data-ql-slide-index', String(slideIndex));
+        slide.setAttribute('aria-hidden', slideIndex === currentSlideIndex ? 'false' : 'true');
+        slide.hidden = slideIndex !== currentSlideIndex;
+        slide.style.display = slideIndex === currentSlideIndex ? 'block' : 'none';
+        slide.style.margin = '0';
+      });
+      const status = document.querySelector('[data-ql-page-status]');
+      const prev = document.querySelector('[data-ql-prev]');
+      const next = document.querySelector('[data-ql-next]');
+      if (status) status.textContent = `${currentSlideIndex + 1} / ${slides.length}`;
+      if (prev) prev.disabled = currentSlideIndex === 0;
+      if (next) next.disabled = currentSlideIndex === slides.length - 1;
+      fitQuickLookPreview();
+    }
+
+    function fitQuickLookPreview() {
+      const stage = document.querySelector('.preview-stage');
+      const frame = document.querySelector('.preview-frame');
+      if (!stage || !frame) return;
+
+      let sourceWidth = 960;
+      let sourceHeight = 540;
+      try {
+        const doc = frame.contentDocument;
+        const body = doc && doc.body;
+        const root = doc && doc.documentElement;
+        if (body && root) {
+          const slides = slidesFor(doc);
+          const activeSlide = slides[currentSlideIndex] || slides[0];
+          if (activeSlide) {
+            const slideRect = activeSlide.getBoundingClientRect();
+            sourceWidth = Math.max(activeSlide.scrollWidth, activeSlide.offsetWidth, slideRect.width, sourceWidth);
+            sourceHeight = Math.max(activeSlide.scrollHeight, activeSlide.offsetHeight, slideRect.height, sourceHeight);
+          } else {
+            sourceWidth = Math.max(body.scrollWidth, root.scrollWidth, body.offsetWidth, root.offsetWidth, sourceWidth);
+            sourceHeight = Math.max(body.scrollHeight, root.scrollHeight, body.offsetHeight, root.offsetHeight, sourceHeight);
+          }
+        }
+      } catch {
+        sourceWidth = 960;
+        sourceHeight = 540;
+      }
+
+      const availableWidth = Math.max(1, stage.clientWidth);
+      const availableHeight = Math.max(1, stage.clientHeight);
+      const scale = Math.min(availableWidth / sourceWidth, availableHeight / sourceHeight, 1);
+      frame.style.width = `${sourceWidth}px`;
+      frame.style.height = `${sourceHeight}px`;
+      frame.style.transform = `scale(${scale})`;
+    }
+
+    const frame = document.querySelector('.preview-frame');
+    frame && frame.addEventListener('load', () => {
+      try {
+        const doc = frame.contentDocument;
+        if (doc) normalizeQuickLookUnits(doc);
+      } catch {}
+      showSlide(0);
+    });
+    document.querySelector('[data-ql-prev]')?.addEventListener('click', () => showSlide(currentSlideIndex - 1));
+    document.querySelector('[data-ql-next]')?.addEventListener('click', () => showSlide(currentSlideIndex + 1));
+    window.addEventListener('resize', fitQuickLookPreview);
+  </script>
+</body>
+</html>

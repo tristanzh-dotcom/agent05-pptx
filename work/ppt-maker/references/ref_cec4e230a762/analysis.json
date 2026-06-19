@@ -1,0 +1,26 @@
+{
+  "schema": "ppt-maker-reference-analysis/v1",
+  "ref_id": "ref_cec4e230a762",
+  "file_name": "codex-clipboard-87dbfc5c-66aa-4e44-93ea-fe2e1d9b162b.png",
+  "file_type": "image",
+  "page_count": null,
+  "text_chars": 0,
+  "extracted_text": "",
+  "dominant_colors": [
+    "#FAFBFB",
+    "#334553",
+    "#A4B1B8",
+    "#85949C",
+    "#848C94"
+  ],
+  "color_style_hint": "白色+蓝色+蓝色主调",
+  "recommended_templates": [
+    "report-massive-models",
+    "report-massive-charts",
+    "report-massive-reports"
+  ],
+  "screenshot_url": "/api/reference/ref_cec4e230a762/screenshot.png",
+  "extraction_errors": [
+    "ocr_unavailable"
+  ]
+}

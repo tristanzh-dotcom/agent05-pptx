@@ -1,0 +1,25 @@
+{
+  "selected_slides": [1, 2],
+  "edits": [
+    {
+      "slide": 1,
+      "address": { "shape_id": 2, "paragraph": 0, "run": 0 },
+      "new_text": "Agent05 发布冒烟测试汇报"
+    },
+    {
+      "slide": 1,
+      "address": { "shape_id": 3, "paragraph": 0, "run": 0 },
+      "new_text": "2026-06-05 | 质量保障部"
+    },
+    {
+      "slide": 2,
+      "address": { "shape_id": 2, "paragraph": 0, "run": 0 },
+      "new_text": "测试目标与能力范围"
+    },
+    {
+      "slide": 2,
+      "address": { "shape_id": 3, "paragraph": 0, "run": 0 },
+      "new_text": "目标：验证 Agent05 发布版核心功能可用性。范围：登录、权限、搜索、内容发布。结果：全部通过，无 P0/P1 缺陷。风险：边缘场景兼容性待观察。下一步：全量回归测试。"
+    }
+  ]
+}

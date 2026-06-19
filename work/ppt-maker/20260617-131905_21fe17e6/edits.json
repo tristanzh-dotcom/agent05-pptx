@@ -1,0 +1,514 @@
+{
+  "edits": [
+    {
+      "slide": 1,
+      "slot_id": "s7_sh2_p0r0",
+      "new_text": "Engineering:"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh2_p0r1",
+      "new_text": "Vehicle design & platform"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh2_p0r2",
+      "new_text": "EV architecture, chassis, body"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh3_p0r0",
+      "new_text": "Manufacturing:"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh3_p0r1",
+      "new_text": "Production operations"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh3_p0r2",
+      "new_text": "Assembly, quality, logistics"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh4_p0r0",
+      "new_text": "Sales & Mktg:"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh4_p0r1",
+      "new_text": "Brand & commercial"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh4_p0r2",
+      "new_text": "Dealer network, markets"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh5_p0r0",
+      "new_text": "R&D:"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh5_p0r1",
+      "new_text": "Innovation & technology"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh5_p0r2",
+      "new_text": "ADAS, connectivity, digital"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh6_p0r0",
+      "new_text": "Corporate:"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh6_p0r1",
+      "new_text": "Strategy & finance"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh6_p0r2",
+      "new_text": "Planning, treasury, legal"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh7_p0r0",
+      "new_text": "HR & Ops:"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh7_p0r1",
+      "new_text": "People & culture"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh7_p0r2",
+      "new_text": "Talent, facilities, IT"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh12_p0r0",
+      "new_text": "Top Mgmt"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh13_p0r0",
+      "new_text": "Mid Mgmt"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh14_p0r0",
+      "new_text": "Ops"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh18_p0r0",
+      "new_text": "JLR operates in 6 continents with 40k+ employees across core functions: engineering, manufacturing, sales, R&D, corpo"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh22_p0r0",
+      "new_text": "Founded 1922"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh24_p0r0",
+      "new_text": "Tata 2008"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh26_p0r0",
+      "new_text": "Reimagine25"
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh30_p0r0",
+      "new_text": "JLR Org "
+    },
+    {
+      "slide": 1,
+      "slot_id": "s7_sh30_p0r2",
+      "new_text": "Today"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh5_p0r0",
+      "new_text": "Phase 1"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh8_p0r0",
+      "new_text": "Streamline engineering dept: merge overlapping teams, reduce layers from 7 to 5, establish center of excellence f"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh9_p0r0",
+      "new_text": "Flat Org"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh10_p0r0",
+      "new_text": "Review all reporting lines, eliminate duplicate manager roles. Target: 15% faster decision cycles and clearer "
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh11_p0r0",
+      "new_text": "Clear Rpts"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh14_p0r0",
+      "new_text": "Lean"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh15_p0r0",
+      "new_text": "Fast"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh16_p0r0",
+      "new_text": "Q3'26"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh19_p0r0",
+      "new_text": "Phase 2"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh22_p0r0",
+      "new_text": "Consolidate manufacturing ops into regional hubs: 3 mega-plants vs current 6. Shared platforms reduce per-vehic"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh23_p0r0",
+      "new_text": "Reg Hub"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh24_p0r0",
+      "new_text": "Standardize tooling, commonize parts across Range Rover, Defender, Discovery. Target: 30% parts commonality an"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh25_p0r0",
+      "new_text": "Share Pts"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh28_p0r0",
+      "new_text": "Big"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh29_p0r0",
+      "new_text": "One"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh30_p0r0",
+      "new_text": "Q4'26"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh33_p0r0",
+      "new_text": "Phase 3"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh36_p0r0",
+      "new_text": "Create dedicated EV unit with P&L ownership, separate from ICE. Establish direct battery supply chain and softw"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh37_p0r0",
+      "new_text": "EV Unit"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh38_p0r0",
+      "new_text": "Digital & software org: centralize 600+ engineers under Chief Digital Officer. Own in-house OS, OTA, connected "
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh39_p0r0",
+      "new_text": "Dig Hub"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh42_p0r0",
+      "new_text": "Next"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh43_p0r0",
+      "new_text": "EV"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh44_p0r0",
+      "new_text": "Q1'27"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh47_p0r0",
+      "new_text": "Org Proposal"
+    },
+    {
+      "slide": 2,
+      "slot_id": "s8_sh47_p0r2",
+      "new_text": ""
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh4_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh4_p0r2",
+      "new_text": " "
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh13_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh14_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh15_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh22_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh23_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh24_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh27_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh28_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh29_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh33_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh34_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh56_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 3,
+      "slot_id": "s29_sh65_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh53_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh53_p0r2",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh56_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh57_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh8192_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh8193_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh8197_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh8198_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh8201_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh8202_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh8205_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh8206_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh8209_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh8210_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh8217_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh8218_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 4,
+      "slot_id": "s5_sh8219_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh23_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh24_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh25_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh26_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh27_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh28_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh29_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh36_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh37_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh38_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh39_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh40_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh41_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh43_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh58_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh58_p0r2",
+      "new_text": " "
+    },
+    {
+      "slide": 5,
+      "slot_id": "s12_sh61_p0r0",
+      "new_text": " "
+    }
+  ]
+}

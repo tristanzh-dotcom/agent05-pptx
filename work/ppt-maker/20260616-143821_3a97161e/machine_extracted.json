@@ -1,0 +1,522 @@
+{
+  "schema": "ppt-maker-machine-extracted/v1",
+  "source_pptx": "/Users/tristanzh/agent/PPT-maker/work/ppt-maker/20260616-143821_3a97161e/output.pptx",
+  "slide_count": 5,
+  "slides": [
+    {
+      "slide_number": 1,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 4,
+          "paragraph": 0,
+          "run": 0,
+          "text": "自主新势力品牌 2026年YTD销量分析",
+          "left": 608400,
+          "top": 465525,
+          "width": 10969200,
+          "height": 705600,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 36,
+          "paragraph": 0,
+          "run": 0,
+          "text": "理想",
+          "left": 1003985,
+          "top": 2502304,
+          "width": 1349671,
+          "height": 467366,
+          "font_size_pt": 20.0,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 42,
+          "paragraph": 0,
+          "run": 0,
+          "text": "2026年1-5月理想累计交付22.8万辆，L9/L8/L7持续热销，纯电MEGA稳步爬坡，月销站稳5万台量级。",
+          "left": 1045934,
+          "top": 3215388,
+          "width": 1265772,
+          "height": 1661795,
+          "font_size_pt": 12.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 47,
+          "paragraph": 0,
+          "run": 0,
+          "text": "蔚来",
+          "left": 3063240,
+          "top": 2492375,
+          "width": 1769745,
+          "height": 467360,
+          "font_size_pt": 20.0,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 48,
+          "paragraph": 0,
+          "run": 0,
+          "text": "2026年1-5月蔚来累计交付8.6万辆，ET9旗舰上市拉动品牌向上，换电站突破2800座，乐道贡献增量。",
+          "left": 3270250,
+          "top": 3215640,
+          "width": 1330325,
+          "height": 1661795,
+          "font_size_pt": 12.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 53,
+          "paragraph": 0,
+          "run": 0,
+          "text": "小鹏",
+          "left": 5452155,
+          "top": 2492679,
+          "width": 1349671,
+          "height": 467366,
+          "font_size_pt": 20.0,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 54,
+          "paragraph": 0,
+          "run": 0,
+          "text": "2026年1-5月小鹏累计交付7.2万辆，XNGP城区智驾覆盖超300城，MONA品牌开启第二增长曲线。",
+          "left": 5494104,
+          "top": 3215388,
+          "width": 1265772,
+          "height": 1661795,
+          "font_size_pt": 12.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 59,
+          "paragraph": 0,
+          "run": 0,
+          "text": "小米",
+          "left": 7676240,
+          "top": 2511929,
+          "width": 1349671,
+          "height": 467366,
+          "font_size_pt": 20.0,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 60,
+          "paragraph": 0,
+          "run": 0,
+          "text": "小米SU7 2026年1-5月交付突破10万辆，SU7 Ultra版订单占比超30%，全年冲刺30万辆交付目标。",
+          "left": 7718189,
+          "top": 3215388,
+          "width": 1265772,
+          "height": 1384935,
+          "font_size_pt": 12.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 65,
+          "paragraph": 0,
+          "run": 0,
+          "text": "问界",
+          "left": 9709785,
+          "top": 2502535,
+          "width": 1857375,
+          "height": 467360,
+          "font_size_pt": 20.0,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 66,
+          "paragraph": 0,
+          "run": 0,
+          "text": "2026年1-5月问界全系交付15.2万辆，M9/M7领跑高端SUV市场，智驾渗透率超80%领跑行业。",
+          "left": 9942273,
+          "top": 3215388,
+          "width": 1265772,
+          "height": 1661795,
+          "font_size_pt": 12.0,
+          "bold": false,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    },
+    {
+      "slide_number": 2,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 2,
+          "paragraph": 0,
+          "run": 0,
+          "text": "合资品牌 2026年销量分析",
+          "left": 608400,
+          "top": 465525,
+          "width": 10969200,
+          "height": 705600,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 7,
+          "paragraph": 0,
+          "run": 0,
+          "text": "大众",
+          "left": 7323455,
+          "top": 1594485,
+          "width": 2590165,
+          "height": 459105,
+          "font_size_pt": 24.0,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 8,
+          "paragraph": 0,
+          "run": 0,
+          "text": "2026年1-5月一汽大众+上汽大众合计约78万辆，ID.纯电占比升至12%，燃油车基盘承压持续扩大。",
+          "left": 7323614,
+          "top": 1931231,
+          "width": 4563585,
+          "height": 735965,
+          "font_size_pt": 14.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 9,
+          "paragraph": 0,
+          "run": 0,
+          "text": "丰田",
+          "left": 6642735,
+          "top": 2689860,
+          "width": 2411730,
+          "height": 459105,
+          "font_size_pt": 24.0,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 10,
+          "paragraph": 0,
+          "run": 0,
+          "text": "2026年1-5月广丰+一丰合计约62万辆，双擎混动占比过半，bZ系列纯电表现尚不及市场预期。",
+          "left": 6643034,
+          "top": 3026606,
+          "width": 4563585,
+          "height": 735965,
+          "font_size_pt": 14.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 11,
+          "paragraph": 0,
+          "run": 0,
+          "text": "本田",
+          "left": 5660390,
+          "top": 3860800,
+          "width": 2463165,
+          "height": 459105,
+          "font_size_pt": 24.0,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 12,
+          "paragraph": 0,
+          "run": 0,
+          "text": "2026年1-5月东本+广本合计约42万辆，雅阁/CR-V仍是支柱，电动化转型速度显著落后自主品牌。",
+          "left": 5660099,
+          "top": 4197305,
+          "width": 4563585,
+          "height": 735965,
+          "font_size_pt": 14.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 13,
+          "paragraph": 0,
+          "run": 0,
+          "text": "通用",
+          "left": 4677410,
+          "top": 5031740,
+          "width": 2646680,
+          "height": 459105,
+          "font_size_pt": 24.0,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 14,
+          "paragraph": 0,
+          "run": 0,
+          "text": "2026年1-5月上汽通用合计约32万辆，GL8/君威主力下滑，奥特能平台电动车尚未形成规模。",
+          "left": 4677164,
+          "top": 5368004,
+          "width": 4563585,
+          "height": 735965,
+          "font_size_pt": 14.0,
+          "bold": false,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    },
+    {
+      "slide_number": 3,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 2,
+          "paragraph": 0,
+          "run": 0,
+          "text": "Tesla 全球表现：股价·技术·交付",
+          "left": 608400,
+          "top": 465525,
+          "width": 10969200,
+          "height": 705600,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 19,
+          "paragraph": 0,
+          "run": 0,
+          "text": "2026年Tesla股价约340美元，市值1.1万亿美元，受FSD进展与全球EV需求波动双重影响，Q2以来反弹超20%。",
+          "left": 2009140,
+          "top": 2160905,
+          "width": 3135630,
+          "height": 655955,
+          "font_size_pt": 11.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 20,
+          "paragraph": 0,
+          "run": 0,
+          "text": "股价表现",
+          "left": 2524760,
+          "top": 1786255,
+          "width": 2099945,
+          "height": 349250,
+          "font_size_pt": null,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 21,
+          "paragraph": 0,
+          "run": 0,
+          "text": "FSD V13端到端架构已推送至全球，干预里程提升至200+英里，中国版合作百度加速合规化进程。",
+          "left": 8015605,
+          "top": 1642110,
+          "width": 3247390,
+          "height": 655955,
+          "font_size_pt": 11.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 22,
+          "paragraph": 0,
+          "run": 0,
+          "text": "FSD自动驾驶",
+          "left": 7982585,
+          "top": 1267460,
+          "width": 3279775,
+          "height": 349250,
+          "font_size_pt": null,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 23,
+          "paragraph": 0,
+          "run": 0,
+          "text": "4680电池年产能突破20GWh，Cybertruck搭载结构电池包，电芯成本较2170降低约25%，引领下一代标准化。",
+          "left": 967105,
+          "top": 5654040,
+          "width": 3057525,
+          "height": 655955,
+          "font_size_pt": 11.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 24,
+          "paragraph": 0,
+          "run": 0,
+          "text": "4680电池技术",
+          "left": 717550,
+          "top": 5228590,
+          "width": 3649345,
+          "height": 349250,
+          "font_size_pt": null,
+          "bold": true,
+          "italic": false
+        },
+        {
+          "shape_id": 26,
+          "paragraph": 0,
+          "run": 0,
+          "text": "上海工厂年化产能超100万辆，柏林/德州工厂持续爬坡，Cybertruck全球订单超200万，Q1交付约42万辆。",
+          "left": 7018020,
+          "top": 5266690,
+          "width": 3208655,
+          "height": 655955,
+          "font_size_pt": 11.0,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 27,
+          "paragraph": 0,
+          "run": 0,
+          "text": "全球交付表现",
+          "left": 7086600,
+          "top": 4815840,
+          "width": 3013710,
+          "height": 349250,
+          "font_size_pt": null,
+          "bold": true,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    },
+    {
+      "slide_number": 4,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 3,
+          "paragraph": 0,
+          "run": 0,
+          "text": "备用",
+          "left": 1990800,
+          "top": 3848400,
+          "width": 7768800,
+          "height": 766800,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 4,
+          "paragraph": 0,
+          "run": 0,
+          "text": "BACKUP",
+          "left": 1990800,
+          "top": 4615200,
+          "width": 7768800,
+          "height": 867600,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 5,
+          "paragraph": 0,
+          "run": 0,
+          "text": "03",
+          "left": 2000250,
+          "top": 2489200,
+          "width": 2387600,
+          "height": 1371600,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    },
+    {
+      "slide_number": 5,
+      "size": {
+        "width": 12192000,
+        "height": 6858000
+      },
+      "texts": [
+        {
+          "shape_id": 3,
+          "paragraph": 0,
+          "run": 0,
+          "text": "备用",
+          "left": 1990800,
+          "top": 3848400,
+          "width": 7768800,
+          "height": 766800,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 4,
+          "paragraph": 0,
+          "run": 0,
+          "text": "BACKUP",
+          "left": 1990800,
+          "top": 4615200,
+          "width": 7768800,
+          "height": 867600,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        },
+        {
+          "shape_id": 5,
+          "paragraph": 0,
+          "run": 0,
+          "text": "04",
+          "left": 2000250,
+          "top": 2489200,
+          "width": 2387600,
+          "height": 1371600,
+          "font_size_pt": null,
+          "bold": false,
+          "italic": false
+        }
+      ],
+      "charts": [],
+      "images": [],
+      "tables": []
+    }
+  ]
+}

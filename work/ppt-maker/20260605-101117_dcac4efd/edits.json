@@ -1,0 +1,52 @@
+{
+  "selected_slides": [1, 5, 9, 12, 14],
+  "edits": [
+    {"slide": 1, "slot_id": "cover_title_en", "new_text": "Smoke Test"},
+    {"slide": 1, "slot_id": "cover_title_cn", "new_text": "Agent05 发布冒烟测试汇报"},
+
+    {"slide": 5, "slot_id": "p5_breadcrumb_cn", "new_text": "测试目标 "},
+    {"slide": 5, "slot_id": "p5_breadcrumb_en", "new_text": "Test Objectives"},
+    {"slide": 5, "slot_id": "p5_card1_title", "new_text": "功能覆盖"},
+    {"slide": 5, "slot_id": "p5_card1_body", "new_text": "确保 Agent05 全部 P0 功能模块在本次冒烟测试中全覆盖，核心任务链路经完整验证无误。"},
+    {"slide": 5, "slot_id": "p5_card2_title", "new_text": "质量门槛"},
+    {"slide": 5, "slot_id": "p5_card2_body", "new_text": "设立发布质量门槛：测试通过率 ≥ 98%，无 P0/P1 级别阻塞缺陷，关键性能指标满足 SLA。"},
+    {"slide": 5, "slot_id": "p5_card3_title", "new_text": "兼容验证"},
+    {"slide": 5, "slot_id": "p5_card3_body", "new_text": "在 Linux / macOS / Windows 三平台完成部署与运行验证，确保 Agent05 功能行为一致。"},
+    {"slide": 5, "slot_id": "p5_card4_title", "new_text": "性能基线"},
+    {"slide": 5, "slot_id": "p5_card4_body", "new_text": "测量关键操作响应时间与资源消耗，建立与历史版本的性能基线对比，确保无退化。"},
+
+    {"slide": 9, "slot_id": "p9_breadcrumb_cn", "new_text": "能力范围 "},
+    {"slide": 9, "slot_id": "p9_breadcrumb_en", "new_text": "Capability Scope"},
+    {"slide": 9, "slot_id": "p9_wheel_center", "new_text": "SCOPE"},
+    {"slide": 9, "slot_id": "p9_q1_title", "new_text": "任务编排"},
+    {"slide": 9, "slot_id": "p9_q1_body", "new_text": "验证 Agent05 的任务规划与多步执行能力，覆盖串行调度、并行分发与异常重试机制。"},
+    {"slide": 9, "slot_id": "p9_q2_title", "new_text": "知识融合"},
+    {"slide": 9, "slot_id": "p9_q2_body", "new_text": "验证 RAG 检索准确率与上下文整合能力，覆盖内部知识库与外部数据源的实时查询。"},
+    {"slide": 9, "slot_id": "p9_q3_title", "new_text": "对话理解"},
+    {"slide": 9, "slot_id": "p9_q3_body", "new_text": "验证多轮对话的上下文保持、意图识别歧义消解与自然语言生成质量。"},
+    {"slide": 9, "slot_id": "p9_q4_title", "new_text": "工具集成"},
+    {"slide": 9, "slot_id": "p9_q4_body", "new_text": "验证与飞书 API、多维表格等外部系统的对接稳定性与数据同步一致性。"},
+
+    {"slide": 12, "slot_id": "p12_breadcrumb_cn", "new_text": "验证结果 "},
+    {"slide": 12, "slot_id": "p12_breadcrumb_en", "new_text": "Verification Results"},
+    {"slide": 12, "slot_id": "p12_key1", "new_text": "通过率 99.2%"},
+    {"slide": 12, "slot_id": "p12_body1", "new_text": "全部 128 个冒烟测试用例执行完毕，通过 127 个，1 个因环境依赖问题跳过。"},
+    {"slide": 12, "slot_id": "p12_key2", "new_text": "零严重缺陷"},
+    {"slide": 12, "slot_id": "p12_body2", "new_text": "发现的 5 个缺陷均为低优先级优化建议，无 P0/P1 阻塞性问题，满足发布标准。"},
+    {"slide": 12, "slot_id": "p12_key3", "new_text": "性能达标"},
+    {"slide": 12, "slot_id": "p12_body3", "new_text": "核心操作平均响应时间 1.2s，P99 延迟 3.5s，资源消耗无显著增长。"},
+    {"slide": 12, "slot_id": "p12_key4", "new_text": "兼容确认"},
+    {"slide": 12, "slot_id": "p12_body4", "new_text": "Linux / macOS / Windows 三平台均完成部署验证，功能与表现一致性通过。"},
+
+    {"slide": 14, "slot_id": "p14_breadcrumb_cn", "new_text": "风险与下一步 "},
+    {"slide": 14, "slot_id": "p14_breadcrumb_en", "new_text": "Risks & Next"},
+    {"slide": 14, "slot_id": "p14_q1_title", "new_text": "环境不稳定"},
+    {"slide": 14, "slot_id": "p14_q1_body", "new_text": "部分测试环境资源争用导致偶发超时，已协调专用集群用于后续回归测试。"},
+    {"slide": 14, "slot_id": "p14_q2_title", "new_text": "全量回归"},
+    {"slide": 14, "slot_id": "p14_q2_body", "new_text": "计划在发布前完成全量回归测试，补充边界场景与异常注入用例，预计 3 人天。"},
+    {"slide": 14, "slot_id": "p14_q3_title", "new_text": "文档补全"},
+    {"slide": 14, "slot_id": "p14_q3_body", "new_text": "同步编写 Agent05 使用指南与故障排查手册，确保发布前文档就绪。"},
+    {"slide": 14, "slot_id": "p14_q4_title", "new_text": "灰度验证"},
+    {"slide": 14, "slot_id": "p14_q4_body", "new_text": "灰度发布后持续监控 48 小时业务指标，确认无异常后执行全量推送。"}
+  ]
+}

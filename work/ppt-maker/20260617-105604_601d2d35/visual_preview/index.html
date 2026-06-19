@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #f4f6f8;
+    }
+    .preview-stage {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #f4f6f8;
+    }
+    .preview-frame {
+      display: block;
+      width: 960px;
+      height: 540px;
+      border: 0;
+      background: white;
+      transform-origin: center center;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08);
+    }
+  </style>
+</head>
+<body>
+  <main class="preview-stage" aria-label="QuickLook PPT preview">
+    <iframe class="preview-frame" title="QuickLook PPT preview" src="./Preview.html"></iframe>
+  </main>
+  <script>
+    function fitQuickLookPreview() {
+      const stage = document.querySelector('.preview-stage');
+      const frame = document.querySelector('.preview-frame');
+      if (!stage || !frame) return;
+
+      let sourceWidth = 960;
+      let sourceHeight = 540;
+      try {
+        const doc = frame.contentDocument;
+        const body = doc && doc.body;
+        const root = doc && doc.documentElement;
+        if (body && root) {
+          body.style.margin = body.style.margin || '0';
+          body.style.overflow = 'hidden';
+          root.style.overflow = 'hidden';
+          const firstSlide = doc.querySelector('.slide');
+          if (firstSlide) {
+            const slideRect = firstSlide.getBoundingClientRect();
+            sourceWidth = Math.max(firstSlide.scrollWidth, firstSlide.offsetWidth, slideRect.width, sourceWidth);
+            sourceHeight = Math.max(firstSlide.scrollHeight, firstSlide.offsetHeight, slideRect.height, sourceHeight);
+          } else {
+            sourceWidth = Math.max(body.scrollWidth, root.scrollWidth, body.offsetWidth, root.offsetWidth, sourceWidth);
+            sourceHeight = Math.max(body.scrollHeight, root.scrollHeight, body.offsetHeight, root.offsetHeight, sourceHeight);
+          }
+        }
+      } catch {
+        sourceWidth = 960;
+        sourceHeight = 540;
+      }
+
+      const availableWidth = Math.max(1, stage.clientWidth);
+      const availableHeight = Math.max(1, stage.clientHeight);
+      const scale = Math.min(availableWidth / sourceWidth, availableHeight / sourceHeight, 1);
+      frame.style.width = `${sourceWidth}px`;
+      frame.style.height = `${sourceHeight}px`;
+      frame.style.transform = `scale(${scale})`;
+    }
+
+    const frame = document.querySelector('.preview-frame');
+    frame && frame.addEventListener('load', fitQuickLookPreview);
+    window.addEventListener('resize', fitQuickLookPreview);
+  </script>
+</body>
+</html>

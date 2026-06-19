@@ -1,0 +1,26 @@
+{
+  "schema": "ppt-maker-reference-analysis/v1",
+  "ref_id": "ref_d41da390e22e",
+  "file_name": "__20260526183504_1426_32.png",
+  "file_type": "image",
+  "page_count": null,
+  "text_chars": 0,
+  "extracted_text": "",
+  "dominant_colors": [
+    "#EDECEA",
+    "#262624",
+    "#B2EB1B",
+    "#9FA292",
+    "#8A71D2"
+  ],
+  "color_style_hint": "白色+黑色+绿色主调",
+  "recommended_templates": [
+    "thesis-formula",
+    "quarterly-illust",
+    "cute-orange-class"
+  ],
+  "screenshot_url": "/api/reference/ref_d41da390e22e/screenshot.png",
+  "extraction_errors": [
+    "ocr_unavailable"
+  ]
+}

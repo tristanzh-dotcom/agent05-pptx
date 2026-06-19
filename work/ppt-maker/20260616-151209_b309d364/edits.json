@@ -1,0 +1,436 @@
+{
+  "selected_slides": [
+    5,
+    29,
+    12,
+    9,
+    19
+  ],
+  "edits": [
+    {
+      "slide": 5,
+      "slot_id": "s5_sh53_p0r0",
+      "new_text": "品牌销量"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh53_p0r2",
+      "new_text": "品牌YTD销量表现"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh56_p0r0",
+      "new_text": "小鹏汽车"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh57_p0r0",
+      "new_text": "2026年YTD累计交付 285,640 辆，同比+186%，MONA M03 月销突破 3 万，P7+ 持续热销推动品牌向上突破"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8192_p0r0",
+      "new_text": "理想汽车"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8193_p0r0",
+      "new_text": "YTD累计交付 412,830 辆，同比+95%，L6 单月交付 3.8 万创新高，智驾版占比突破 65%"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8197_p0r0",
+      "new_text": "蔚来汽车"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8198_p0r0",
+      "new_text": "YTD累计交付 168,250 辆，同比+78%，NT3.0 平台车型爬坡顺利，乐道品牌贡献增量约 40%"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8201_p0r0",
+      "new_text": "极氪汽车"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8202_p0r0",
+      "new_text": "YTD累计交付 142,680 辆，同比+112%，极氪 007 月均 1.2 万，极氪 MIX 开拓家庭出行新市场"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8205_p0r0",
+      "new_text": "零跑汽车"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8206_p0r0",
+      "new_text": "YTD累计交付 221,370 辆，同比+148%，C10/C16 双车战略见效，海外出口占比提升至 18%"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8209_p0r0",
+      "new_text": "小米汽车"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8210_p0r0",
+      "new_text": "YTD累计交付 198,560 辆，SU7 持续爬坡至月交付 3.5 万，SUV 车型 SU8 即将于 Q3 开启交付"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8217_p0r0",
+      "new_text": "品牌阵营概览"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8218_p0r0",
+      "new_text": "主流品牌销量"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8219_p0r0",
+      "new_text": "增长驱动因素"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh4_p0r0",
+      "new_text": "合资品牌"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh4_p0r2",
+      "new_text": "2026年YTD销量表现"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh13_p0r0",
+      "new_text": "186.4万"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh14_p0r0",
+      "new_text": "YTD总销量"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh15_p0r0",
+      "new_text": "同比-8.2%"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh22_p0r0",
+      "new_text": "82万"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh23_p0r0",
+      "new_text": "一汽大众"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh24_p0r0",
+      "new_text": "同比-12.5%"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh27_p0r0",
+      "new_text": "64万"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh28_p0r0",
+      "new_text": "上汽大众"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh29_p0r0",
+      "new_text": "同比-6.7%"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh33_p0r0",
+      "new_text": "广汽丰田"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh34_p0r0",
+      "new_text": "同比-10.3%"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh56_p0r0",
+      "new_text": "合资品牌市场份额"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh65_p0r0",
+      "new_text": "YTD销量同比分析"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh23_p0r0",
+      "new_text": "全球"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh24_p0r0",
+      "new_text": "2026年YTD全球交付 1,286,500 辆，同比+22%，储能业务同比+85%，Q2 毛利率回升至 18.6%"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh25_p0r0",
+      "new_text": "01. 北美市场"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh26_p0r0",
+      "new_text": "YTD交付 416,200 辆，同比+15%，Cybertruck 累计交付 78,400 辆，得州超级工厂产能持续爬坡至年产 75 万辆"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh27_p0r0",
+      "new_text": "02. 中国市场"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh28_p0r0",
+      "new_text": "YTD交付 524,800 辆，同比+38%，Model Y 蝉联纯电 SUV 销冠，FSD 入华进展加速，本地化智驾研发团队已超 600 人"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh29_p0r0",
+      "new_text": "03. 欧洲市场"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh36_p0r0",
+      "new_text": "YTD交付 238,600 辆，同比+8%，柏林工厂升级后年产突破 50 万辆，Model 3 Highland 新版本驱动订单回升"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh37_p0r0",
+      "new_text": "04. 其他区域"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh38_p0r0",
+      "new_text": "亚太+中东+澳洲YTD交付 106,900 辆，同比+45%，墨西哥工厂布局加速，印度市场准入谈判进入最终阶段"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh39_p0r0",
+      "new_text": "05. 储能与服务"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh40_p0r0",
+      "new_text": "储能部署 28.6 GWh，同比+85%，超充网络全球站点突破 8,000 座，保险业务营收同比+62%，服务利润率转正"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh41_p0r0",
+      "new_text": "06. 自动驾驶进展"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh43_p0r0",
+      "new_text": "Tesla Summary"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh58_p0r0",
+      "new_text": "电动先驱"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh58_p0r2",
+      "new_text": "Tesla全球表现"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh61_p0r0",
+      "new_text": "YTD全球交付超 128 万辆，FSD 累计行驶超 32 亿公里，Robotaxi 已在 5 城试运营"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh4_p0r0",
+      "new_text": "趋势展望"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh4_p0r2",
+      "new_text": "2026年乘用车市场趋势"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh59_p0r0",
+      "new_text": "新能源渗透率"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh60_p0r0",
+      "new_text": "预计2026年全年新能源乘用车渗透率突破 65%，插混+增程占比升至 42%，纯电在网约车及高端市场保持领先"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh61_p0r0",
+      "new_text": "智驾平权趋势"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh62_p0r0",
+      "new_text": "城市NOA渗透率将从 15% 跃升至 38%，15 万级车型标配智驾成为主流，华为/大疆/地平线方案加速下沉"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh63_p0r0",
+      "new_text": "出口与全球化"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1024_p0r0",
+      "new_text": "中国品牌全年出口有望突破 650 万辆，东南亚、中东、南美成为新增量引擎，欧盟关税影响边际递减"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1025_p0r0",
+      "new_text": "价格战趋缓"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1027_p0r0",
+      "new_text": "碳酸锂价格企稳至 8-10 万/吨，电池包成本下降 20%，车企毛利率改善，终端价格战进入尾声"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1028_p0r0",
+      "new_text": "渠道变革"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1029_p0r0",
+      "new_text": "直营+代理制门店占比突破 45%，传统 4S 店加速转型，商场店+交付中心模式成为新势力标配"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1030_p0r0",
+      "new_text": "政策红利"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1031_p0r0",
+      "new_text": "以旧换新补贴延续至年底，充电基础设施补贴加码，L3 级自动驾驶法规在 10 个试点城市落地"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1032_p0r0",
+      "new_text": "技术突破"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1033_p0r0",
+      "new_text": "固态电池开启小批量量产装车，200kW 无线快充进入量产阶段，一体化压铸成本再降 15%"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1034_p0r0",
+      "new_text": "竞争格局重塑"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1035_p0r0",
+      "new_text": "三四线新能源品牌加速淘汰，CR5 市占率升至 68%，跨界科技企业入局加速行业洗牌"
+    },
+    {
+      "slide": 9,
+      "slot_id": "s9_sh1066_p0r0",
+      "new_text": "乘用车市场处于深度调整期，自主品牌凭借电动化与智能化双轮驱动，2026年市场份额有望突破70%"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh11_p0r0",
+      "new_text": "销量增速"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh13_p0r0",
+      "new_text": "结构优化"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh15_p0r0",
+      "new_text": "盈利改善"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh23_p0r0",
+      "new_text": "核心指标"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh23_p0r2",
+      "new_text": "乘用车市场核心指标"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh25_p0r0",
+      "new_text": "2026年1-5月乘用车市场整体销量同比增长 8.2%，新能源车型增速达 42%，自主品牌市占率首次突破 68%，行业盈利水平回升至 4.8%"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh26_p0r0",
+      "new_text": "三大变革驱动"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh26_p1r0",
+      "new_text": "中国乘用车产业竞争力持续跃升"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh29_p0r0",
+      "new_text": "自主品牌高端化加速，30 万以上车型市占率突破 35%，问界M9/蔚来ET9/理想MEGA 等旗舰车型带动品牌溢价提升"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh32_p0r0",
+      "new_text": "混动增速达 58%，超越纯电成为增长第一动力，DM-i 5.0 推动油电同价全面实现"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh35_p0r0",
+      "new_text": "智能化选装率升至 48%，头部车企单车智驾收入突破 1.2 万元"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh36_p0r0",
+      "new_text": "头部自主品牌单车 ASP 从 12.8 万提升至 16.5 万，产品结构从性价比驱动转向技术品牌驱动，核心零部件国产化率突破 92%"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh37_p0r0",
+      "new_text": "品牌高端化"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh38_p0r0",
+      "new_text": "新能源全市场累计保有量突破 4,200 万辆，公共充电桩达 386 万台，车桩比改善至 2.1:1，补能焦虑显著缓解"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh39_p0r0",
+      "new_text": "新能源加速渗透"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh40_p0r0",
+      "new_text": "智能驾驶城区总里程累计达 12.6 亿公里，事故率低于人工驾驶 42%，端到端大模型上车迭代周期缩短至 3 个月"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh41_p0r0",
+      "new_text": "智能化应用深化"
+    }
+  ]
+}

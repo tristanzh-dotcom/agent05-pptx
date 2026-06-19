@@ -1,0 +1,24 @@
+{
+  "schema": "ppt-maker-reference-analysis/v1",
+  "ref_id": "ref_3619f6201a13",
+  "file_name": "agent05-palette.XXXXXX.png",
+  "file_type": "image",
+  "page_count": null,
+  "text_chars": 0,
+  "extracted_text": "",
+  "dominant_colors": [
+    "#E44C3C",
+    "#1C3C94",
+    "#E84468"
+  ],
+  "color_style_hint": "红色+蓝色+红色主调",
+  "recommended_templates": [
+    "architecture-deck",
+    "report-savior",
+    "operations-deck"
+  ],
+  "screenshot_url": "/api/reference/ref_3619f6201a13/screenshot.png",
+  "extraction_errors": [
+    "ocr_unavailable"
+  ]
+}

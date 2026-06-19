@@ -1,0 +1,52 @@
+{
+  "selected_slides": [1, 2, 5, 9, 12],
+  "edits": [
+    {"slide": 1, "slot_id": "cover_title_en", "new_text": "JLR org status today"},
+    {"slide": 1, "slot_id": "cover_title_cn", "new_text": "JLR 组织现状"},
+
+    {"slide": 2, "slot_id": "agenda_title_cn", "new_text": "组织提案"},
+    {"slide": 2, "slot_id": "agenda_title_en", "new_text": "Org Proposal"},
+    {"slide": 2, "slot_id": "agenda_ch1_cn", "new_text": "组织架构"},
+    {"slide": 2, "slot_id": "agenda_ch1_en", "new_text": "Structure"},
+    {"slide": 2, "slot_id": "agenda_ch2_cn", "new_text": "当前状态"},
+    {"slide": 2, "slot_id": "agenda_ch2_en", "new_text": "Status"},
+    {"slide": 2, "slot_id": "agenda_ch3_cn", "new_text": "关键变化"},
+    {"slide": 2, "slot_id": "agenda_ch3_en", "new_text": "Changes"},
+    {"slide": 2, "slot_id": "agenda_ch4_cn", "new_text": "未来规划"},
+    {"slide": 2, "slot_id": "agenda_ch4_en", "new_text": "Planning"},
+
+    {"slide": 5, "slot_id": "p5_breadcrumb_cn", "new_text": "JLR组织现状 "},
+    {"slide": 5, "slot_id": "p5_breadcrumb_en", "new_text": "Structure"},
+    {"slide": 5, "slot_id": "p5_card1_title", "new_text": ""},
+    {"slide": 5, "slot_id": "p5_card1_body", "new_text": ""},
+    {"slide": 5, "slot_id": "p5_card2_title", "new_text": ""},
+    {"slide": 5, "slot_id": "p5_card2_body", "new_text": ""},
+    {"slide": 5, "slot_id": "p5_card3_title", "new_text": ""},
+    {"slide": 5, "slot_id": "p5_card3_body", "new_text": ""},
+    {"slide": 5, "slot_id": "p5_card4_title", "new_text": ""},
+    {"slide": 5, "slot_id": "p5_card4_body", "new_text": ""},
+
+    {"slide": 9, "slot_id": "p9_breadcrumb_cn", "new_text": "当前状态 "},
+    {"slide": 9, "slot_id": "p9_breadcrumb_en", "new_text": "Status"},
+    {"slide": 9, "slot_id": "p9_wheel_center", "new_text": ""},
+    {"slide": 9, "slot_id": "p9_q1_title", "new_text": ""},
+    {"slide": 9, "slot_id": "p9_q1_body", "new_text": ""},
+    {"slide": 9, "slot_id": "p9_q2_title", "new_text": ""},
+    {"slide": 9, "slot_id": "p9_q2_body", "new_text": ""},
+    {"slide": 9, "slot_id": "p9_q3_title", "new_text": ""},
+    {"slide": 9, "slot_id": "p9_q3_body", "new_text": ""},
+    {"slide": 9, "slot_id": "p9_q4_title", "new_text": ""},
+    {"slide": 9, "slot_id": "p9_q4_body", "new_text": ""},
+
+    {"slide": 12, "slot_id": "p12_breadcrumb_cn", "new_text": "关键变化 "},
+    {"slide": 12, "slot_id": "p12_breadcrumb_en", "new_text": "Changes"},
+    {"slide": 12, "slot_id": "p12_key1", "new_text": ""},
+    {"slide": 12, "slot_id": "p12_body1", "new_text": ""},
+    {"slide": 12, "slot_id": "p12_key2", "new_text": ""},
+    {"slide": 12, "slot_id": "p12_body2", "new_text": ""},
+    {"slide": 12, "slot_id": "p12_key3", "new_text": ""},
+    {"slide": 12, "slot_id": "p12_body3", "new_text": ""},
+    {"slide": 12, "slot_id": "p12_key4", "new_text": ""},
+    {"slide": 12, "slot_id": "p12_body4", "new_text": ""}
+  ]
+}

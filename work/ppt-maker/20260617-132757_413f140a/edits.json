@@ -1,0 +1,516 @@
+{
+  "selected_slides": [
+    5,
+    20,
+    19,
+    7,
+    21
+  ],
+  "edits": [
+    {
+      "slide": 5,
+      "slot_id": "s5_sh53_p0r0",
+      "new_text": "JLR"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh53_p0r2",
+      "new_text": "Org Status Today"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh56_p0r0",
+      "new_text": "Structure"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh57_p0r0",
+      "new_text": "JLR operates a functional matrix org across Engineering, Manufacturing, Sales & Marketing, and Corporate Functions reporting to the CEO."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8192_p0r0",
+      "new_text": "Leadership"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8193_p0r0",
+      "new_text": "The CEO leads 8 direct reports: Chief Engineer, COO, CFO, CMO, CHRO, Chief Digital Officer, General Counsel, and Regional EVP."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8197_p0r0",
+      "new_text": "Headcount"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8198_p0r0",
+      "new_text": "Engineering 42%, Manufacturing 28%, Sales & Marketing 18%, Corporate 12%. Total 38,000 headcount across 15 global locations."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8201_p0r0",
+      "new_text": "Org Depth"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8202_p0r0",
+      "new_text": "Span of control averages 6.4 reports per manager. Middle layers reduced by 1 since 2023. Reporting depth ranges from 4 to 7 levels across units."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8205_p0r0",
+      "new_text": "Reporting"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8206_p0r0",
+      "new_text": "Dotted-line matrix links regional sales with global product units. EV programs use dual-reporting lines to Engineering and Program Management both."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8209_p0r0",
+      "new_text": "Gaps"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8210_p0r0",
+      "new_text": "Key gaps: unclear EV reporting (23% roles with dual-report ambiguity), 4 critical director vacancies, and siloed decisions across regions."
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8217_p0r0",
+      "new_text": "Current Structure"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8218_p0r0",
+      "new_text": "Leadership Team"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8219_p0r0",
+      "new_text": "Key Findings"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh57_p0r0",
+      "new_text": "Org Proposal"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh57_p0r2",
+      "new_text": "Future Organization"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh36_p0r0",
+      "new_text": "Streamline"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh37_p0r0",
+      "new_text": "Empower"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh38_p0r0",
+      "new_text": "Integrate"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh39_p0r0",
+      "new_text": "Optimize"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh61_p0r0",
+      "new_text": "Reduce layers from 6 to 4 creating a flat structure. Each function head reports directly to CEO. Remove 2 middle management layers to speed decisions."
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh62_p0r0",
+      "new_text": "New Structure"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh64_p0r0",
+      "new_text": "Flat by Design"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh66_p0r0",
+      "new_text": "EV-Focused"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh73_p0r0",
+      "new_text": "Implementation"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh75_p0r0",
+      "new_text": "Phase 1: Consolidate shared services under COO. Phase 2: Stand up dedicated EV division with P&L ownership. Phase 3: Regional matrix realignment."
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh77_p0r0",
+      "new_text": "Phase 1"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh79_p0r0",
+      "new_text": "Phase 2"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh83_p0r0",
+      "new_text": "Expected Impact"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh84_p0r0",
+      "new_text": "Projected 18% reduction in decision latency, 12% overhead savings, and improved EV program velocity through dedicated ownership structure."
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh86_p0r0",
+      "new_text": "Cost Savings"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh88_p0r0",
+      "new_text": "Speed Gains"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh93_p0r0",
+      "new_text": "Risks"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh94_p0r0",
+      "new_text": "Key risks: talent retention during transition, temporary productivity dip in Q1, and change fatigue across teams. Mitigation: phased rollout with comms plan."
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh96_p0r0",
+      "new_text": "Change Mgmt"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh98_p0r0",
+      "new_text": "Retention"
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh23_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh23_p0r2",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh11_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh13_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh15_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh25_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh26_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh26_p1r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh29_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh32_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh35_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh36_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh37_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh38_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh39_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh40_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 19,
+      "slot_id": "s19_sh41_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh30_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh30_p0r2",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh2_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh2_p0r1",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh2_p0r2",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh3_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh3_p0r1",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh3_p0r2",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh4_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh4_p0r1",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh4_p0r2",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh5_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh5_p0r1",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh5_p0r2",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh6_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh6_p0r1",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh6_p0r2",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh7_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh7_p0r1",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh7_p0r2",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh12_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh13_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh14_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh18_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh22_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh24_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 7,
+      "slot_id": "s7_sh26_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh37_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh37_p0r2",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh24_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh27_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh30_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh34_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh34_p1r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh39_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh40_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh41_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh42_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh43_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh48_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh50_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh52_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh54_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh56_p0r0",
+      "new_text": " "
+    },
+    {
+      "slide": 21,
+      "slot_id": "s21_sh62_p0r0",
+      "new_text": " "
+    }
+  ]
+}

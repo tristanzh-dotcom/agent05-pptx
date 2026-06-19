@@ -1,0 +1,22 @@
+{
+  "schema": "ppt-maker-reference-analysis/v1",
+  "ref_id": "ref_b33681f477e8",
+  "file_name": "agent05-reference-test.png",
+  "file_type": "image",
+  "page_count": null,
+  "text_chars": 0,
+  "extracted_text": "",
+  "dominant_colors": [
+    "#FFFFFF"
+  ],
+  "color_style_hint": "白色主调",
+  "recommended_templates": [
+    "thesis-formula",
+    "cute-orange-class",
+    "red-patriot-youth"
+  ],
+  "screenshot_url": "/api/reference/ref_b33681f477e8/screenshot.png",
+  "extraction_errors": [
+    "ocr_unavailable"
+  ]
+}

@@ -1,0 +1,461 @@
+{
+  "selected_slides": [
+    5,
+    20,
+    12,
+    29,
+    18
+  ],
+  "edits": [
+    {
+      "slide": 5,
+      "slot_id": "s5_sh53_p0r0",
+      "new_text": "JLR Org Status"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh53_p0r2",
+      "new_text": "Today"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh56_p0r0",
+      "new_text": "Executive"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh57_p0r0",
+      "new_text": "CEO office with 3 direct reports leading global strategy, finance, and operations across 4 business units"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8192_p0r0",
+      "new_text": "Engineers"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8193_p0r0",
+      "new_text": "150+ engineers organized by powertrain, EV platform, and vehicle software across UK and China hubs"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8197_p0r0",
+      "new_text": "Plant Ops"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8198_p0r0",
+      "new_text": "12 plants across 4 countries reporting into global COO with regional VPs for manufacturing and supply chain"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8201_p0r0",
+      "new_text": "Sales"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8202_p0r0",
+      "new_text": "Regional sales directors covering 50+ markets, supported by centralized marketing and digital teams"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8205_p0r0",
+      "new_text": "R&D"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8206_p0r0",
+      "new_text": "R&D centers in UK, US, China focused on electrification, connectivity, and autonomous driving"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8209_p0r0",
+      "new_text": "HR&Admin"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8210_p0r0",
+      "new_text": "Central HR shared services with embedded partners supporting 35K+ global workforce across all regions"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8217_p0r0",
+      "new_text": "Leadership"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8218_p0r0",
+      "new_text": "Technology"
+    },
+    {
+      "slide": 5,
+      "slot_id": "s5_sh8219_p0r0",
+      "new_text": "Operations"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh57_p0r0",
+      "new_text": "Org Proposal"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh57_p0r2",
+      "new_text": "New Structure"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh36_p0r0",
+      "new_text": "Phase 1"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh37_p0r0",
+      "new_text": "Phase 2"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh38_p0r0",
+      "new_text": "Phase 3"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh39_p0r0",
+      "new_text": "Phase 4"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh61_p0r0",
+      "new_text": "Align engineering and product teams under a single CPO to accelerate EV platform development and reduce time-to-market"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh62_p0r0",
+      "new_text": "Unify"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh64_p0r0",
+      "new_text": "35K staff"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh66_p0r0",
+      "new_text": "8 layers"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh73_p0r0",
+      "new_text": "Region"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh75_p0r0",
+      "new_text": "Establish regional P&L ownership for China, NA, and Europe with dedicated engineering, sales, and service teams"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh77_p0r0",
+      "new_text": "6 layers"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh79_p0r0",
+      "new_text": "Ratio 1:15"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh83_p0r0",
+      "new_text": "CoE"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh84_p0r0",
+      "new_text": "Shared digital, data, AI CoE driving innovation and eliminating duplicated work"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh86_p0r0",
+      "new_text": "Budget $50M"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh88_p0r0",
+      "new_text": "Save $8M/yr"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh93_p0r0",
+      "new_text": "HR"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh94_p0r0",
+      "new_text": "Redesign career frameworks, internal mobility programs, and leadership pipeline"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh96_p0r0",
+      "new_text": "Retain 95%"
+    },
+    {
+      "slide": 20,
+      "slot_id": "s20_sh98_p0r0",
+      "new_text": "Cost -18%"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh23_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh24_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh25_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh26_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh27_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh28_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh29_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh36_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh37_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh38_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh39_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh40_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh41_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh43_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh58_p0r0",
+      "new_text": "Reserved"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh58_p0r2",
+      "new_text": "Notes"
+    },
+    {
+      "slide": 12,
+      "slot_id": "s12_sh61_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh4_p0r0",
+      "new_text": "Reserved"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh4_p0r2",
+      "new_text": "Notes"
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh13_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh14_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh15_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh22_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh23_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh24_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh27_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh28_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh29_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh33_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh34_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh56_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 29,
+      "slot_id": "s29_sh65_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh4_p0r0",
+      "new_text": "Reserved"
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh4_p0r2",
+      "new_text": "Notes"
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh15_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh16_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh20_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh22_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh23_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh27_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh29_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh30_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh34_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh36_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh37_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh41_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh43_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh48_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh49_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh50_p0r0",
+      "new_text": ""
+    },
+    {
+      "slide": 18,
+      "slot_id": "s18_sh51_p0r0",
+      "new_text": ""
+    }
+  ]
+}
